@@ -1,0 +1,108 @@
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+
+    display: flex;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+header {
+    background-color: rgb(25, 25, 25);
+    color: white;
+    /* Só para cumprir requisitos */
+    width: 40%;
+}
+
+/* header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+header h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1rem;
+    font-weight: normal;
+} */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social {
+    margin-top: 2rem;
+}
+
+main {
+    background-color: rgb(25, 25, 25);
+    color: white;
+    /* Só para cumprir requisitos */
+    width: 60%;
+}
+
+/* #sobre {} */
+
+#projetos {
+    margin-top: 5rem
+}
+
+/* .cards {} */
+
+.cards img {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: yellow;
+    cursor: pointer;
+}
+
+#habilidades {
+    margin-top: 5rem;
+}
+
+.languages {
+    margin-top: 5rem;
+}
+
+.academic {
+    margin-top: 5rem;
+}
+
+footer {
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+    margin-top: 10rem;
+}

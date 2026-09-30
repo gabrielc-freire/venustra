@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Portfólio - Gabriel Cardoso Freire</title>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Gabriel Cardoso Freire</h1>
+
+        <h3>Programador Full-Stack</h3>
+
+        <p>Estudante de programação</p>
+
+        <nav>
+            <!-- Âncora interna: leva para a seção "Sobre" desta página -->
+            <a href="#sobre">Sobre</a>
+
+            <!-- Âncora interna: leva para o artigo "Projetos" desta página -->
+            <a href="#projetos">Projetos</a>
+
+            <!-- Âncora interna: leva para o artigo "Habilidades" desta página -->
+            <a href="#habilidades">Habilidades</a>
+
+        </nav>
+
+        <div class="social">
+            <!-- Âncora externa: leva para o site do LinkedIn, mais especificamente, no meu perfil -->
+            <a href="https://www.linkedin.com/in/gabriel-cardoso-freire-3029b639b/" target="_blank"
+                rel="noopener noreferrer">
+                <img src="img/LinkedIn_icon.svg.webp" alt="Logo do LinkedIn" height="25" width="25">
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 
+        A tag <section> foi escolhida para organizar uma parte específica
+        do conteúdo da página, neste caso, as informações sobre mim.
+        -->
+
+        <section id="sobre">
+
+            <h2>Sobre mim</h2>
+
+            <p>
+                Desenvolvedor de Sistemas com experiência em desenvolvimento
+                full-stack, atuando em todas as etapas do ciclo de vida de
+                software, desde a análise de requisitos até a entrega do
+                produto final.
+            </p>
+
+            <p>
+                Possuo vivência em trabalho em equipe, colaborando na construção
+                de soluções eficientes, organizadas e alinhadas às necessidades
+                do usuário.
+            </p>
+
+        </section>
+
+
+        <!-- 
+        A tag <article> foi escolhida para representar um conteúdo
+        independente dentro do portfólio. Neste caso, o projeto PentaPizza
+        pode ser apresentado como um conteúdo próprio.
+        -->
+
+        <article id="projetos">
+
+            <h2>Projetos</h2>
+
+            <div class="cards">
+                <img src="img/cadastro.jpg" alt="Tela do cadastro do aplicativo mobile: PentaPizza" width="300"
+                    height="500">
+                <img src="img/cardapio.jpg" alt="Tela do cardápio do aplicativo mobile: PentaPizza" width="300"
+                    height="500">
+            </div>
+
+            <a href="projetos.html">
+                <h4>Ver mais projetos</h4>
+            </a>
+
+        </article>
+
+
+        <section id="habilidades">
+
+            <h2>Habilidades</h2>
+
+            <!-- Lista com mais de 3 itens relacionados ao conteúdo -->
+            <ul>
+                <li>JavaScript, TypeScript, Python</li>
+                <li>React Native</li>
+                <li>Node.js e Express</li>
+                <li>SQL, Prisma e Supabase</li>
+                <li>Git e GitHub</li>
+                <li>Scrum e Kanban</li>
+            </ul>
+
+        </section>
+
+        <section class="languages">
+
+            <h2>Idiomas</h2>
+
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Idioma</th>
+                        <th>Nível</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Português</td>
+                        <td>Nativo</td>
+                    </tr>
+                    <tr>
+                        <td>Inglês</td>
+                        <td>Intermediário</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+
+        <section class="academic">
+
+            <h2>Formação</h2>
+
+            <h3>Ensino Médio</h3>
+            <p>SESI 416 - São Bernardo do Campo</p>
+            <p>2023 até 2025</p>
+
+            <h3>Curso Técnico Desenvolvimento de Sistemas</h3>
+            <p>SENAI - Almirante Tamandaré</p>
+            <p>2024 até 2025</p>
+
+            <h3>Desenvolvimento de Software Multiplataforma</h3>
+            <p>FATEC Luigi Papaiz - Diadema</p>
+            <p>2026 até 2028</p>
+
+        </section>
+
+        <!-- Rodapé-->
+        <footer>
+            <p>
+                © 2026 Gabriel Cardoso Freire. Todos os direitos reservados.
+            </p>
+        </footer>
+    </main>
+
+
+</body>
+
+</html>
