@@ -131,3 +131,11 @@ header nav {
   margin-right: auto;
   font-family: "Caviar Dreams", sans-serif;
 }
+
+.carrossel {
+  position: relative;
+
+  max-width: 800px;
+  width: 100%;
+  margin: 3rem auto 0;
+}
