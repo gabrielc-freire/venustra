@@ -1,0 +1,158 @@
+/* ===== Página Sobre =====
+   Carregar DEPOIS do style.css. Tudo escopado em .sobre
+   para não interferir na home (carrossel etc.). */
+
+.sobre {
+  font-family: "Caviar Dreams", sans-serif;
+  background: var(--corpo);
+}
+
+/* Palavra destacada na faixa (igual à ideia da home) */
+.sobre .confianca {
+  display: inline;
+  color: var(--detalhe);
+}
+
+/* ---- Blocos de conteúdo: mesma largura dos textos da home ---- */
+.sobre .conteudo > section {
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+}
+
+.sobre .conteudo h1 {
+  font-size: 2.3rem;
+  margin-bottom: 2.5rem;
+}
+
+.sobre .conteudo h2,
+.sobre .conteudo h3,
+.sobre .conteudo li {
+  font-family: "Caviar Dreams", sans-serif;
+}
+
+.sobre .conteudo h2 {
+  font-size: 1.7rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--detalhe);
+  display: inline-block;
+}
+
+.sobre .conteudo p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ---- Lista de princípios ---- */
+.sobre .conteudo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sobre .conteudo li {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.6rem;
+  border-left: 4px solid var(--detalhe);
+  background: var(--corpo);
+  border-radius: 0 0.4rem 0.4rem 0;
+  line-height: 1.5;
+}
+
+.sobre .conteudo li strong {
+  color: var(--detalhe);
+}
+
+/* ---- Cards (funcionalidades e equipe) ---- */
+.sobre .conteudo article {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.sobre .conteudo article h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.sobre .conteudo article p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Equipe: três cards lado a lado, quebrando em telas menores */
+.sobre #criadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.sobre #criadores h2,
+.sobre #criadores > p {
+  grid-column: 1 / -1;
+  max-width: none;
+  margin-bottom: 0;
+}
+
+.sobre #criadores article {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* ---- Links dentro dos cards: mesmo estilo do botão da faixa ---- */
+.sobre .conteudo article a {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: var(--detalhe);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 2.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sobre .conteudo article a:hover {
+  border-color: var(--preto);
+}
+
+/* ---- Rodapé ---- */
+.sobre footer {
+  position: relative;   /* garante que fique acima da faixa sticky */
+  z-index: 1;
+  background: var(--corpo);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-family: "Caviar Dreams", sans-serif;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sobre footer p {
+  margin: 0 0 0.8rem;
+}
+
+.sobre footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+}
+
+.sobre footer a {
+  color: var(--preto);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.sobre footer a:hover {
+  text-decoration: underline var(--detalhe);
+}
+
+/* ---- Celular ---- */
+@media (max-width: 600px) {
+  .sobre .faixa-texto h2 { font-size: 1.8rem; }
+  .sobre .conteudo { padding: 3rem 1.2rem; }
+}
