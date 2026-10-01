@@ -1,0 +1,184 @@
+/* ---- comentario em css não funciona com <!> ---- */ 
+/* ---- observações:
+- var refere-se a variável estabelecida
+- rem refere-se a unidade base relativa ao site
+- border refere-se a moldura e afins
+- @media refere-se a aplicação de configurações diferentes com base no tamanho da tela
+---- */ 
+
+/* ---- variaveis do site, como uma paleta de cores pré-estabelecida para rápido acesso ---- */ 
+:root {
+  --ink: #232E38;
+  --paper: #FAF8F3;
+  --text: #262A2E;
+  --accent: #D9A441;
+  --accent-dark: #A9791F;
+  --card-bg: #F1ECDE;
+  --line: #DCD5C2;
+
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---- corpinho ---- */ 
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* ---- titulos ---- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 42rem;
+}
+
+/* ---- cabeçalho ---- */
+header {
+  background-color: var(--ink);
+  color: var(--paper);
+  padding: 2rem 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+header h1 {
+  color: var(--paper);
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+/* ---- links ---- */
+.nav-link {
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(250, 248, 243, 0.35);
+  border-radius: 0.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+    /* ---- hover: passar mouse em cima ---- */ 
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+
+/* ---- posicionamento conteúdo principal ---- */
+main,
+section,
+article {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.5rem 6%;
+}
+
+/* ---- moldura para imagens ---- */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem auto;
+  padding: 0.4rem;
+  border: 3px solid var(--accent);
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+/* ---- tabela habilidades ---- */
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  /* ---- faz a bordinha não apresentar cor ---- */ 
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.6rem;
+  text-align: left;
+}
+
+td {
+  border: 1px solid var(--line);
+  padding: 0.6rem;
+  vertical-align: middle;
+}
+
+table img {
+  margin: 0.25rem auto;
+}
+
+/* ---- caixa de contato ---- */
+#secao-contato {
+  background-color: var(--card-bg);
+  color: var(--ink);
+  border-radius: 0.5rem;
+}
+
+/* ---- footer ---- */
+footer {
+  background-color: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 1.25rem 6%;
+  font-size: 0.85rem;
+}
+
+/* ---- responsividade mobile ---- */
+@media (max-width: 40rem) {
+  header {
+    padding: 1.5rem 5%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  header nav {
+    gap: 0.5rem 0.75rem;
+  }
+}
