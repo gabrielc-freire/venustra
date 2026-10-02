@@ -203,5 +203,5 @@ O Venustra ainda está em suas etapas iniciais e novas funcionalidades serão ad
 
 <p align="center">
   <strong>Venustra</strong><br>
-  Tecnologia, acessibilidade e autocuidado.
+  Transformando cuidado em confiança.
 </p>
