@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Venustra</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="img/icon.png">
 </head>
 
 <body>
@@ -33,51 +34,63 @@
         <!-- Conteúdo em fundo branco que sobrepõe a faixa ao rolar -->
         <section class="conteudo">
             <h1>Bem-vinda à Venustra</h1>
-            <p>Escreva aqui o seu conteúdo. Ao rolar a página, este bloco branco sobe e cobre a faixa de imagem.</p>
-            <p>Adicione quantos parágrafos e seções quiser: o efeito continua até o fim da página.</p>
+            <p>O Venustra está sendo desenvolvido como um projeto acadêmico, aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.</p>
+            <p>O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma, busca-se desenvolver uma solução que considere não apenas as necessidades
+                 relacionadas à pele, mas também a realidade econômica das usuárias.</p> <br> <br>
+            <h1>Tipos de Pele</h1>
 
-            <section class="side-images" aria-label="Galeria de imagens"> 
+            <section class="carrossel" aria-label="Galeria de imagens"> 
                 <button class="seta seta-esq" type="button" aria-label="Imagem anterior">&#10094;</button>
                 <div class="carrossel-janela">
                     <div class="carrossel-trilho">
 
                         <figure class="slide">
-                            <img src="img/passaro1.jpg" alt="">
+                            <img src="img/peles/pele_normal.jpg" alt="Pele Normal">
                             <figcaption>
-                                <h3>Título Slide 1</h3>
-                                <span>Texto abaixo imagem</span>
+                                <h3>Pele Normal</h3>
+                                <span>"Normal" é um termo largamente utilizado para se  referir à pele balanceada. O termo científico para pele saudável é eudérmica. A  zona T (testa, queixo e nariz) pode
+                                     ser um pouco oleosa, mas o sebo total e a umidade são equilibrados e a pele nem é muito oleosa nem muito seca.</span>
                             </figcaption>
                         </figure>
 
                         <figure class="slide">
-                            <img src="img/passaro2.jpg" alt="">
+                            <img src="img/peles/pele_seca.jpg" alt="Pele Seca">
                             <figcaption>
-                                <h3>Título Slide 1</h3>
-                                <span>Texto abaixo imagem</span>
+                                <h3>Pele Seca</h3>
+                                <span>O termo “seco” é utilizado para descrever uma pele incapaz de reter água no volume necessário. Isso geralmente está associado à produção reduzida de lipídios na pele. 
+                                    Por causa da falta de sebo, a pele seca carece de lipídios necessários para reter umidade e construir um escudo protetor contra influências externas. 
+                                </span>
                             </figcaption>
                         </figure>
 
                         <figure class="slide">
-                            <img src="img/passaro3.jpg" alt="">
+                            <img src="img/peles/pele_oleosa.jpg" alt="Pele Oleosa">
                             <figcaption>
-                                <h3>Título Slide 1</h3>
-                                <span>Texto abaixo imagem</span>
+                                <h3>Pele Oleosa</h3>
+                                <span>Pele oleosa "Oleosa" descreve um tipo de pele com alta produção de sebo. A pele oleosa está propensa a cravos (negros e brancos) e diversas formas de acne.</span>
                             </figcaption>
                         </figure>
 
                         <figure class="slide">
-                            <img src="img/passaro4.jpg" alt="">
+                            <img src="img/peles/pele_mista.jpeg" alt="Pele Mista">
                             <figcaption>
-                                <h3>Título Slide 1</h3>
-                                <span>Texto abaixo imagem</span>
+                                <h3>Pele Mistra</h3>
+                                <span>TNa pele mista, os tipos de pele variam na zona T e nas bochechas. A chamada zona T pode diferir consideravelmente – de uma zona muito delgada a uma área estendida.</span>
                             </figcaption>
                         </figure>
                     </div>
                 </div>
-                <button class="seta seta-dir" type="button" aria-label="proxima imagem"></button>
+                <button class="seta seta-dir" type="button" aria-label="Próxima imagem">&#10095;</button>
             </section>
         </section>
     </main>
+    <footer class="rodape">
+        <img class="logo2" src="img/venustra_v4.2.png" alt="logotipo">
+        <p>O Venustra está sendo desenvolvido como um projeto acadêmico,
+         aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.</p>
+        <p>O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma, 
+            busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele, mas também a realidade econômica das usuárias.</p>
+    </footer>
     <script src="carrossel.js"></script>
 </body>
 </html>
