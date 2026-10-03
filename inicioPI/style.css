@@ -300,3 +300,28 @@ header nav {
   margin-right: auto;
   font-family: "Caviar Dreams", sans-serif;
 }
+
+section input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* quando o usuário clica no campo */
+section input:focus {
+  outline: none;
+  border-color: var(--realce);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+/* cor do texto de dica */
+section input::placeholder {
+  color: #6b7280;
+}
