@@ -1,0 +1,230 @@
+/*Header e nav*/
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("fonte/CaviarDreams.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --corpo: #f9fcfcf8;
+    --detalhe: #79d6b7;
+    --realce: #4e8377;
+    --preto: #000;
+    --detalhe2: #0fbbb2f8;
+}
+
+body {
+  margin: 0;
+   background: #faf8f2;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+
+  position: sticky; 
+  top: 0;
+  z-index: 10;
+  background: var(--corpo);
+  opacity: 70%;
+}
+
+.logo { 
+  width: 90px; 
+  margin-left: 2%;
+}
+
+header::after {
+  content: "";
+  width: 90px;
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 4rem;
+  justify-content: center;
+}
+
+.nav-link {
+  color: var(--preto);
+  text-decoration: none;
+  font-weight: 900;
+  font-family: "Caviar Dreams", sans-serif;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(250, 248, 243, 0.35);
+  border-radius: 0.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  box-shadow: 12px 12px 12px rgb(245, 244, 244) inset,
+  -10px -10px 10px white inset;
+  text-decoration: underline var(--detalhe);
+}
+
+/*Main*/
+
+h1,
+p{
+    font-family: "Caviar Dreams", sans-serif;
+}
+
+.botao-faixa {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--detalhe);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(250, 248, 243, 0.35);
+  border-radius: 2.5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.botao-faixa:hover {
+  background-color: var(--detalhe);
+  border-color: var(--detalhe2);
+  border-radius: 0.4rem;
+  border: 1px solid rgb(7, 131, 44);
+  border-radius: 2.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+main { /*Centraliza tudo*/
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#manha {
+    border: 1px solid #e0ddd2;
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05)
+}
+
+#noite {
+    border: 1px solid #e0ddd2;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.produto-1 {
+    border: 1px solid #e0ddd2;
+    border-radius: 12px;
+    padding: 16px;
+    
+}
+
+.produto-1 h3 a {
+    color: rgb(78, 131, 119);
+    text-decoration: none;
+}
+
+.produto-1 h3 a:hover {
+    text-decoration: underline;
+}
+
+.titulo {
+  font-weight: bold
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 8px;  
+  margin-bottom: 12px;    
+}
+
+.numero {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;          
+  background: rgb(78, 131, 119);         
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Círculo atrás do sol */
+.icone-periodo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgb(121, 214, 183);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Aparência do SVG do periodo */
+.icone-periodo svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Alinhamento do icone com a palavra */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avaliacao { /*Alinhamento do icone com o paragrafo*/
+    clear: both;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.avaliacao p {
+    margin: 0;
+}
+
+.estrela { /*cor da estrla*/
+    fill: #f1f529;
+}
+
+
+#manha,
+#noite {
+    font-family: "Caviar Dreams", sans-serif;
+    flex: 1;                 
+    background: #fff;
+    border: 1px solid #e0ddd2;
+    border-radius: 24px;
+    padding: 12px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box
+}
+
+.rotinas {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+.foto-produto {
+    float: left;            
+    margin-right: 12px;   
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    background: #e8eddc;
+}
+
