@@ -94,6 +94,10 @@ header nav {
   margin: 0 0 1rem;
 }
 
+.confianca {
+  color: #4e8377;
+}
+
 .botao-faixa {
   display: inline-block;
   padding: 0.6rem 1.4rem;
