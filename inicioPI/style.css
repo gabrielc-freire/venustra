@@ -8,7 +8,8 @@
 
 :root {
     --corpo: #f9fcfcf8;
-    --detalhe: #03BB85;
+    --detalhe: #79d6b7;
+    --realce: #4e8377;
     --preto: #000;
     --detalhe2: #0fbbb2f8;
 }
@@ -23,9 +24,9 @@ header {
   align-items: center;
   padding: 5px 0;
 
-  position: sticky; /*gruda no topo*/
+  position: sticky; 
   top: 0;
-  z-index: 10;      /*fica na camada do toppo*/
+  z-index: 10;
   background: var(--corpo);
   opacity: 70%;
 }
@@ -81,16 +82,20 @@ header nav {
 }
 
 .faixa-texto{
-  color: var(--preto);
+  color:rgb(9, 10, 9);
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: 1.5rem;
   margin-left:2%;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5)
+
 }
 
 .faixa-texto h2 {
   font-size: 2.3rem;
   margin: 0 0 1rem;
+}
+
+.confianca {
+  color: #4e8377;
 }
 
 .botao-faixa {
@@ -105,11 +110,10 @@ header nav {
 }
 
 .botao-faixa:hover {
-    /* ---- hover: passar mouse em cima ---- */ 
   background-color: var(--detalhe);
   border-color: var(--detalhe2);
   border-radius: 0.4rem;
-  border: 1px solid var(--preto);
+  border: 1px solid rgb(7, 131, 44);
   border-radius: 2.5rem;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
@@ -132,10 +136,196 @@ header nav {
   font-family: "Caviar Dreams", sans-serif;
 }
 
-.carrossel {
-  position: relative;
+/* ===== Carrossel: 1 destaque central + previews inclinados ===== */
 
-  max-width: 800px;
+.carrossel {
+  --largura: min(400px, 60vw);   /* card central (imagem + texto). No celular encolhe junto */
+  --escala: 0.8;                 /* NOVO: tamanho dos previews em relação ao central (80%) */
+  --angulo: 35deg;               /* NOVO: inclinação dos previews */
+  --gap: clamp(3rem, 8vw, 4.5rem); /* ALTERADO: espaço entre o central e os previews.
+                                    É aqui que as setas ficam, então precisa caber uma seta */
+
+  position: relative;
   width: 100%;
-  margin: 3rem auto 0;
+  /* ALTERADO: central + 2 previews (cada um com 80% da largura) + 2 espaços.
+     Assim os previews aparecem inteiros no desktop */
+  max-width: calc(var(--largura) * (1 + 2 * var(--escala)) + 2 * var(--gap) + 4rem);
+  margin: 3rem auto 0;           /* auto centraliza o carrossel na página */
+}
+
+.carrossel-janela {
+  overflow: hidden;              /* esconde os slides distantes e o que passar da janela */
+  padding: 1rem 0;               /* espaço para as sombras não serem cortadas */
+}
+
+.carrossel-trilho {
+  display: grid;           /* ALTERADO: antes era flex (slides em fila). Agora é grid */
+  justify-items: center;   /* NOVO: centraliza cada slide na célula */
+  /* REMOVIDO: gap, transition e transform. Agora o trilho não anda mais.
+     Quem se move é cada slide individualmente (ver .slide) */
+}
+
+.slide {
+  grid-area: 1 / 1;        /* NOVO: todos os slides na MESMA célula (linha 1, coluna 1),
+                              um em cima do outro. Antes: flex: 0 0 var(--largura) */
+  width: var(--largura);   /* NOVO: como não são mais flex items, definimos a largura aqui */
+
+  --pos: 0;                /* NOVO: distância até o slide atual (-1, 0, 1...).
+                              O JS atualiza esse número em cada slide */
+  --passo: calc(var(--largura) + var(--gap));  /* NOVO: quanto um slide "anda" por posição */
+
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--corpo);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+
+  opacity: 0;              /* slides distantes continuam invisíveis */
+  pointer-events: none;
+  /* ALTERADO: agora o slide se desloca sozinho com translateX(pos * passo).
+     Ex.: pos = 1 → anda 1 passo para a direita; pos = -1 → 1 passo para a esquerda */
+  transform: translateX(calc(var(--pos) * var(--passo)))
+             perspective(900px) rotateY(0deg) scale(var(--escala));
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: default;
+  /* ALTERADO: inclui o translateX (a lista de funções precisa ser a mesma
+     em todos os estados para o navegador conseguir animar a troca) */
+  transform: translateX(calc(var(--pos) * var(--passo)))
+             perspective(900px) rotateY(0deg) scale(1);
+}
+
+.slide.antes {
+  opacity: 0.2;
+  pointer-events: auto;
+  transform: translateX(calc(var(--pos) * var(--passo)))
+             perspective(900px) rotateY(var(--angulo)) scale(var(--escala));
+  transform-origin: right center;
+}
+
+.slide.depois {
+  opacity: 0.2;
+  pointer-events: auto;
+  transform: translateX(calc(var(--pos) * var(--passo)))
+             perspective(900px) rotateY(calc(var(--angulo) * -1)) scale(var(--escala));
+  transform-origin: left center;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.slide figcaption {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-family: "Caviar Dreams", sans-serif;
+  font-size: 0.9rem;
+  color: var(--preto);
+  border-top: 3px solid var(--detalhe);
+}
+
+.slide figcaption h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+}
+
+/* ----- Setas: ao lado do card central, dentro do espaço entre ele e os previews ----- */
+.seta {
+  position: absolute;
+  /* MANTIDO: centro vertical da imagem central (1rem do padding + 37,5% da largura - metade da seta) */
+  top: calc(1rem + var(--largura) * 0.375 - 1.25rem);
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  color: var(--preto);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.seta:hover:not(:disabled) {
+  background: var(--detalhe);
+  color: #fff;
+}
+
+.seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ALTERADO: antes as setas ficavam coladas nas bordas do carrossel.
+   Agora ficam no meio do espaço entre o card central e o preview:
+   50% (centro) - metade do card - metade do gap - metade da seta */
+.seta-esq { left:  calc(50% - var(--largura) / 2 - var(--gap) / 2 - 1.25rem); }
+.seta-dir { right: calc(50% - var(--largura) / 2 - var(--gap) / 2 - 1.25rem); }
+
+@media (max-width: 600px) {
+  .seta {
+    width: 2rem;
+    height: 2rem;
+    top: calc(1rem + var(--largura) * 0.375 - 1rem);
+  }
+  .seta-esq { left:  calc(50% - var(--largura) / 2 - var(--gap) / 2 - 1rem); }
+  .seta-dir { right: calc(50% - var(--largura) / 2 - var(--gap) / 2 - 1rem); }
+}
+
+.logo2 { 
+  width: 90px; 
+  margin-left: 28%;
+}
+
+.rodape {
+  position: relative;   /* necessário para o z-index valer */
+  z-index: 1;           /* fica acima da faixa */
+  background: var(--realce);
+  padding: 4rem 2rem;
+  min-height: 100px;    /* garante que o conteúdo cubra a faixa por completo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
+}
+
+.rodape h1,
+.rodape p {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Caviar Dreams", sans-serif;
+}
+
+section input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* quando o usuário clica no campo */
+section input:focus {
+  outline: none;
+  border-color: var(--realce);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+/* cor do texto de dica */
+section input::placeholder {
+  color: #6b7280;
 }

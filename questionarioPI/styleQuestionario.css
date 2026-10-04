@@ -1,0 +1,168 @@
+@font-face {
+    font-family: "Caviar Dreams";
+    src: url("fonte/CaviarDreams.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --corpo: #f9fcfcf8;
+    --detalhe: #79d6b7;
+    --realce: #4e8377;
+    --detalhe2: #0fbbb2f8;
+    --preto: #000;
+    --branco: #ffffff;
+    --cinza: #6b7280;
+    --cinza-claro: #e7eeeb;
+}
+
+body {
+    margin: 0;
+    background-color: var(--corpo);
+    color: var(--preto);
+    font-family: "Caviar Dreams", sans-serif;
+}
+
+/*HEADER*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: var(--corpo);
+    opacity: 70%;
+}
+
+header img {
+    width: 90px;
+    margin-left: 2%;
+}
+
+header::after {
+    content: "";
+    width: 90px;
+}
+
+/*NAVEGAÇÃO*/
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 4rem;
+    justify-content: center;
+}
+
+header nav a {
+    color: var(--preto);
+    text-decoration: none;
+    font-family: "Caviar Dreams", sans-serif;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(250, 248, 243, 0.35);
+    border-radius: 0.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+header nav a:hover {
+    box-shadow: 12px 12px 12px rgb(245, 244, 244) inset,
+        -10px -10px 10px white inset;
+    text-decoration: underline var(--detalhe);
+}
+
+/*CONTEÚDO*/
+main {
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+/*FORMULÁRIO*/
+form {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: var(--branco);
+    border: 1px solid rgba(78, 131, 119, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 10px 35px rgba(46, 87, 76, 0.08);
+}
+
+/*TÍTULOS*/
+form h1 {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 2.5rem;
+    color: var(--realce);
+}
+
+form h2 {
+    margin: 0.5rem 0 3rem;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: normal;
+    color: var(--cinza);
+}
+
+/*PERGUNTAS*/
+form h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+/* Esconde o radio padrão */
+form input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Alternativas */
+form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.7rem;
+    padding: 1rem 1.2rem;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 0.7rem;
+    cursor: pointer;
+}
+
+/* Hover */
+form label:hover {
+    border-color: var(--detalhe);
+    background-color: #f5fcf9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 131, 119, 0.08);
+}
+
+/* Bolinha personalizada */
+form label::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.8rem;
+    border: 2px solid #b8c4c0;
+    border-radius: 50%;
+}
+
+/* Alternativa selecionada */
+form input[type="radio"]:checked+label {
+    border-color: var(--detalhe2);
+    background-color: #eafaf5;
+    color: var(--realce);
+    font-weight: bold;
+    box-shadow: 0 0 0 1px var(--detalhe2);
+}
+
+/*FOOTER*/
+footer {
+    min-height: 120px;
+    margin-top: 3rem;
+    background-color: var(--realce);
+}
