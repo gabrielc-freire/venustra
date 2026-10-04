@@ -1,45 +1,51 @@
-/* ===== Página Sobre =====
-   Carregar DEPOIS do style.css. Tudo escopado em .sobre
-   para não interferir na home (carrossel etc.). */
-
 .sobre {
+  --s-detalhe: var(--detalhe, #03BB85);
+  --s-preto: var(--preto, #000);
+  --s-escuro: #0b6b52;    
+  --s-tinta: #063b30; 
+  --s-card: #f5f5f5;     
+  --s-rodape: #4f8577;     
+
   font-family: "Caviar Dreams", sans-serif;
-  background: var(--corpo);
+  background: #fff;
 }
 
-/* Palavra destacada na faixa (igual à ideia da home) */
+/* Palavra destacada na faixa */
 .sobre .confianca {
   display: inline;
-  color: var(--detalhe);
+  color: var(--s-detalhe);
 }
 
-/* ---- Blocos de conteúdo: mesma largura dos textos da home ---- */
+/* ---- Blocos de conteúdo: mesma coluna de 800px da home ---- */
 .sobre .conteudo > section {
   max-width: 800px;
   margin: 0 auto 3.5rem;
 }
 
-.sobre .conteudo h1 {
-  font-size: 2.3rem;
-  margin-bottom: 2.5rem;
-}
-
+.sobre .conteudo h1,
 .sobre .conteudo h2,
 .sobre .conteudo h3,
 .sobre .conteudo li {
   font-family: "Caviar Dreams", sans-serif;
+  font-weight: 400;
+  color: var(--s-preto);
 }
 
+.sobre .conteudo h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Títulos de seção iguais a "Tipos de Pele" da home: simples, sem sublinhado */
 .sobre .conteudo h2 {
-  font-size: 1.7rem;
+  font-size: 2rem;
   margin: 0 0 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--detalhe);
-  display: inline-block;
+  padding: 0;
+  border: 0;
 }
 
 .sobre .conteudo p {
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1rem;
 }
 
@@ -53,40 +59,101 @@
 .sobre .conteudo li {
   padding: 0.8rem 1rem;
   margin-bottom: 0.6rem;
-  border-left: 4px solid var(--detalhe);
-  background: var(--corpo);
-  border-radius: 0 0.4rem 0.4rem 0;
+  background: var(--s-card);
+  border-left: 4px solid var(--s-detalhe);
+  border-radius: 0 0.6rem 0.6rem 0;
   line-height: 1.5;
 }
 
 .sobre .conteudo li strong {
-  color: var(--detalhe);
+  font-weight: 900;
 }
 
-/* ---- Cards (funcionalidades e equipe) ---- */
+/* ---- Cards (base para funcionalidades e equipe) ---- */
 .sobre .conteudo article {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.8rem;
-  padding: 1.2rem 1.4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--s-card);
+  border-top: 3px solid var(--s-detalhe);   
+  border-radius: 0.9rem;
+  padding: 1.3rem 1.4rem;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .sobre .conteudo article h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 900;
 }
 
 .sobre .conteudo article p {
-  margin-left: 0;
-  margin-right: 0;
+  max-width: none;
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
 }
 
-/* Equipe: três cards lado a lado, quebrando em telas menores */
+.sobre .conteudo article a {
+  display: inline-block;
+  margin-top: auto;               
+  padding: 0.55rem 1.3rem;
+  background: var(--s-detalhe);
+  color: var(--s-tinta);
+  text-decoration: none;
+  font-weight: 900;
+  border: 1px solid transparent;
+  border-radius: 2.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sobre .conteudo article a:hover,
+.sobre .conteudo article a:focus-visible {
+  background: var(--s-escuro);
+  color: #fff;
+}
+
+
+.sobre #funcionalidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.sobre #funcionalidades h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.sobre #funcionalidades article {
+  margin-bottom: 0;
+  background: linear-gradient(180deg, #ffffff 0%, var(--s-card) 100%);
+  border: 1px solid rgba(3, 187, 133, 0.35);
+  border-top: 4px solid var(--s-detalhe);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sobre #funcionalidades article a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.9rem;
+}
+
+.sobre #funcionalidades article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+}
+
+.sobre #funcionalidades article:focus-within {
+  outline: 3px solid var(--s-escuro);
+  outline-offset: 3px;
+}
+
 .sobre #criadores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -99,39 +166,44 @@
 
 .sobre #criadores article {
   margin-bottom: 0;
+  align-items: center;
   text-align: center;
 }
 
-/* ---- Links dentro dos cards: mesmo estilo do botão da faixa ---- */
-.sobre .conteudo article a {
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  background: var(--detalhe);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  border: 1px solid transparent;
-  border-radius: 2.5rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+/* Portfólio ainda não publicado */
+.sobre .conteudo article a.em-breve {
+  background: #d6e2de;
+  color: #4a5753;
+  cursor: default;
+  pointer-events: none;
 }
 
-.sobre .conteudo article a:hover {
-  border-color: var(--preto);
-}
-
-/* ---- Rodapé ---- */
 .sobre footer {
-  position: relative;   /* garante que fique acima da faixa sticky */
+  position: relative;   
   z-index: 1;
-  background: var(--corpo);
-  text-align: center;
-  padding: 1.5rem 1rem;
+  background: var(--s-rodape);
+  color: var(--s-preto);
   font-family: "Caviar Dreams", sans-serif;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  text-align: left;
+}
+
+.sobre footer > * {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sobre footer img {
+  display: block;
+  width: 90px;                 
+  margin-bottom: 1.2rem;
 }
 
 .sobre footer p {
-  margin: 0 0 0.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 .sobre footer nav {
@@ -142,17 +214,24 @@
 }
 
 .sobre footer a {
-  color: var(--preto);
+  color: var(--s-preto);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 900;
 }
 
-.sobre footer a:hover {
-  text-decoration: underline var(--detalhe);
+.sobre footer a:hover,
+.sobre footer a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre #funcionalidades article { transition: none; }
+  .sobre #funcionalidades article:hover { transform: none; }
 }
 
 /* ---- Celular ---- */
 @media (max-width: 600px) {
   .sobre .faixa-texto h2 { font-size: 1.8rem; }
   .sobre .conteudo { padding: 3rem 1.2rem; }
+  .sobre .conteudo h2 { font-size: 1.6rem; }
 }
