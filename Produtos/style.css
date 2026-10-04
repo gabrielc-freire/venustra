@@ -175,3 +175,25 @@ p, h2, h3, h1 {
     background: #ccc;
     border-radius: 10px;
 }
+
+.logo2 { 
+  width: 90px; 
+  margin-left: 28%;
+}
+
+.rodape {
+  position: relative;   /* necessário para o z-index valer */
+  z-index: 1;           /* fica acima da faixa */
+  background: var(--realce);
+  padding: 4rem 2rem;
+  min-height: 100px;    /* garante que o conteúdo cubra a faixa por completo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
+}
+
+.rodape h1,
+.rodape p {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Caviar Dreams", sans-serif;
+}
