@@ -26,12 +26,16 @@ body {
 
 /*HEADER*/
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    background: var(--corpo);
-    opacity: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+
+  position: sticky; 
+  top: 0;
+  z-index: 10;
+  background: var(--corpo);
+  opacity: 70%;
 }
 
 header img {
