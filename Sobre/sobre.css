@@ -8,25 +8,20 @@
 
   font-family: "Caviar Dreams", sans-serif;
   background: #fff;
-  background: #fff;
 }
 
-/* Palavra destacada na faixa */
 /* Palavra destacada na faixa */
 .sobre .confianca {
   display: inline;
   color: var(--s-detalhe);
-  color: var(--s-detalhe);
 }
 
-/* ---- Blocos de conteúdo: mesma coluna de 800px da home ---- */
 /* ---- Blocos de conteúdo: mesma coluna de 800px da home ---- */
 .sobre .conteudo > section {
   max-width: 800px;
   margin: 0 auto 3.5rem;
 }
 
-.sobre .conteudo h1,
 .sobre .conteudo h1,
 .sobre .conteudo h2,
 .sobre .conteudo h3,
@@ -41,29 +36,15 @@
   margin-bottom: 1.5rem;
 }
 
-/* Títulos de seção iguais a "Tipos de Pele" da home: simples, sem sublinhado */
-  font-weight: 400;
-  color: var(--s-preto);
-}
-
-.sobre .conteudo h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Títulos de seção iguais a "Tipos de Pele" da home: simples, sem sublinhado */
+/* Títulos de seção iguais a "Tipos de Pele" da home */
 .sobre .conteudo h2 {
   font-size: 2rem;
-  font-size: 2rem;
   margin: 0 0 1rem;
-  padding: 0;
-  border: 0;
   padding: 0;
   border: 0;
 }
 
 .sobre .conteudo p {
-  line-height: 1.5;
   line-height: 1.5;
   margin-bottom: 1rem;
 }
@@ -81,37 +62,32 @@
   background: var(--s-card);
   border-left: 4px solid var(--s-detalhe);
   border-radius: 0 0.6rem 0.6rem 0;
-  background: var(--s-card);
-  border-left: 4px solid var(--s-detalhe);
-  border-radius: 0 0.6rem 0.6rem 0;
   line-height: 1.5;
 }
 
 .sobre .conteudo li strong {
   font-weight: 900;
-  font-weight: 900;
 }
 
-/* ---- Cards (base para funcionalidades e equipe) ---- */
-/* ---- Cards (base para funcionalidades e equipe) ---- */
+/* ---- Cards: funcionalidades e equipe ---- */
 .sobre .conteudo article {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   background: var(--s-card);
   border-top: 3px solid var(--s-detalhe);
   border-radius: 0.9rem;
+
   padding: 1.3rem 1.4rem;
   margin-bottom: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .sobre .conteudo article h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 900;
   font-size: 1.2rem;
   font-weight: 900;
 }
@@ -125,14 +101,21 @@
 .sobre .conteudo article a {
   display: inline-block;
   margin-top: auto;
+
   padding: 0.55rem 1.3rem;
+
   background: var(--s-detalhe);
   color: var(--s-tinta);
+
   text-decoration: none;
   font-weight: 900;
+
   border: 1px solid transparent;
   border-radius: 2.5rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .sobre .conteudo article a:hover,
@@ -141,7 +124,7 @@
   color: #fff;
 }
 
-
+/* ---- Funcionalidades ---- */
 .sobre #funcionalidades {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -155,10 +138,19 @@
 
 .sobre #funcionalidades article {
   margin-bottom: 0;
-  background: linear-gradient(180deg, #ffffff 0%, var(--s-card) 100%);
+
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    var(--s-card) 100%
+  );
+
   border: 1px solid rgba(3, 187, 133, 0.35);
   border-top: 4px solid var(--s-detalhe);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .sobre #funcionalidades article a::after {
@@ -178,9 +170,9 @@
   outline-offset: 3px;
 }
 
+/* ---- Criadores ---- */
 .sobre #criadores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
@@ -195,7 +187,6 @@
 .sobre #criadores article {
   margin-bottom: 0;
   align-items: center;
-  align-items: center;
   text-align: center;
 }
 
@@ -205,22 +196,18 @@
   color: #4a5753;
   cursor: default;
   pointer-events: none;
-/* Portfólio ainda não publicado */
-.sobre .conteudo article a.em-breve {
-  background: #d6e2de;
-  color: #4a5753;
-  cursor: default;
-  pointer-events: none;
 }
 
+/* ---- Rodapé ---- */
 .sobre footer {
   position: relative;
   z-index: 1;
+
   background: var(--s-rodape);
   color: var(--s-preto);
-  background: var(--s-rodape);
-  color: var(--s-preto);
+
   font-family: "Caviar Dreams", sans-serif;
+
   padding: 3rem 2rem;
   text-align: left;
 }
@@ -241,9 +228,6 @@
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.5;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  line-height: 1.5;
 }
 
 .sobre footer nav {
@@ -255,34 +239,48 @@
 
 .sobre footer a {
   color: var(--s-preto);
-  color: var(--s-preto);
   text-decoration: none;
   font-weight: 900;
+}
+
+.sobre footer a:hover,
+.sobre footer a:focus-visible {
+  text-decoration: underline;
+}
+
+.sobre .conteudo .em-breve {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.55rem 1.3rem;
+  background: #d6e2de;
+  color: #4a5753;
   font-weight: 900;
+  border-radius: 2.5rem;
+  cursor: default;
 }
 
-.sobre footer a:hover,
-.sobre footer a:focus-visible {
-  text-decoration: underline;
-}
-
+/* ---- Acessibilidade ---- */
 @media (prefers-reduced-motion: reduce) {
-  .sobre #funcionalidades article { transition: none; }
-  .sobre #funcionalidades article:hover { transform: none; }
-.sobre footer a:hover,
-.sobre footer a:focus-visible {
-  text-decoration: underline;
-}
+  .sobre #funcionalidades article {
+    transition: none;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .sobre #funcionalidades article { transition: none; }
-  .sobre #funcionalidades article:hover { transform: none; }
+  .sobre #funcionalidades article:hover {
+    transform: none;
+  }
 }
 
 /* ---- Celular ---- */
 @media (max-width: 600px) {
-  .sobre .faixa-texto h2 { font-size: 1.8rem; }
-  .sobre .conteudo { padding: 3rem 1.2rem; }
-  .sobre .conteudo h2 { font-size: 1.6rem; }
-  .sobre .conteudo h2 { font-size: 1.6rem; }
+  .sobre .faixa-texto h2 {
+    font-size: 1.8rem;
+  }
+
+  .sobre .conteudo {
+    padding: 3rem 1.2rem;
+  }
+
+  .sobre .conteudo h2 {
+    font-size: 1.6rem;
+  }
 }

@@ -16,120 +16,15 @@ p {
     display: none;
 }
 
-/* Main */
-
-main { /*Centraliza tudo*/
+/* ---- Main ---- */
+main {
     max-width: 1150px;
     margin: 0 auto;
     padding: 24px;
     box-sizing: border-box;
 }
 
-#manha {
-    border: 1px solid #e0ddd2;
-    border-radius: 12px;
-    padding: 5px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05)
-}
-
-#noite {
-    border: 1px solid #e0ddd2;
-    border-radius: 12px;
-    padding: 5px;
-}
-
-.produto-1 {
-    border: 1px solid #e0ddd2;
-    border-radius: 12px;
-    padding: 16px;
-
-}
-
-.produto-1 h3 .produto-link {
-    color: rgb(78, 131, 119);
-    text-decoration: none;
-}
-
-
-.titulo {
-  font-weight: bold
-}
-
-.etapa {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.numero {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgb(78, 131, 119);
-  color: rgb(255, 255, 255);
-  font-size: 13px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Círculo atrás do sol */
-.icone-periodo {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgb(121, 214, 183);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Aparência do SVG do periodo */
-.icone-periodo svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-/* Alinhamento do icone com a palavra */
-.cabecalho {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avaliacao { /*Alinhamento do icone com o paragrafo*/
-    clear: both;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.avaliacao p {
-    margin: 0;
-}
-
-.estrela { /*cor da estrla*/
-    fill: #f1f529;
-}
-
-
-#manha,
-#noite {
-    font-family: "Caviar Dreams", sans-serif;
-    flex: 1;
-    background: #fff;
-    border: 1px solid #e0ddd2;
-    border-radius: 24px;
-    padding: 12px 28px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box
-}
-
+/* ---- Rotinas ---- */
 .rotinas {
     display: flex;
     gap: 30px;
@@ -137,12 +32,153 @@ main { /*Centraliza tudo*/
     margin-top: 24px;
 }
 
+/* ---- Períodos ---- */
+#manha,
+#noite {
+    flex: 1;
+
+    font-family: "Caviar Dreams", sans-serif;
+
+    background: #fff;
+    border: 1px solid #e0ddd2;
+    border-radius: 24px;
+
+    padding: 12px 28px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    box-sizing: border-box;
+}
+
+/* ---- Cabeçalho manhã/noite ---- */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone-periodo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: rgb(121, 214, 183);
+    color: #fff;
+}
+
+.icone-periodo svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+/* ---- Cards de produtos ---- */
+.produto-1 {
+    border: 1px solid #e0ddd2;
+    border-radius: 12px;
+
+    padding: 16px;
+    margin-bottom: 16px;
+
+    overflow: hidden;
+}
+
+.produto-1 h3 {
+    margin-top: 0;
+}
+
+.produto-1 h3 .produto-link {
+    color: rgb(78, 131, 119);
+    text-decoration: none;
+}
+
 .foto-produto {
     float: left;
-    margin-right: 12px;
+
     width: 72px;
     height: 72px;
+
+    margin-right: 12px;
+    margin-bottom: 8px;
+
     border-radius: 12px;
+
     background: #e8eddc;
 }
 
+/* ---- Etapas ---- */
+.etapa {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    background: rgb(78, 131, 119);
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.titulo {
+    font-weight: bold;
+}
+
+/* ---- Avaliação ---- */
+.avaliacao {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    clear: both;
+}
+
+.avaliacao p {
+    margin: 0;
+}
+
+.estrela {
+    fill: #f1f529;
+}
+
+/* ---- Responsividade ---- */
+@media (max-width: 800px) {
+    .rotinas {
+        flex-direction: column;
+    }
+
+    #manha,
+    #noite {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 16px;
+    }
+
+    #manha,
+    #noite {
+        padding: 12px 16px;
+    }
+}

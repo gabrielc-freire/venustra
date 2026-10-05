@@ -1,21 +1,129 @@
 :root {
-    --detalhe: #03BB85;
+    --detalhe: #03bb85;
     --realce: initial;
+    --fundo: #faf8f2;
+    --branco: #ffffff;
+    --borda: #dddddd;
+    --cinza: #cccccc;
 }
 
-.titulo {
-    text-align: center;
-    font-family: "Caviar Dreams", sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+/* ---- Tipografia ---- */
+body {
+    background: var(--fundo);
 }
 
-p, h2, h3, h1 {
+h1,
+h2,
+h3,
+p,
+.titulo,
+.titulo-categoria {
     font-family: "Caviar Dreams", sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
     font-size: 1rem;
     margin: 0.5rem 0;
 }
 
+/* ---- Título principal ---- */
+.titulo {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ---- Pesquisa ---- */
+.barra-pesquisa {
+    display: flex;
+    align-items: center;
+
+    width: 300px;
+    height: 40px;
+
+    margin-left: 30px;
+    margin-right: auto;
+
+    border: 1px solid var(--cinza);
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.barra-pesquisa input {
+    flex: 1;
+
+    height: 100%;
+    padding: 0 15px;
+
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+}
+
+.barra-pesquisa button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.barra-pesquisa button img {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---- Categorias ---- */
+.categoria {
+    margin: 40px 20px;
+}
+
+.titulo-categoria {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* ---- Carrossel ---- */
+.carrossel {
+    display: flex;
+
+    gap: 12px;
+
+    padding-bottom: 15px;
+
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+
+.carrossel:active {
+    cursor: grabbing;
+}
+
+.carrossel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carrossel::-webkit-scrollbar-thumb {
+    background: var(--cinza);
+    border-radius: 10px;
+}
+
+/* ---- Produto ---- */
 .produto {
     position: relative;
 
@@ -25,122 +133,74 @@ p, h2, h3, h1 {
 
     padding: 20px;
 
-    background: white;
+    box-sizing: border-box;
 
-    border: 1px solid #ddd;
+    background: var(--branco);
 
+    border: 1px solid var(--borda);
     border-radius: 22px;
 }
 
-.categoria {
-    margin: 40px 20px;
-}
-
-.titulo-categoria {
-    font-family: "Caviar Dreams", sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-.barra-pesquisa {
-    display: flex;
-    align-items: center;
-    width: 300px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-left: 30px;
-    margin-right: auto;
-}
-
-.barra-pesquisa input {
-    flex: 1;
-    height: 100%;
-    border: none;
-    outline: none;
-    padding: 0 15px;
-    font-size: 16px;
-}
-
-.barra-pesquisa button {
-    width: 45px;
-    height: 100%;
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.barra-pesquisa button img {
-    width: 22px;
-    height: 22px;
-}
-
+/* ---- Imagem do produto ---- */
 .imagem {
-    height: 270px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+
+    height: 270px;
 }
 
 .imagem img {
     width: 100%;
-
     max-width: 230px;
-
     height: 250px;
 
     object-fit: contain;
 }
 
-.carrossel {
-    display: flex;
-
-    gap: 12px;
-
-    overflow-x: auto;
-
-    scroll-behavior: smooth;
-
-    padding-bottom: 15px;
-
-    cursor: grab;
-}
-
-
-/* Esconde a barra */
-
-.carrossel::-webkit-scrollbar {
-    height: 6px;
-}
-
-.carrossel::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-
+/* ---- Rodapé ---- */
 .logo2 {
-  width: 90px;
-  margin-left: 28%;
+    display: block;
+
+    width: 90px;
+    max-width: 800px;
+
+    margin: 0 auto 1rem;
 }
 
 .rodape {
-  position: relative;   /* necessário para o z-index valer */
-  z-index: 1;           /* fica acima da faixa */
-  background: var(--realce);
-  padding: 4rem 2rem;
-  min-height: 100px;    /* garante que o conteúdo cubra a faixa por completo */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
+    position: relative;
+    z-index: 1;
+
+    min-height: 100px;
+
+    padding: 4rem 2rem;
+
+    background: var(--realce);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .rodape h1,
 .rodape p {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: "Caviar Dreams", sans-serif;
+    max-width: 800px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---- Responsividade ---- */
+@media (max-width: 600px) {
+    .categoria {
+        margin: 30px 16px;
+    }
+
+    .barra-pesquisa {
+        width: calc(100% - 32px);
+        margin: 0 auto;
+    }
+
+    .produto {
+        flex-basis: 280px;
+    }
 }
