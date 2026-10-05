@@ -1,59 +1,6 @@
-@font-face {
-  font-family: "Caviar Dreams";
-  src: url("fonte/CaviarDreams.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-    --corpo: #f9fcfcf8;
     --detalhe: #03BB85;
-    --preto: #000;
-}
-
-body {
-  margin: 0;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
-}
-
-.logo { 
-  width: 90px; 
-}
-
-header::after {
-  content: "";
-  width: 90px;
-}
-
-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 4rem;
-  justify-content: center;
-}
-
-.nav-link {
-  color: var(--preto);
-  text-decoration: none;
-  font-weight: 900;
-  font-family: "Caviar Dreams", sans-serif;
-  padding: 0.35rem 0.7rem;
-  border: 1px solid rgba(250, 248, 243, 0.35);
-  border-radius: 0.4rem;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.nav-link:hover {
-  box-shadow: 12px 12px 12px rgb(245, 244, 244) inset,
-  -10px -10px 10px white inset;
-  text-decoration: underline var(--detalhe);
+    --realce: initial;
 }
 
 .titulo {
@@ -174,4 +121,26 @@ p, h2, h3, h1 {
 .carrossel::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 10px;
+}
+
+.logo2 {
+  width: 90px;
+  margin-left: 28%;
+}
+
+.rodape {
+  position: relative;   /* necessário para o z-index valer */
+  z-index: 1;           /* fica acima da faixa */
+  background: var(--realce);
+  padding: 4rem 2rem;
+  min-height: 100px;    /* garante que o conteúdo cubra a faixa por completo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
+}
+
+.rodape h1,
+.rodape p {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Caviar Dreams", sans-serif;
 }

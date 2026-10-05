@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Caviar Dreams";
+    src: url("inicioPI/fonte/CaviarDreams.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --corpo: #f9fcfcf8;
+    --detalhe: #79d6b7;
+    --realce: #4e8377;
+    --preto: #000;
+    --detalhe2: #0fbbb2f8;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--corpo);
+    opacity: 70%;
+}
+
+.logo {
+    width: 90px;
+    margin-left: 2%;
+}
+
+header::after {
+    content: "";
+    width: 90px;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 4rem;
+    justify-content: center;
+}
+
+.nav-link {
+    color: var(--preto);
+    text-decoration: none;
+    font-weight: 900;
+    font-family: "Caviar Dreams", sans-serif;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(250, 248, 243, 0.35);
+    border-radius: 0.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+    box-shadow:
+        12px 12px 12px rgb(245, 244, 244) inset,
+        -10px -10px 10px white inset;
+    text-decoration: underline var(--detalhe);
+}
+
+/* Faixa compartilhada pelas páginas Início, Comparar e Sobre. */
+.faixa {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    height: 80vh;
+    background: url("inicioPI/img/banner.jpg") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+}
+
+.faixa-texto {
+    color: rgb(9, 10, 9);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5rem;
+    margin-left: 2%;
+}
+
+.faixa-texto h2 {
+    font-size: 2.3rem;
+    margin: 0 0 1rem;
+}
+
+.confianca {
+    text-decoration: underline;
+}
+
+.botao-faixa {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: var(--detalhe);
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(250, 248, 243, 0.35);
+    border-radius: 2.5rem;
+}
+
+.botao-faixa:hover {
+    background-color: var(--detalhe);
+    border: 1px solid rgb(7, 131, 44);
+    border-radius: 2.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.conteudo {
+    position: relative;
+    z-index: 1;
+    background: #faf8f2;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.conteudo h1,
+.conteudo p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Caviar Dreams", sans-serif;
+}

@@ -1,0 +1,120 @@
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: #333333;
+    background-color: #f4f4f4;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    color: #1b2a4e;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+p {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+header {
+    background-color: #1b2a4e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+header h1 {
+    color: white;
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #06bae7;
+    text-decoration: underline;
+}
+
+
+main {
+    background-color: white;
+    color: #333333;
+    max-width: 50rem;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+
+.foto-perfil {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    padding: 0.3rem;
+    border: 3px solid #1b2a4e;
+}
+
+.card-projeto {
+    border: 2px solid #1b2a4e;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.card-projeto img {
+    max-width: 100%;
+    height: auto;
+}
+
+.portfólio {
+    background-color:aliceblue
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #000000;
+    padding: 0.6rem;
+    text-align: left;
+}
+
+th {
+    background-color: #1b2a4e;
+    color: white;
+}
+
+#topo {
+    color: #1b2a4e;
+}
+
+#topo:hover {
+    color: #c0392b;
+}
+
+footer {
+    background-color: #1b2a4e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
