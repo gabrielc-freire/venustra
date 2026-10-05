@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<!--Tudo que há dentro de uma TAG pode ser um ATRIBUTO-->
+<!--ISSO AQUI É UMA RECEITA DE BOLO SEMPRE VAI TER ISSO-->
+
+<html lang="pt-BR">
+
+<!--Cabeçalho-->
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Página responsiva (celular / tablet / computador / TV)-->
+    <link rel="stylesheet" href="Style.css">
+    <title>Primeirinho</title>
+
+</head>
+
+<!--Corpo-->
+
+
+
+<body>
+
+    <!--
+    O <header> foi usado para representar o cabeçalho da página,
+    onde fica o meu nome e minha apresentação.
+    -->
+    <header>
+        
+        <!--Usei o <nav> para organizar os links de navegação.
+    O primeiro link leva para o meu LinkedIn, o segundo link leva para uma âncora na mesma página,
+    e o terceiro link leva para uma segunda página-->
+
+        <nav class="links">
+        <a href="https://www.linkedin.com/in/eduardo-sales-b51381429/">LinkedIn</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="pagina2.html">Sobre-mim</a>
+    </nav>
+
+        <h1>Eduardo Sales</h1>
+        <h2 class="Bem-vindo">Olá meu nome é Eduardo. Seja Bem-vindo.</h2>
+
+        
+
+    </header>
+
+     <!--Usei o img para adicionar uma imagem relacionada a Fatec-->
+
+            <img src="image/img.png" alt="A imagem mostra a logo da Fatec Faculdade de Tecnologia">
+
+
+    <!-- Usei o <main> para representar o conteúdo principal
+    da página.-->
+
+    <main>
+
+        <!--Usei o <section> para juntar as informações
+        relacionadas sobre mim.-->
+
+
+        <!--Usei o <article> para apresentar a minha formação,
+        pois ela é um conteúdo independente dentro da página.-->
+        <article>
+
+            <h2><strong>Formação:</strong></h2>
+
+            <p>Atualmente estou cursando o curso de Desenvolvimento de Software
+                Multiplataforma da Fatec Luigi Papaiz em Diadema,
+                com previsão de conclusão no dia 30/08/2029.</p>
+
+       
+
+        </article>
+
+        <!--O id="habilidades" faz com que o link "Habilidades",
+        localizado no <nav>, leve diretamente até esta aba.-->
+
+        <section id="habilidades">
+
+            <h2>Habilidades</h2>
+
+            <ul>
+                <li>Lógica de programação;</li>
+                <li>Conhecimentos iniciais em Python;</li>
+                <li>Conceitos básicos de informática;</li>
+                <li>Facilidade de aprender e desenvolver novos conhecimentos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Experiência Acadêmica</h2>
+
+            <ul>
+                <li>Estudos de lógica de programação;</li>
+                <li>Aprendizado inicial de Python;</li>
+                <li>Estudos de HTML e CSS;</li>
+                <li>Estudos de banco de dados e modelagem;</li>
+                <li>Desenvolvimento de atividades acadêmicas na área de tecnologia.</li>
+            </ul>
+
+        </section>
+
+        <!-- Usei o <section> para apresentar uma tabela relacionando minhas habilidades e seus respectivos níveis. -->
+
+        <section>
+
+        <!--Usei o <table> para criar uma tabela com minhas habilidades e meu nível de experiência.
+        O <tr> representa cada linha da tabela.
+        O <th> representa os títulos das colunas.
+        O <td> representa os dados da tabela-->
+
+
+            <table class="tabela">
+
+                <tr>
+                    <th>Habilidade</th>
+                    <th>Nível</th>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td>Iniciante</td>
+                </tr>
+
+                <tr>
+                    <td>HTML</td>
+                    <td>Iniciante</td>
+                </tr>
+
+                <tr>
+                <td>CSS</td>
+                <td>Iniciante</td>
+                </tr>
+
+                <tr>
+                    <td>Banco de Dados</td>
+                    <td>Iniciante</td>
+                </tr>
+
+            </table>
+        </section>
+
+    </main>
+
+    <!--Usei o <footer> para representa o rodapé da página e tem
+    a informação de copyright.-->
+
+
+
+
+    <footer>
+
+        <p>© 2026 Eduardo Sales. Todos os direitos reservados.</p>
+
+    </footer>
+
+
+</body>
+
+</html>
