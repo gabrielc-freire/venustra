@@ -95,7 +95,7 @@ header nav {
 }
 
 .confianca {
-  color: #4e8377;
+  text-decoration: underline;
 }
 
 .botao-faixa {
@@ -122,7 +122,7 @@ header nav {
 .conteudo {
   position: relative;   /* necessário para o z-index valer */
   z-index: 1;           /* fica acima da faixa */
-  background: #fff;
+  background: #faf8f2;
   padding: 4rem 2rem;
   min-height: 100vh;    /* garante que o conteúdo cubra a faixa por completo */
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
@@ -284,8 +284,10 @@ header nav {
 }
 
 .logo2 { 
-  width: 90px; 
-  margin-left: 28%;
+  display: block;
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 .rodape {
@@ -297,11 +299,15 @@ header nav {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* sombra sutil na borda de sobreposição */
 }
 
+.conteudo_rodape {
+  max-width: 600px;
+  margin: 0 auto;
+  
+}
+
 .rodape h1,
 .rodape p {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   font-family: "Caviar Dreams", sans-serif;
 }
 

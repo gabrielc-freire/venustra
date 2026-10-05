@@ -30,6 +30,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
     background: var(--corpo);
     opacity: 70%;
 }
@@ -161,8 +165,34 @@ form input[type="radio"]:checked+label {
 }
 
 /*FOOTER*/
-footer {
-    min-height: 120px;
-    margin-top: 3rem;
-    background-color: var(--realce);
+.logo2 {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.rodape {
+    position: relative;
+    /* necessário para o z-index valer */
+    z-index: 1;
+    /* fica acima da faixa */
+    background: var(--realce);
+    padding: 4rem 2rem;
+    min-height: 100px;
+    /* garante que o conteúdo cubra a faixa por completo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* sombra sutil na borda de sobreposição */
+}
+
+.conteudo_rodape {
+    max-width: 600px;
+    margin: 0 auto;
+
+}
+
+.rodape h1,
+.rodape p {
+    max-width: 800px;
+    font-family: "Caviar Dreams", sans-serif;
 }
