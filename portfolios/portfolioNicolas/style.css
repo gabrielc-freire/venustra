@@ -1,0 +1,137 @@
+/* Mexer no estilo do body */
+
+body {
+    background-color: #FFFFFF;
+    color: #F3F4F6;
+}
+
+/* Mexer no estilo das paginas (
+display: flex;
+Ativa o Flexbox e permite organizar os elementos
+dentro do elemento de forma mais fácil.
+
+justify-content: center;
+Define como os elementos serão posicionados no
+eixo principal. "center" coloca os elementos no centro.) */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.menu a:hover {
+    color: #1E3A8A;
+    text-decoration: underline;
+}
+
+/* Mexer no estilo do título */
+
+h1 {
+    text-align: center;
+    color: #1E3A8A;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Mexer no estilo dos subtítulos (font weight é se o texto é negrito ou não)*/
+
+h2, h3 {
+    color: #2563EB;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Mexer no estilo dos parágrafos */
+
+p {
+    font-family: Arial;
+    color: #040405;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Mexer no estilo dos links (decoration serve para definir o estilo do texto, como sublinhado e etc.) */
+
+a {
+    color: #6200ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1E3A8A;
+    text-decoration: underline;
+}
+
+/* Mexer no estilo do sobre*/
+
+.sobre {
+    color: #2563EB
+}
+
+/* Mexer no estilo dos parágrafos */
+
+p {
+    font-family: Arial;
+}
+
+/* Mexer no estilo da tabela */
+
+.tabela {
+    width: 80%;
+    margin: 3px auto;
+    border: 2px solid #1E3A8A;
+    border-collapse: collapse;
+}
+
+.tabela th {
+    background-color: #2563EB;
+    color: #000;
+    padding: 15px;
+    border: 1px solid #1E3A8A;
+}
+
+.tabela td {
+    color: #000;
+    text-align: center;
+    padding: 12px;
+    border: 2px solid #000;
+}
+
+/* Mexer no estilo das imagens até... */
+
+.ling {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+}
+
+.html {
+    width: 200px;
+    height: auto;
+    max-width: 100%;
+}
+
+.css {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+}
+
+.javascript {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* ... aqui */
+
+.linguagem {
+    color: #040405;
+}
+
+/* Mexer no estilo do rodapé */
+
+#mais-informacoes {
+    color: #2563EB
+}
