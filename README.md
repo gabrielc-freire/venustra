@@ -1,4 +1,4 @@
-# Venustra
+# Venustra - Transformando cuidado em confiança 
 
 O **Venustra** é um projeto acadêmico desenvolvido com o objetivo de facilitar o acesso a informações sobre **cuidados com a pele**, com foco principalmente em **mulheres de baixa renda**.
 
