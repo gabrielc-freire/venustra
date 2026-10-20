@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionário</title>
+    <title>Questionário | Venustra</title>
+    <link rel="icon" type="image/png" href="../inicioPI/img/icon.png">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="styleQuestionario.css">
+    <script src="questionario.js" defer></script>
 </head>
 
-<body class="questionario">
+<body class="questionario" id="topo">
     <header>
-        <img class="logo" src="imagem/venustra_v4.2.png" alt="Logo Venustra">
-
-        <nav>
+        <img class="logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
+        <nav aria-label="Principal">
             <a class="nav-link" href="../inicioPI/pi_inicio.html">Início</a>
             <a class="nav-link" href="../Produtos/Produtos.html">Produtos</a>
             <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
@@ -23,182 +24,221 @@
     </header>
 
     <main>
-        <form>
+        <form id="form-questionario" novalidate>
 
             <h1>Questionário</h1>
 
             <h2>Descubra seu tipo de pele</h2>
 
             <!-- Pergunta 1 -->
-            <h3>Como sua pele fica algumas horas após lavar o rosto?</h3>
+            <div class="pergunta" id="pergunta-1" role="radiogroup" aria-labelledby="titulo-pergunta-1"
+                aria-required="true">
+                <h3 id="titulo-pergunta-1">Como sua pele fica algumas horas após lavar o rosto?</h3>
 
-            <input type="radio" id="p1-oleosa" name="pergunta1">
-            <label for="p1-oleosa">
-                Muito brilhante e com sensação de oleosidade
-            </label>
+                <input type="radio" id="p1-oleosa" name="pergunta1" value="oleosa">
+                <label for="p1-oleosa">
+                    Muito brilhante e com sensação de oleosidade
+                </label>
 
-            <input type="radio" id="p1-seca" name="pergunta1">
-            <label for="p1-seca">
-                Repuxada, seca ou desconfortável
-            </label>
+                <input type="radio" id="p1-seca" name="pergunta1" value="seca">
+                <label for="p1-seca">
+                    Repuxada, seca ou desconfortável
+                </label>
 
-            <input type="radio" id="p1-mista" name="pergunta1">
-            <label for="p1-mista">
-                Brilhante apenas na testa, nariz e queixo
-            </label>
+                <input type="radio" id="p1-mista" name="pergunta1" value="mista">
+                <label for="p1-mista">
+                    Brilhante apenas na testa, nariz e queixo
+                </label>
 
-            <input type="radio" id="p1-normal" name="pergunta1">
-            <label for="p1-normal">
-                Equilibrada, sem excesso de óleo ou ressecamento
-            </label>
+                <input type="radio" id="p1-normal" name="pergunta1" value="normal">
+                <label for="p1-normal">
+                    Equilibrada, sem excesso de óleo ou ressecamento
+                </label>
+            </div>
 
             <!-- Pergunta 2 -->
-            <h3>Como você descreveria a aparência dos seus poros?</h3>
+            <div class="pergunta" id="pergunta-2" role="radiogroup" aria-labelledby="titulo-pergunta-2"
+                aria-required="true">
+                <h3 id="titulo-pergunta-2">Como você descreveria a aparência dos seus poros?</h3>
 
-            <input type="radio" id="p2-oleosa" name="pergunta2">
-            <label for="p2-oleosa">
-                Grandes e bastante visíveis
-            </label>
+                <input type="radio" id="p2-oleosa" name="pergunta2" value="oleosa">
+                <label for="p2-oleosa">
+                    Grandes e bastante visíveis
+                </label>
 
-            <input type="radio" id="p2-seca" name="pergunta2">
-            <label for="p2-seca">
-                Pequenos e pouco aparentes
-            </label>
+                <input type="radio" id="p2-seca" name="pergunta2" value="seca">
+                <label for="p2-seca">
+                    Pequenos e pouco aparentes
+                </label>
 
-            <input type="radio" id="p2-mista" name="pergunta2">
-            <label for="p2-mista">
-                Maiores apenas na região do nariz/testa
-            </label>
+                <input type="radio" id="p2-mista" name="pergunta2" value="mista">
+                <label for="p2-mista">
+                    Maiores apenas na região do nariz/testa
+                </label>
 
-            <input type="radio" id="p2-normal" name="pergunta2">
-            <label for="p2-normal">
-                Pouco aparentes e uniformes
-            </label>
+                <input type="radio" id="p2-normal" name="pergunta2" value="normal">
+                <label for="p2-normal">
+                    Pouco aparentes e uniformes
+                </label>
+            </div>
 
             <!-- Pergunta 3 -->
-            <h3>Sua pele costuma apresentar espinhas ou cravos?</h3>
+            <div class="pergunta" id="pergunta-3" role="radiogroup" aria-labelledby="titulo-pergunta-3"
+                aria-required="true">
+                <h3 id="titulo-pergunta-3">Sua pele costuma apresentar espinhas ou cravos?</h3>
 
-            <input type="radio" id="p3-oleosa" name="pergunta3">
-            <label for="p3-oleosa">
-                Sim, com frequência
-            </label>
+                <input type="radio" id="p3-oleosa" name="pergunta3" value="oleosa">
+                <label for="p3-oleosa">
+                    Sim, com frequência
+                </label>
 
-            <input type="radio" id="p3-seca" name="pergunta3">
-            <label for="p3-seca">
-                Raramente
-            </label>
+                <input type="radio" id="p3-seca" name="pergunta3" value="seca">
+                <label for="p3-seca">
+                    Raramente
+                </label>
 
-            <input type="radio" id="p3-mista" name="pergunta3">
-            <label for="p3-mista">
-                Principalmente na zona T (Nariz, testa e queixo)
-            </label>
+                <input type="radio" id="p3-mista" name="pergunta3" value="mista">
+                <label for="p3-mista">
+                    Principalmente na zona T (Nariz, testa e queixo)
+                </label>
 
-            <input type="radio" id="p3-normal" name="pergunta3">
-            <label for="p3-normal">
-                Quase nunca
-            </label>
+                <input type="radio" id="p3-normal" name="pergunta3" value="normal">
+                <label for="p3-normal">
+                    Quase nunca
+                </label>
+            </div>
 
             <!-- Pergunta 4  -->
-            <h3>Como sua pele reage ao frio ou ambientes secos?</h3>
+            <div class="pergunta" id="pergunta-4" role="radiogroup" aria-labelledby="titulo-pergunta-4"
+                aria-required="true">
+                <h3 id="titulo-pergunta-4">Como sua pele reage ao frio ou ambientes secos?</h3>
 
-            <input type="radio" id="p4-oleosa" name="pergunta4">
-            <label for="p4-oleosa">
-                Continua oleosa
-            </label>
+                <input type="radio" id="p4-oleosa" name="pergunta4" value="oleosa">
+                <label for="p4-oleosa">
+                    Continua oleosa
+                </label>
 
-            <input type="radio" id="p4-seca" name="pergunta4">
-            <label for="p4-seca">
-                Fica áspera ou descamando
-            </label>
+                <input type="radio" id="p4-seca" name="pergunta4" value="seca">
+                <label for="p4-seca">
+                    Fica áspera ou descamando
+                </label>
 
-            <input type="radio" id="p4-mista" name="pergunta4">
-            <label for="p4-mista">
-                Algumas áreas ficam secas
-            </label>
+                <input type="radio" id="p4-mista" name="pergunta4" value="mista">
+                <label for="p4-mista">
+                    Algumas áreas ficam secas
+                </label>
 
-            <input type="radio" id="p4-normal" name="pergunta4">
-            <label for="p4-normal">
-                Pouca alteração
-            </label>
+                <input type="radio" id="p4-normal" name="pergunta4" value="normal">
+                <label for="p4-normal">
+                    Pouca alteração
+                </label>
+            </div>
 
             <!-- Pergunta 5 -->
-            <h3>Após usar produtos de limpeza facial, sua pele:</h3>
+            <div class="pergunta" id="pergunta-5" role="radiogroup" aria-labelledby="titulo-pergunta-5"
+                aria-required="true">
+                <h3 id="titulo-pergunta-5">Após usar produtos de limpeza facial, sua pele:</h3>
 
-            <input type="radio" id="p5-oleosa" name="pergunta5">
-            <label for="p5-oleosa">
-                Fica limpa, mas volta a ficar oleosa rapidamente
-            </label>
+                <input type="radio" id="p5-oleosa" name="pergunta5" value="oleosa">
+                <label for="p5-oleosa">
+                    Fica limpa, mas volta a ficar oleosa rapidamente
+                </label>
 
-            <input type="radio" id="p5-seca" name="pergunta5">
-            <label for="p5-seca">
-                Fica repuxando
-            </label>
+                <input type="radio" id="p5-seca" name="pergunta5" value="seca">
+                <label for="p5-seca">
+                    Fica repuxando
+                </label>
 
-            <input type="radio" id="p5-mista" name="pergunta5">
-            <label for="p5-mista">
-                Algumas regiões ficam secas e outras oleosas
-            </label>
+                <input type="radio" id="p5-mista" name="pergunta5" value="mista">
+                <label for="p5-mista">
+                    Algumas regiões ficam secas e outras oleosas
+                </label>
 
-            <input type="radio" id="p5-normal" name="pergunta5">
-            <label for="p5-normal">
-                Fica confortável
-            </label>
+                <input type="radio" id="p5-normal" name="pergunta5" value="normal">
+                <label for="p5-normal">
+                    Fica confortável
+                </label>
+            </div>
 
             <!-- Pergunta 6 -->
-            <h3>Sua pele costuma ficar vermelha ou irritada facilmente?</h3>
+            <div class="pergunta" id="pergunta-6" role="radiogroup" aria-labelledby="titulo-pergunta-6"
+                aria-required="true">
+                <h3 id="titulo-pergunta-6">Sua pele costuma ficar vermelha ou irritada facilmente?</h3>
 
-            <input type="radio" id="p6-nunca" name="pergunta6">
-            <label for="p6-nunca">
-                Nunca
-            </label>
+                <input type="radio" id="p6-nunca" name="pergunta6" value="nunca">
+                <label for="p6-nunca">
+                    Nunca
+                </label>
 
-            <input type="radio" id="p6-as-vezes" name="pergunta6">
-            <label for="p6-as-vezes">
-                Às vezes
-            </label>
+                <input type="radio" id="p6-as-vezes" name="pergunta6" value="as-vezes">
+                <label for="p6-as-vezes">
+                    Às vezes
+                </label>
 
-            <input type="radio" id="p6-frequente" name="pergunta6">
-            <label for="p6-frequente">
-                Sim, com frequência
-            </label>
+                <input type="radio" id="p6-frequente" name="pergunta6" value="frequente">
+                <label for="p6-frequente">
+                    Sim, com frequência
+                </label>
+            </div>
 
             <!-- Pergunta 7 -->
-            <h3>Qual a sensação sua pele apresenta no dia a dia?</h3>
+            <div class="pergunta" id="pergunta-7" role="radiogroup" aria-labelledby="titulo-pergunta-7"
+                aria-required="true">
+                <h3 id="titulo-pergunta-7">Qual a sensação sua pele apresenta no dia a dia?</h3>
 
-            <input type="radio" id="p7-oleosa" name="pergunta7">
-            <label for="p7-oleosa">
-                Brilho excessivo
-            </label>
+                <input type="radio" id="p7-oleosa" name="pergunta7" value="oleosa">
+                <label for="p7-oleosa">
+                    Brilho excessivo
+                </label>
 
-            <input type="radio" id="p7-seca" name="pergunta7">
-            <label for="p7-seca">
-                Sensação de pele "esticada"
-            </label>
+                <input type="radio" id="p7-seca" name="pergunta7" value="seca">
+                <label for="p7-seca">
+                    Sensação de pele "esticada"
+                </label>
 
-            <input type="radio" id="p7-mista" name="pergunta7">
-            <label for="p7-mista">
-                Mistura de oleosidade e ressecamento
-            </label>
+                <input type="radio" id="p7-mista" name="pergunta7" value="mista">
+                <label for="p7-mista">
+                    Mistura de oleosidade e ressecamento
+                </label>
 
-            <input type="radio" id="p7-normal" name="pergunta7">
-            <label for="p7-normal">
-                Sensação confortável e equilibrada
-            </label>
+                <input type="radio" id="p7-normal" name="pergunta7" value="normal">
+                <label for="p7-normal">
+                    Sensação confortável e equilibrada
+                </label>
+            </div>
+
+            <p id="erro-questionario" class="erro-questionario" role="alert" hidden></p>
+
+            <button type="submit" class="botao botao-enviar">Ver meu resultado</button>
 
         </form>
     </main>
 
     <footer class="rodape">
-        <div class="conteudo_rodape">
-            <img class="logo2" src="imagem/venustra_v4.2.png" alt="logotipo">
-            <p class="texto_footer">O Venustra está sendo desenvolvido como um projeto acadêmico,
-                aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais
-                voltadas para problemas reais.</p>
-            <p class="texto_footer">O projeto parte da ideia de que o acesso à informação também é uma parte importante
-                do autocuidado. Dessa forma,
-                busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele,
-                mas também a realidade econômica das usuárias.</p>
+        <div class="rodape-conteudo">
+            <img class="rodape-logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
+
+            <p>
+                O Venustra está sendo desenvolvido como um projeto acadêmico,
+                aplicando conceitos relacionados ao desenvolvimento de sistemas
+                e à criação de soluções digitais voltadas para problemas reais.
+            </p>
+
+            <p>
+                O projeto parte da ideia de que o acesso à informação também é
+                uma parte importante do autocuidado. Dessa forma, busca-se desenvolver
+                uma solução que considere não apenas as necessidades relacionadas à pele,
+                mas também a realidade econômica das usuárias.
+            </p>
+
+            <p>&copy; 2026 Venustra. Todos os direitos reservados.</p>
+
+            <nav class="rodape-nav" aria-label="Rodapé">
+                <a href="../Sobre/Sobre.html">Sobre</a>
+                <a href="#topo">Voltar ao topo</a>
+            </nav>
         </div>
+    </footer>
 </body>
 
 </html>
