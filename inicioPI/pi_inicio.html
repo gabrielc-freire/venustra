@@ -99,6 +99,7 @@
                     <label for="telefone"></label>
                     <input type="tel" id="telefone" placeholder="Número para contato">
                 </p>
+                <p><a class="botao-envio" href="">Enviar</a></p>
             </section>
         </section>
     </main>
@@ -112,6 +113,14 @@
                 mas também a realidade econômica das usuárias.</p>
         </div>
     </footer>
+    
+    <div class="overlay-notificacao" id="overlayNotificacao" aria-hidden="true">
+    <div class="notificacao" role="dialog" aria-modal="true" aria-labelledby="tituloNotificacao">
+        <h2 id="tituloNotificacao">Obrigado!</h2>
+        <p>Recebemos o seu envio com sucesso.</p>
+        <button type="button" class="botao-fechar" id="fecharNotificacao">Fechar</button>
+    </div>
+    </div>
     <script src="carrossel.js"></script>
 </body>
 </html>
