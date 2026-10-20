@@ -6,16 +6,358 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Caviar Dreams";
+    src: url("inicioPI/fonte/CaviarDreams_Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Caviar Dreams";
+    src: url("inicioPI/fonte/CaviarDreams_BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* -----------Cores-----------*/
+
 :root {
     --corpo: #f9fcfcf8;
-    --detalhe: #79d6b7;
-    --realce: #4e8377;
+    --fundo: #faf8f2;
+    --branco: #fff;
     --preto: #000;
+    --detalhe: #79d6b7;
+    --detalhe2:#0fbbb2f8;
+    --realce: #4e8377;
+    --escuro: #0b6b52;
+    --tinta: #063b30;
+    --card: #f4fbf9;
+    --cinza: #6b7280;
+    --cinza-claro: #e7eeeb;
+    --borda: #ddd;
+    --borda-forte: #ccc;
+    --borda-campo: #9db4ae;
+    --erro: #9b1c1c;
     --detalhe2: #0fbbb2f8;
 }
 
+/* -----------Base-----------*/
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+@media (prefers-reduced-motion: reduce) {html {scroll-behavior: auto;}}
+
 body {
     margin: 0;
+    background: var(--fundo);
+    color: var(--preto);
+    font-family: "Caviar Dreams", sans-serif;}
+
+[hidden] {
+    display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+/* Texto só para leitores de tela */
+.so-leitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* -------------Cabeçalho----------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--corpo);
+    opacity: 70%;
+}
+
+.logo {
+    width: 90px;
+    margin-left: 2%;
+}
+
+header::after{
+    content: "";
+    width: 90px;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 4 rem;
+    justify-content: center;
+}
+
+.nav-link {
+    color: var(--preto);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(250, 248, 243, 0.35);
+    border-radius: 0.4rem;
+    transition: background-color 0.2 ease, color 0.2s ease, border-color 0.2 ease;
+}
+
+.nav-link:hover {
+    box-shadow: 12px 12px 12px rgb(245, 244, 244) inset, -10px -10px -10px white inset;
+    text-decoration: underline var(--detalhe);
+}
+
+/* Página em que o visitante está */
+.nav-link[aria-current="page"] {
+    text-decoration: underline var(--detalhe);
+    text-underline-offset: 4px;
+}
+
+/* ---------  Faixa de Imagem ------------ */
+.faixa {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    height: 80vh;
+    background: url("inicioPI/img/banner.jpg") center / cover no-repeat;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    text-align: left;
+}
+
+.faixa-texto {
+    color: rgb(9, 10, 9);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.5rem;
+    margin-left: 2%;
+}
+
+.faixa-texto h2 {
+    font-size: 2.3rem;
+    margin: 0 0 1rem;
+}
+/* Palavra destacada na faixa (verde escuro para ter contraste com a foto) */
+.confianca {
+    display: inline;
+    color: #036447;
+    text-decoration: underline;
+}
+
+/* ---------- Botões -------- */
+.botao {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: var(--detalhe);
+    color: var(--tinta);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.botao:hover,
+.botao:focus-visible {
+    background: var(--escuro);
+    border-color: var(--escuro);
+    color: #fff;
+}
+
+.botao:focus-visible {
+    outline: 3px solid var(--escuro);
+    outline-offset: 3px;
+}
+
+.botao-secundario {
+    background: var(--branco);
+    border-color: var(--escuro);
+    color: var(--escuro);
+}
+
+.botao-secundario:hover,
+.botao-secundario:focus-visible {
+    background: var(--card);
+    border-color: var(--escuro);
+    color: var(--escuro);
+}
+
+/* ------------ Conteúdo (fundo claro que sobrepõe a faixa) --------------- */
+.conteudo {
+    position: relative;
+    z-index: 1;
+    background: var(--fundo);
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Coluna central de 800px */
+.conteudo > h1,
+.conteudo > p,
+.conteudo > section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conteudo > section {
+    margin-bottom: 3.5rem;
+}
+
+.conteudo h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.conteudo h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem;
+}
+
+.conteudo h3 {
+    font-size: 1.2rem;
+}
+
+.conteudo p {
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Listas em forma de cartões (passos, princípios, dicas) */
+.conteudo ul,
+.conteudo ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.conteudo li {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    background: var(--card);
+    border-left: 4px solid var(--detalhe);
+    border-radius: 0 0.6rem 0.6rem 0;
+    line-height: 1.5;
+}
+
+/* ---------- Campos de formulário ---------- */
+.conteudo label {
+    display: block;
+    margin: 0.9rem 0 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.conteudo input:not([type="radio"]):not([type="checkbox"]),
+.conteudo select,
+.conteudo textarea {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    color: var(--preto);
+    background: var(--branco);
+    border: 1px solid var(--borda-campo);
+    border-radius: 0.5rem;
+}
+
+.conteudo input:focus-visible,
+.conteudo select:focus-visible,
+.conteudo textarea:focus-visible {
+    outline: 3px solid rgba(3, 187, 133, 0.45);
+    border-color: var(--escuro);
+}
+
+.conteudo input::placeholder {
+    color: var(--cinza);
+}
+
+/* ---------- Rodapé ---------- */
+.rodape {
+    position: relative;   /* necessário para o z-index valer */
+    z-index: 1;           /* fica acima da faixa */
+    background: var(--realce);
+    color: var(--preto);
+    padding: 3rem 2rem;
+}
+
+.rodape-conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rodape-logo {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin-bottom: 1.2rem;
+}
+
+.rodape p {
+    margin: 0 0 1rem;
+    line-height: 1.5;
+}
+
+.rodape-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+}
+
+.rodape a {
+    color: var(--preto);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.rodape a:hover,
+.rodape a:focus-visible,
+.rodape a[aria-current="page"] {
+    text-decoration: underline;
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 600px) {
+    .faixa-texto h2 {
+        font-size: 1.8rem;
+    }
+
+    .conteudo {
+        padding: 3rem 1.2rem;
+    }
+
+    .conteudo h2 {
+        font-size: 1.6rem;
+    }
+
+    .rodape {
+        padding: 2.5rem 1.2rem;
+    }
 }
 
 header {
