@@ -54,4 +54,33 @@ slides.forEach((slide, i) => slide.addEventListener('click', () => mostrar(i)));
 
 // REMOVIDO: as linhas que desativavam as setas nas pontas (agora não há pontas)
 
-mostrar(0);
+mostrar(0)
+
+const botaoEnvio = document.querySelector('.botao-envio');
+const overlay = document.getElementById('overlayNotificacao');
+const botaoFechar = document.getElementById('fecharNotificacao');
+
+function abrirNotificacao() {
+  overlay.classList.add('ativo');
+  overlay.setAttribute('aria-hidden', 'false');
+}
+
+function fecharNotificacao() {
+  overlay.classList.remove('ativo');
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+botaoEnvio.addEventListener('click', (e) => {
+  e.preventDefault(); // evita recarregar a página se o botão estiver dentro de um <form>
+  abrirNotificacao();
+});
+
+botaoFechar.addEventListener('click', fecharNotificacao);
+
+// opcional: fechar com a tecla Esc ou clicando fora do retângulo
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') fecharNotificacao();
+});
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) fecharNotificacao();
+});
