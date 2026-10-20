@@ -8,8 +8,21 @@
 }
 
 /* ---- Tipografia ---- */
+html {
+    -webkit-text-size-adjust: 100%; /* evita o celular aumentar o texto sozinho */
+}
+
 body {
     background: var(--fundo);
+}
+
+/* A rolagem fica dentro dos carrosséis, nunca na página inteira */
+body.produtos {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 h1,
@@ -42,25 +55,30 @@ p {
     align-items: center;
 
     width: 300px;
+    max-width: calc(100% - 40px);
     height: 40px;
 
-    margin-left: 30px;
+    /* alinhado com as margens das categorias */
+    margin-left: 20px;
     margin-right: auto;
 
     border: 1px solid var(--cinza);
     border-radius: 20px;
+    background: var(--branco);
 
     overflow: hidden;
 }
 
 .barra-pesquisa input {
     flex: 1;
+    min-width: 0;
 
     height: 100%;
     padding: 0 15px;
 
     border: none;
     outline: none;
+    background: transparent;
 
     font-size: 1rem;
 }
@@ -97,7 +115,8 @@ p {
 }
 
 /* ---- Carrossel ---- */
-.carrossel {
+.carrossel,
+.lista-produtos {
     display: flex;
 
     gap: 12px;
@@ -107,18 +126,24 @@ p {
     overflow-x: auto;
 
     scroll-behavior: smooth;
-    cursor: grab;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain; /* o gesto não "puxa" a página junto */
 }
 
-.carrossel:active {
-    cursor: grabbing;
+.lista-produtos:focus-visible {
+    outline: 3px solid var(--detalhe);
+    outline-offset: 4px;
+    border-radius: 12px;
 }
 
-.carrossel::-webkit-scrollbar {
+.carrossel::-webkit-scrollbar,
+.lista-produtos::-webkit-scrollbar {
     height: 6px;
 }
 
-.carrossel::-webkit-scrollbar-thumb {
+.carrossel::-webkit-scrollbar-thumb,
+.lista-produtos::-webkit-scrollbar-thumb {
     background: var(--cinza);
     border-radius: 10px;
 }
@@ -127,6 +152,8 @@ p {
 .produto {
     position: relative;
 
+    display: flex;
+    flex-direction: column;
     flex: 0 0 320px;
 
     min-height: 560px;
@@ -134,11 +161,34 @@ p {
     padding: 20px;
 
     box-sizing: border-box;
+    scroll-snap-align: start;
 
     background: var(--branco);
 
     border: 1px solid var(--borda);
     border-radius: 22px;
+}
+
+.produto h3 {
+    overflow-wrap: anywhere;
+}
+
+/* O link do nome cobre o card inteiro, então o card todo é clicável */
+.produto h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.produto h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+}
+
+.produto h3 a:focus-visible::after {
+    outline: 3px solid var(--detalhe);
+    outline-offset: 2px;
 }
 
 /* ---- Imagem do produto ---- */
@@ -158,12 +208,136 @@ p {
     object-fit: contain;
 }
 
+/* ---- Preços ---- */
+.preco-antigo,
+.preco {
+    padding-right: 56px; /* espaço para o botão + */
+}
+
+.preco-antigo {
+    margin-top: auto;
+    text-decoration: line-through;
+    color: #777777;
+}
+
+.preco {
+    margin-top: auto;
+    font-weight: bold;
+}
+
+.preco-antigo + .preco {
+    margin-top: 0;
+}
+
+/* ---- Botão adicionar ---- */
+.adicionar {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    z-index: 1; /* fica por cima do link que cobre o card */
+
+    background: var(--detalhe);
+    color: var(--branco);
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.adicionar:focus-visible {
+    outline: 3px solid var(--detalhe);
+    outline-offset: 2px;
+}
+
+/* ---- Página de produto ---- */
+.produto-detalhe {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+
+    box-sizing: border-box;
+}
+
+.imagem-grande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 1 300px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 22px;
+}
+
+.imagem-grande img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.produto-detalhe .info {
+    flex: 1 1 300px;
+}
+
+.produto-detalhe h1 {
+    font-size: 2rem;
+}
+
+.categoria-produto {
+    color: #777777;
+}
+
+.produto-detalhe .preco {
+    padding-right: 0;
+    font-size: 1.5rem;
+}
+
+.produto-detalhe .preco-antigo {
+    padding-right: 0;
+}
+
+.voltar {
+    display: inline-block;
+    margin-top: 1.5rem;
+
+    color: inherit;
+    font-family: "Caviar Dreams", sans-serif;
+}
+
 /* ---- Rodapé ---- */
-.logo2 {
+.logo2,
+.rodape-logo {
     display: block;
 
     width: 90px;
-    max-width: 800px;
+    max-width: 100%;
 
     margin: 0 auto 1rem;
 }
@@ -189,6 +363,30 @@ p {
     margin-right: auto;
 }
 
+.rodape-conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rodape-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    margin-top: 1rem;
+}
+
+.rodape-nav a {
+    color: inherit;
+    font-family: "Caviar Dreams", sans-serif;
+}
+
+/* ---- Busca sem resultado ---- */
+.mensagem-vazia {
+    margin: 40px 20px;
+    text-align: center;
+}
+
 /* ---- Responsividade ---- */
 @media (max-width: 600px) {
     .categoria {
@@ -197,10 +395,159 @@ p {
 
     .barra-pesquisa {
         width: calc(100% - 32px);
+        max-width: none;
         margin: 0 auto;
     }
 
+    .titulo {
+        font-size: 1.6rem;
+    }
+
+    .titulo-categoria {
+        font-size: 1.25rem;
+    }
+
+    /* o card ocupa ~80% da tela, deixando o próximo aparecer um pouco */
     .produto {
-        flex-basis: 280px;
+        flex-basis: min(80vw, 280px);
+        min-height: 480px;
+        padding: 16px;
+    }
+
+    .imagem {
+        height: 210px;
+    }
+
+    .imagem img {
+        height: 190px;
+    }
+
+    /* alvo de toque confortável (mínimo ~44px) */
+    .adicionar {
+        width: 44px;
+        height: 44px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .preco-antigo,
+    .preco {
+        padding-right: 60px;
+    }
+
+    .barra-pesquisa button {
+        width: 48px;
+    }
+
+    .barra-pesquisa input {
+        font-size: 16px; /* abaixo disso o iPhone dá zoom ao tocar no campo */
+    }
+
+    /* página de produto */
+    .produto-detalhe {
+        gap: 24px;
+        margin: 24px auto;
+        padding: 0 16px;
+    }
+
+    .imagem-grande {
+        flex-basis: 100%;
+    }
+
+    .produto-detalhe .info {
+        flex-basis: 100%;
+    }
+
+    .produto-detalhe h1 {
+        font-size: 1.5rem;
+    }
+
+    .voltar {
+        padding: 12px 0; /* área de toque maior */
+    }
+
+    /* rodapé */
+    .rodape {
+        padding: 3rem 1.25rem;
+        padding-bottom: calc(3rem + env(safe-area-inset-bottom));
+    }
+
+    .rodape-nav {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+    }
+
+    .rodape-nav a {
+        padding: 8px 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .categoria {
+        margin: 24px 12px;
+    }
+
+    .produto {
+        flex-basis: 84vw;
+    }
+}
+
+/* ---- Cabeçalho e menu no celular ----
+   O estilo base do header/nav vem do global.css; aqui só sobrescrevemos
+   no celular (body.produtos tem prioridade sobre as regras do global). */
+@media (max-width: 700px) {
+    body.produtos header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        height: auto;
+        min-height: 0;
+        padding: 12px 16px;
+
+        box-sizing: border-box;
+    }
+
+    body.produtos header .logo {
+        width: auto;
+        height: auto;
+        max-width: 120px;
+        max-height: 56px;
+        margin: 0;
+
+        object-fit: contain;
+    }
+
+    body.produtos header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 16px;
+
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body.produtos .nav-link {
+        padding: 8px 4px; /* alvo de toque maior */
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+}
+
+/* celulares/tablets sem mouse: sem efeito "preso" e com feedback ao tocar */
+@media (hover: none) {
+    .adicionar:active {
+        transform: scale(0.92);
+    }
+}
+
+/* respeita quem desativa animações no sistema */
+@media (prefers-reduced-motion: reduce) {
+    .carrossel,
+    .lista-produtos {
+        scroll-behavior: auto;
     }
 }
