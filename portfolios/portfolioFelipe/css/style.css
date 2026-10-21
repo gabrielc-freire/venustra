@@ -182,3 +182,23 @@ footer {
     gap: 0.5rem 0.75rem;
   }
 }
+
+/* ---- lista de projetos ---- */
+#projetos ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+#projetos li {
+  background-color: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+}
+
+#projetos a {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
