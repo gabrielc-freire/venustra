@@ -1,45 +1,31 @@
-body {
-    background: #faf8f2;
-}
+/* Página Minha rotina - só o que é exclusivo dela.
+   Fontes, cores, cabeçalho e rodapé vêm do global.css */
 
-h1,
-p {
-    font-family: "Caviar Dreams", sans-serif;
-}
-
-.botao-faixa {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: bold;
-}
-
-.definicoes-icones {
+.rotina .definicoes-icones {
     display: none;
 }
 
-/* ---- Main ---- */
-main {
+/* ---- Conteúdo ---- */
+.rotina main {
     max-width: 1150px;
     margin: 0 auto;
     padding: 24px;
     box-sizing: border-box;
 }
 
-/* ---- Rotinas ---- */
-.rotinas {
+/* ---- Manhã e noite lado a lado ---- */
+.rotina .rotinas {
     display: flex;
     gap: 30px;
     align-items: flex-start;
     margin-top: 24px;
 }
 
-/* ---- Períodos ---- */
-#manha,
-#noite {
+.rotina #manha,
+.rotina #noite {
     flex: 1;
 
-    font-family: "Caviar Dreams", sans-serif;
-
-    background: #fff;
+    background: var(--branco);
     border: 1px solid #e0ddd2;
     border-radius: 24px;
 
@@ -51,13 +37,13 @@ main {
 }
 
 /* ---- Cabeçalho manhã/noite ---- */
-.cabecalho {
+.rotina .cabecalho {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.icone-periodo {
+.rotina .icone-periodo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,19 +53,19 @@ main {
 
     border-radius: 50%;
 
-    background: rgb(121, 214, 183);
+    background: var(--detalhe);
     color: #fff;
 }
 
-.icone-periodo svg {
+.rotina .icone-periodo svg {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
 }
 
-/* ---- Cards de produtos ---- */
-.produto-1 {
+/* ---- Cards de produtos da rotina ---- */
+.rotina .produto-rotina {
     border: 1px solid #e0ddd2;
     border-radius: 12px;
 
@@ -89,16 +75,16 @@ main {
     overflow: hidden;
 }
 
-.produto-1 h3 {
+.rotina .produto-rotina h3 {
     margin-top: 0;
 }
 
-.produto-1 h3 .produto-link {
-    color: rgb(78, 131, 119);
+.rotina .produto-link {
+    color: var(--realce);
     text-decoration: none;
 }
 
-.foto-produto {
+.rotina .foto-produto {
     float: left;
 
     width: 72px;
@@ -113,7 +99,7 @@ main {
 }
 
 /* ---- Etapas ---- */
-.etapa {
+.rotina .etapa {
     display: flex;
     align-items: center;
 
@@ -121,7 +107,7 @@ main {
     margin-bottom: 12px;
 }
 
-.numero {
+.rotina .numero {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,19 +117,19 @@ main {
 
     border-radius: 50%;
 
-    background: rgb(78, 131, 119);
+    background: var(--realce);
     color: #fff;
 
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.titulo {
-    font-weight: bold;
+.rotina .etapa .titulo {
+    font-weight: 700;
 }
 
 /* ---- Avaliação ---- */
-.avaliacao {
+.rotina .avaliacao {
     display: flex;
     align-items: center;
 
@@ -152,33 +138,33 @@ main {
     clear: both;
 }
 
-.avaliacao p {
+.rotina .avaliacao p {
     margin: 0;
 }
 
-.estrela {
+.rotina .estrela {
     fill: #f1f529;
 }
 
-/* ---- Responsividade ---- */
+/* ---- Celular ---- */
 @media (max-width: 800px) {
-    .rotinas {
+    .rotina .rotinas {
         flex-direction: column;
     }
 
-    #manha,
-    #noite {
+    .rotina #manha,
+    .rotina #noite {
         width: 100%;
     }
 }
 
 @media (max-width: 600px) {
-    main {
+    .rotina main {
         padding: 16px;
     }
 
-    #manha,
-    #noite {
+    .rotina #manha,
+    .rotina #noite {
         padding: 12px 16px;
     }
 }
