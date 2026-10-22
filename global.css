@@ -41,8 +41,7 @@
     --borda-forte: #ccc;
     --borda-campo: #9db4ae;
     --erro: #9b1c1c;
-    --detalhe2: #0fbbb2f8;
-}
+} 
 
 /* -----------Base-----------*/
 html {
@@ -108,7 +107,7 @@ header::after{
 header nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 4 rem;
+    gap: 0.5rem 4rem;
     justify-content: center;
 }
 
@@ -119,11 +118,13 @@ header nav {
     padding: 0.35rem 0.7rem;
     border: 1px solid rgba(250, 248, 243, 0.35);
     border-radius: 0.4rem;
-    transition: background-color 0.2 ease, color 0.2s ease, border-color 0.2 ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .nav-link:hover {
-    box-shadow: 12px 12px 12px rgb(245, 244, 244) inset, -10px -10px -10px white inset;
+   box-shadow:
+    12px 12px 12px rgb(245, 244, 244) inset,
+    -10px -10px 10px white inset;
     text-decoration: underline var(--detalhe);
 }
 
@@ -468,4 +469,9 @@ header nav {
     margin-left: auto;
     margin-right: auto;
     font-family: "Caviar Dreams", sans-serif;
+}
+
+/* Corrige o banner da página inicial durante a rolagem */
+.inicio .faixa {
+    position: relative;
 }
