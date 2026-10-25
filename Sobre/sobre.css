@@ -116,3 +116,42 @@
     transform: none;
   }
 }
+
+/* Ajustes do cabeçalho Bootstrap */
+.sobre header {
+    display: block;
+}
+
+.sobre header::after {
+    content: none;
+}
+
+.sobre header nav.navbar {
+    display: block;
+    gap: 0;
+    justify-content: initial;
+}
+
+.sobre .navbar .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sobre .navbar-brand {
+    margin-right: 0;
+}
+
+.sobre .navbar-toggler {
+    margin-left: auto;
+}
+
+.sobre .navbar-expand-lg .navbar-toggler {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .sobre .navbar-expand-lg .navbar-toggler {
+        display: block;
+    }
+}
+
