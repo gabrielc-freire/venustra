@@ -7,23 +7,64 @@
 
     <title>Venustra - Produtos</title>
 
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS do venustra -->
+
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="produtos">
 
-    <header>
-        <img class="logo" src="img/venustra_v4.2.png" alt="Logo Venustra">
+  
+<header>
+    <nav class="navbar navbar-expand-lg w-100">
+        <div class="container-fluid">
 
-        <nav>
-            <a class="nav-link" href="../inicioPI/pi_inicio.html">Início</a>
-            <a class="nav-link" href="../Produtos/Produtos.html" aria-current="page">Produtos</a>
-            <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
-            <a class="nav-link" href="../RotinaPI/rotina.html">Minha rotina</a>
-            <a class="nav-link" href="../Sobre/Sobre.html">Sobre</a>
-        </nav>
-    </header>
+            <a class="navbar-brand" href="../inicioPI/pi_inicio.html">
+                <img class="logo"
+                     src="img/venustra_v4.2.png"
+                     alt="Logo Venustra">
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuVenustra"
+                    aria-controls="menuVenustra"
+                    aria-expanded="false"
+                    aria-label="Abrir menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuVenustra">
+                <div class="navbar-nav ms-auto">
+
+                    <a class="nav-link"
+                       href="../inicioPI/pi_inicio.html">Início</a>
+
+                    <a class="nav-link active"
+                       href="../Produtos/Produtos.html"
+                       aria-current="page">Produtos</a>
+
+                    <a class="nav-link"
+                       href="../Comparar/Comparar.html">Comparar</a>
+
+                    <a class="nav-link"
+                       href="../RotinaPI/rotina.html">Minha rotina</a>
+
+                    <a class="nav-link"
+                       href="../Sobre/Sobre.html">Sobre</a>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
 
     <main>
 
@@ -692,7 +733,7 @@
 
         </section>
 
-<!-- ==================== CATEGORIA 8: Hidratantes ==================== -->
+        <!-- ==================== CATEGORIA 8: Hidratantes ==================== -->
 
         <section class="categoria">
 
@@ -806,6 +847,7 @@
 
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
