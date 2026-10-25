@@ -283,3 +283,20 @@ h2, p {
 .botao-fechar:hover {
   filter: brightness(0.92);
 }
+
+@media (max-width: 991.98px) {
+  #menuVenustra {
+    width: 100%;
+    text-align: left;
+  }
+  #menuVenustra .navbar-nav {
+    align-items: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    width: 100%;
+  }
+  #menuVenustra .nav-link {
+    text-align: left;
+    align-self: flex-start;
+  }
+}

@@ -551,3 +551,25 @@ p {
         scroll-behavior: auto;
     }
 }
+
+/* Ajustes da Navbar Bootstrap no catálogo de produtos */
+
+body.produtos header::after {
+    display: none;
+}
+
+body.produtos header nav.navbar {
+    display: block;
+    width: 100%;
+    gap: 0;
+}
+
+body.produtos .navbar-nav {
+    gap: 0;
+}
+
+@media (min-width: 992px) {
+    body.produtos .navbar-collapse {
+        display: flex !important;
+    }
+}
