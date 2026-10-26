@@ -476,3 +476,28 @@ header nav {
     position: relative;
 }
 
+/* Ajustes da faixa em telas pequenas */
+@media (max-width: 600px) {
+    .faixa {
+        height: auto;
+        min-height: 70vh;
+        padding: 2rem 1.2rem;
+        box-sizing: border-box;
+        background-position: center;
+    }
+    .faixa-texto {
+        max-width: 100%;
+        margin-left: 0;
+        font-size: 1rem;
+    }
+    .faixa-texto h2 {
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
+        line-height: 1.25;
+        margin-bottom: 0.6rem;
+        overflow-wrap: break-word;
+    }
+    .faixa-texto p{
+        line-height: 1.5;
+    }
+}
+

@@ -142,3 +142,71 @@
   margin-top: 1rem;
   font-size: 0.9rem;
 }
+
+/* ---- Menu de navegação ---- */
+.comparar .navbar .container-fluid {
+  flex-wrap: wrap;
+}
+
+.comparar .navbar-toggler {
+  margin-left: auto;
+}
+
+/* Ajustes do cabeçalho Bootstrap na página Comparar */
+
+.comparar header {
+  display: block;
+}
+
+.comparar header::after {
+  content: none;
+}
+
+.comparar .navbar .container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comparar .navbar-brand {
+  margin-right: 0;
+}
+
+.comparar .navbar-toggler {
+  margin-left: auto;
+}
+
+/* ---- Faixa principal ---- */
+.comparar .faixa {
+  min-width: 0;
+  padding: 2rem 1.2rem;
+  box-sizing: border-box;
+}
+
+.comparar .faixa-texto {
+  max-width: 100%;
+  margin-left: 0;
+  font-size: 1.1rem;
+}
+
+.comparar .faixa-texto h2 {
+ font-size: clamp(1.5rem, 5vw, 2.3rem);
+ line-height: 1.2;
+ overflow-wrap: break-word;
+ margin-bottom: 0.7rem;
+}
+
+.comparar .faixa-texto p {
+  line-height: 1.5;
+}
+
+/* ---- Responsividade do cabeçalho ---- */
+.comparar header nav.navbar {
+  display: block;
+  gap: 0;
+  justify-content: initial;
+}
+
+/* Evita que a página ultrapasse a largura da tela */
+.comparar {
+  overflow-x: clip;
+}
