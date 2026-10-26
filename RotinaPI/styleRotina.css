@@ -168,3 +168,41 @@
         padding: 12px 16px;
     }
 }
+
+/* Ajustes do cabeçalho Bootstrap */
+.rotina header {
+    display: block;
+}
+
+.rotina header::after {
+    content: none;
+}
+
+.rotina header nav.navbar {
+    display: block;
+    gap: 0;
+    justify-content: initial;
+}
+
+.rotina .navbar .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rotina .navbar-brand {
+    margin-right: 0;
+}
+.rotina .navbar-toggler {
+    margin-left: auto;
+}
+
+/* Comportamento responsivo do menu Bootstrap */
+.rotina .navbar-expand-lg .navbar-toggler {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .rotina .navbar-expand-lg .navbar-toggler {
+        display: block;
+    }
+}
