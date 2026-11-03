@@ -1,15 +1,16 @@
-# Venustra - Transformando cuidado em confiança 
-# SOBRE O PROJETO VENUSTRA
+# Venustra - Transformando cuidado em confiança
 
-O **Venustra** é um projeto acadêmico desenvolvido com o objetivo de facilitar o acesso a informações sobre **cuidados com a pele**, com foco principalmente em **mulheres de baixa renda**.
+O **Venustra** é um projeto acadêmico que facilita o acesso a informações sobre **cuidados com a pele**, com foco em **mulheres de baixa renda**.
 
-A proposta é criar uma plataforma simples e acessível que ajude as usuárias a compreender melhor as características da própria pele, organizar seus cuidados e encontrar alternativas de produtos compatíveis com suas necessidades e realidade financeira.
+A proposta é ser uma plataforma simples e acessível que ajude as usuárias a compreender as características da própria pele, organizar seus cuidados e encontrar produtos compatíveis com suas necessidades e com a sua realidade financeira.
+
+> O Venustra possui caráter informativo e não substitui avaliação ou orientação de profissionais da área da saúde.
 
 ---
 
 ## Objetivo do projeto
 
-O Venustra busca tornar o cuidado com a pele mais **acessível, compreensível e personalizado**, evitando que informações sobre skincare fiquem restritas a produtos caros ou rotinas complexas.
+Tornar o cuidado com a pele mais **acessível, compreensível e personalizado**, evitando que o skincare fique restrito a produtos caros ou rotinas complexas.
 
 A plataforma pretende auxiliar a usuária a:
 
@@ -20,15 +21,11 @@ A plataforma pretende auxiliar a usuária a:
 - Montar uma rotina de cuidados;
 - Entender melhor a função dos produtos utilizados no dia a dia.
 
-> O Venustra possui caráter informativo e não substitui avaliação ou orientação de profissionais da área da saúde.
-
 ---
 
 ## Público-alvo
 
-O projeto é direcionado principalmente para **mulheres de baixa renda que desejam cuidar da pele sem depender de produtos de alto custo**.
-
-A ideia é apresentar informações de maneira clara e ajudar na escolha de alternativas que conciliem:
+Mulheres de baixa renda que desejam cuidar da pele sem depender de produtos de alto custo. As informações são apresentadas de forma clara, ajudando na escolha de alternativas que conciliem:
 
 - Custo;
 - Necessidades da pele;
@@ -40,11 +37,18 @@ A ideia é apresentar informações de maneira clara e ajudar na escolha de alte
 
 ## Funcionalidades
 
-O projeto está em desenvolvimento. Entre as funcionalidades propostas estão:
+| Página | Pasta | Descrição |
+|--------|-------|-----------|
+| Início | `inicioPI/` | Página inicial da plataforma |
+| Questionário de pele | `questionarioPI/` | Identificação das características da pele |
+| Produtos | `Produtos/` | Visualização de produtos por necessidade e faixa de preço |
+| Comparar | `Comparar/` | Comparação de produtos |
+| Minha rotina | `RotinaPI/` | Organização da rotina de skincare |
+| Sobre | `Sobre/` | Informações sobre o projeto |
 
 ### Questionário de pele
 
-Questionário para analisar características da pele da usuária por meio de perguntas relacionadas a:
+Analisa a pele da usuária por meio de perguntas sobre:
 
 - Oleosidade;
 - Ressecamento;
@@ -54,21 +58,15 @@ Questionário para analisar características da pele da usuária por meio de per
 - Reação ao clima;
 - Sensação da pele durante o dia.
 
-A partir das respostas, a plataforma poderá auxiliar na identificação de características associadas a peles:
-
-- Oleosas;
-- Secas;
-- Mistas;
-- Normais;
-- Sensíveis.
+A partir das respostas, a plataforma poderá auxiliar na identificação de características associadas a peles oleosas, secas, mistas, normais e sensíveis.
 
 ### Produtos
 
-Área destinada à visualização de produtos para cuidados com a pele, permitindo encontrar opções adequadas para diferentes necessidades e faixas de preço.
+Área para visualização de produtos de cuidados com a pele, com opções para diferentes necessidades e faixas de preço.
 
 ### Comparação de produtos
 
-Possibilidade de comparar produtos considerando características como:
+Permite comparar produtos considerando:
 
 - Preço;
 - Quantidade;
@@ -79,38 +77,35 @@ Possibilidade de comparar produtos considerando características como:
 
 ### Minha rotina
 
-Área destinada à organização da rotina de skincare da usuária, facilitando a visualização dos produtos e das etapas utilizadas durante os cuidados diários.
+Área para organizar a rotina de skincare, facilitando a visualização dos produtos e das etapas dos cuidados diários.
 
 ---
 
 ## Tecnologias utilizadas
 
-Atualmente, o projeto utiliza:
+- **HTML5**: estrutura das páginas;
+- **CSS3**: estilização e interface;
+- **JavaScript**: interatividade no projeto.
 
-- **HTML5** — estrutura das páginas;
-- **CSS3** — estilização e desenvolvimento da interface.
-
-Novas tecnologias poderão ser incorporadas conforme o desenvolvimento do projeto avançar.
+Novas tecnologias poderão ser incorporadas conforme o desenvolvimento avançar.
 
 ---
 
-## Estrutura atual
+## Estrutura do projeto
 
 ```text
 venustra/
 │
-└── questionarioPI/
-    ├── questionario.html
-    └── styleQuestionario.css
+├── inicioPI/          # Página inicial
+├── questionarioPI/    # Questionário de pele
+├── Produtos/          # Catálogo de produtos
+├── Comparar/          # Comparação de produtos
+├── RotinaPI/          # Minha rotina
+├── Sobre/             # Sobre o projeto
+├── portfolios/        # Portfólios da equipe
+├── global.css         # Estilos globais compartilhados entre as páginas
+└── README.md
 ```
-
-### `questionario.html`
-
-Responsável pela estrutura do questionário de identificação das características da pele.
-
-### `styleQuestionario.css`
-
-Responsável pela estilização da página do questionário.
 
 ---
 
@@ -128,56 +123,25 @@ git clone https://github.com/gabrielc-freire/venustra.git
 cd venustra
 ```
 
-### 3. Acesse o questionário
+### 3. Abra a página inicial
 
-```bash
-cd questionarioPI
-```
+Abra o arquivo HTML da pasta `inicioPI/` em um navegador. As demais páginas podem ser abertas da mesma forma, dentro de suas respectivas pastas.
 
-### 4. Execute
-
-Abra o arquivo:
-
-```text
-questionario.html
-```
-
-em um navegador.
-
-Também é possível utilizar extensões como o **Live Server** no Visual Studio Code durante o desenvolvimento.
-
----
-
-## Próximas etapas
-
-O projeto ainda está em desenvolvimento. Entre as próximas etapas planejadas estão:
-
-- [ ] Finalizar o design da plataforma;
-- [ ] Tornar as páginas responsivas;
-- [ ] Implementar a lógica do questionário;
-- [ ] Exibir o resultado do tipo de pele;
-- [ ] Criar página inicial;
-- [ ] Criar catálogo de produtos;
-- [ ] Implementar sistema de comparação;
-- [ ] Desenvolver a área **Minha Rotina**;
-- [ ] Criar sistema de recomendação de produtos;
-- [ ] Melhorar acessibilidade e experiência do usuário.
+Durante o desenvolvimento, também é possível utilizar a extensão **Live Server** no Visual Studio Code.
 
 ---
 
 ## Contexto acadêmico
 
-O Venustra está sendo desenvolvido como um **projeto acadêmico**, aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.
+O Venustra é desenvolvido como **projeto acadêmico**, aplicando conceitos de desenvolvimento de sistemas na criação de soluções digitais para problemas reais.
 
-O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma, busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele, mas também a **realidade econômica das usuárias**.
+O projeto parte da ideia de que o acesso à informação também faz parte do autocuidado, e por isso considera não apenas as necessidades da pele, mas também a **realidade econômica das usuárias**.
 
 ---
 
 ## Contribuição
 
-Como o projeto está sendo desenvolvido em grupo, alterações podem ser realizadas por meio de branches e posteriormente integradas ao projeto principal.
-
-Fluxo básico:
+Como o projeto é desenvolvido em grupo, as alterações são feitas em branches e integradas ao projeto principal por meio de Pull Request.
 
 ```bash
 git pull
@@ -190,15 +154,13 @@ git commit -m "Descrição da alteração"
 git push origin nome-da-branch
 ```
 
-Depois disso, as alterações podem ser revisadas e integradas por meio de um **Pull Request**.
+Depois, abra um **Pull Request** para revisão e integração.
 
 ---
 
 ## Status
 
 > **Em desenvolvimento**
-
-O Venustra ainda está em suas etapas iniciais e novas funcionalidades serão adicionadas ao longo do desenvolvimento.
 
 ---
 
