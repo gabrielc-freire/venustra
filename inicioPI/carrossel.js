@@ -1,86 +1,157 @@
+// ========================================
+// CARROSSEL DA PÁGINA INICIAL
+// ========================================
+
 const trilho = document.querySelector('.carrossel-trilho');
 const btnEsq = document.querySelector('.seta-esq');
 const btnDir = document.querySelector('.seta-dir');
 
-let slides = [...document.querySelectorAll('.slide')];
+if (trilho) {
+  let slides = [...trilho.querySelectorAll('.slide')];
 
-// NOVO: o ciclo só fica perfeito com pelo menos 6 slides. Motivo: precisamos de slides
-// "de reserva" invisíveis para dar a volta sem aparecer nenhum salto na tela.
-// Se houver menos, duplicamos a lista (com 4 slides vira 8). Na tela ninguém percebe,
-// porque as cópias só aparecem na vez em que o original apareceria.
-const MINIMO = 6;
-const originais = [...slides];
-while (slides.length < MINIMO) {
-  originais.forEach(original => {
-    const copia = original.cloneNode(true);
-    copia.setAttribute('aria-hidden', 'true');  // leitores de tela ignoram as cópias
-    trilho.appendChild(copia);
-    slides.push(copia);
-  });
-}
+  const MINIMO = 6;
+  const originais = [...slides];
 
-const total = slides.length;
-let atual = 0;
+  // Evita duplicações desnecessárias e problemas com carrossel vazio.
+  while (slides.length > 0 && slides.length < MINIMO) {
+    originais.forEach((original) => {
+      if (slides.length >= MINIMO) return;
 
-// NOVO: calcula a distância de um slide até o atual, "dando a volta" no ciclo.
-// Exemplo com 8 slides e atual = 0: o slide 7 tem distância -1 (vizinho da esquerda),
-// o slide 1 tem +1 (vizinho da direita), o slide 4 está do outro lado (+4, invisível).
-function distancia(i) {
-  let d = (i - atual) % total;     // resto da divisão: vai de -(total-1) até total-1
-  if (d < 0) d += total;           // joga tudo para 0...total-1
-  if (d > total / 2) d -= total;   // acima da metade, é mais perto pelo outro lado (negativo)
-  return d;
-}
+      const copia = original.cloneNode(true);
 
-function mostrar(indice) {
-  // ALTERADO: antes parava nas pontas (Math.max/Math.min). Agora dá a volta com módulo.
-  // O "+ total" antes do "%" evita resultado negativo ao voltar do slide 0.
-  atual = ((indice % total) + total) % total;
+      // Remove IDs duplicados da cópia.
+      copia.removeAttribute('id');
+      copia.querySelectorAll('[id]').forEach((elemento) => {
+        elemento.removeAttribute('id');
+      });
 
+      // Identifica a cópia como conteúdo repetido.
+      copia.setAttribute('aria-hidden', 'true');
+
+      // Evita que elementos internos recebam foco pelo teclado.
+      copia.querySelectorAll(
+        'a, button, input, select, textarea, [tabindex]'
+      ).forEach((elemento) => {
+        elemento.setAttribute('tabindex', '-1');
+      });
+
+      trilho.appendChild(copia);
+      slides.push(copia);
+    });
+  }
+
+  const total = slides.length;
+  let atual = 0;
+
+  function distancia(i) {
+    let d = (i - atual) % total;
+
+    if (d < 0) {
+      d += total;
+    }
+
+    if (d > total / 2) {
+      d -= total;
+    }
+
+    return d;
+  }
+
+  function mostrar(indice) {
+    if (total === 0) return;
+
+    atual = ((indice % total) + total) % total;
+
+    slides.forEach((slide, i) => {
+      const d = distancia(i);
+
+      slide.style.setProperty('--pos', d);
+
+      slide.classList.toggle('ativo', d === 0);
+      slide.classList.toggle('antes', d === -1);
+      slide.classList.toggle('depois', d === 1);
+    });
+  }
+
+  // Navegação pelas setas.
+  if (btnDir) {
+    btnDir.addEventListener('click', () => {
+      mostrar(atual + 1);
+    });
+  }
+
+  if (btnEsq) {
+    btnEsq.addEventListener('click', () => {
+      mostrar(atual - 1);
+    });
+  }
+
+  // Navegação ao clicar nos slides.
   slides.forEach((slide, i) => {
-    const d = distancia(i);
-    slide.style.setProperty('--pos', d);   // NOVO: o CSS usa --pos para posicionar o slide
-    slide.classList.toggle('ativo', d === 0);
-    slide.classList.toggle('antes', d === -1);
-    slide.classList.toggle('depois', d === 1);
+    slide.addEventListener('click', () => {
+      mostrar(i);
+    });
   });
+
+  mostrar(0);
 }
 
-btnDir.addEventListener('click', () => mostrar(atual + 1));
-btnEsq.addEventListener('click', () => mostrar(atual - 1));
 
-// MANTIDO: clicar num preview leva até ele
-slides.forEach((slide, i) => slide.addEventListener('click', () => mostrar(i)));
-
-// REMOVIDO: as linhas que desativavam as setas nas pontas (agora não há pontas)
-
-mostrar(0)
+// ========================================
+// NOTIFICAÇÃO DE ENVIO
+// ========================================
 
 const botaoEnvio = document.querySelector('.botao-envio');
 const overlay = document.getElementById('overlayNotificacao');
 const botaoFechar = document.getElementById('fecharNotificacao');
 
 function abrirNotificacao() {
+  if (!overlay) return;
+
   overlay.classList.add('ativo');
   overlay.setAttribute('aria-hidden', 'false');
+
+  if (botaoFechar) {
+    botaoFechar.focus();
+  }
 }
 
 function fecharNotificacao() {
+  if (!overlay) return;
+
   overlay.classList.remove('ativo');
   overlay.setAttribute('aria-hidden', 'true');
+
+  if (botaoEnvio) {
+    botaoEnvio.focus();
+  }
 }
 
-botaoEnvio.addEventListener('click', (e) => {
-  e.preventDefault(); // evita recarregar a página se o botão estiver dentro de um <form>
-  abrirNotificacao();
-});
+// Verifica se o botão de envio existe.
+if (botaoEnvio) {
+  botaoEnvio.addEventListener('click', (e) => {
+    e.preventDefault();
+    abrirNotificacao();
+  });
+}
 
-botaoFechar.addEventListener('click', fecharNotificacao);
+// Verifica se o botão de fechar existe.
+if (botaoFechar) {
+  botaoFechar.addEventListener('click', fecharNotificacao);
+}
 
-// opcional: fechar com a tecla Esc ou clicando fora do retângulo
+// Fecha a notificação com a tecla ESC.
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') fecharNotificacao();
+  if (e.key === 'Escape' && overlay?.classList.contains('ativo')) {
+    fecharNotificacao();
+  }
 });
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) fecharNotificacao();
-});
+
+// Fecha ao clicar fora da caixa da notificação.
+if (overlay) {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      fecharNotificacao();
+    }
+  });
+}
