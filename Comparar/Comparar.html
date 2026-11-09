@@ -49,8 +49,8 @@
         <div class="faixa">
             <div class="faixa-texto">
                 <h2>Compare preço,</h2>
-                <h2>quantidade e</h2>
-                <h2><span class="confianca">custo-benefício</span></h2>
+                <h2>Quantidade e</h2>
+                <h2><span class="confianca">Custo-Benefício</span></h2>
                 <p>Descubra qual produto rende mais <br> pelo seu dinheiro.</p>
                 <a class="botao" href="#comparador">Começar a comparar</a>
             </div>
@@ -87,148 +87,92 @@
                     <p>Esta ferramenta precisa do JavaScript ativado para calcular a comparação.</p>
                 </noscript>
 
+                
                 <form id="form-comparar" novalidate>
+
+                    <div class="campo-categoria">
+                        <label for="categoria-comparar">
+                            Categoria dos produtos
+                        </label>
+
+                        <select id="categoria-comparar" required>
+                            <option value="">Selecione uma categoria</option>
+                        </select>
+                    </div>
+
                     <div class="produtos">
 
-                        <div class="produto-card" role="group" aria-labelledby="titulo-produto-1">
-                            <h3 id="titulo-produto-1">Produto 1</h3>
+                        <!-- Produto 1 -->
+                        <div class="produto-card">
 
-                            <label for="nome-1">Nome</label>
-                            <input id="nome-1" name="nome" type="text" placeholder="ex.: Hidratante facial"
-                                autocomplete="off">
+                            <h3>Primeiro produto</h3>
 
-                            <label for="preco-1">Preço (R$)</label>
-                            <input id="preco-1" name="preco" type="text" inputmode="decimal" placeholder="ex.: 12,90"
-                                autocomplete="off">
+                            <label for="produto-1">
+                                Escolha o produto
+                            </label>
 
-                            <div class="linha-quantidade">
-                                <div>
-                                    <label for="quantidade-1">Quantidade</label>
-                                    <input id="quantidade-1" name="quantidade" type="text" inputmode="decimal"
-                                        placeholder="ex.: 200" autocomplete="off">
-                                </div>
-                                <div>
-                                    <label for="unidade-1">Unidade</label>
-                                    <select id="unidade-1" name="unidade">
-                                        <option value="ml">ml</option>
-                                        <option value="g">g</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label for="pele-1">Tipo de pele indicado</label>
-                            <select id="pele-1" name="pele">
-                                <option value="">Não informado</option>
-                                <option>Todos os tipos</option>
-                                <option>Normal</option>
-                                <option>Seca</option>
-                                <option>Mista</option>
-                                <option>Oleosa</option>
-                                <option>Sensível</option>
+                            <select id="produto-1" required disabled>
+                                <option value="">Selecione a categoria primeiro</option>
                             </select>
 
-                            <label class="opcao" for="teste-1">
-                                <input id="teste-1" name="semTeste" type="checkbox">
-                                Não é testado em animais
-                            </label>
                         </div>
 
-                        <div class="produto-card" role="group" aria-labelledby="titulo-produto-2">
-                            <h3 id="titulo-produto-2">Produto 2</h3>
+                        <!-- Produto 2 -->
+                        <div class="produto-card">
 
-                            <label for="nome-2">Nome</label>
-                            <input id="nome-2" name="nome" type="text" placeholder="ex.: Hidratante facial"
-                                autocomplete="off">
+                            <h3>Segundo produto</h3>
 
-                            <label for="preco-2">Preço (R$)</label>
-                            <input id="preco-2" name="preco" type="text" inputmode="decimal" placeholder="ex.: 18,50"
-                                autocomplete="off">
+                            <label for="produto-2">
+                                Escolha o produto
+                            </label>
 
-                            <div class="linha-quantidade">
-                                <div>
-                                    <label for="quantidade-2">Quantidade</label>
-                                    <input id="quantidade-2" name="quantidade" type="text" inputmode="decimal"
-                                        placeholder="ex.: 300" autocomplete="off">
-                                </div>
-                                <div>
-                                    <label for="unidade-2">Unidade</label>
-                                    <select id="unidade-2" name="unidade">
-                                        <option value="ml">ml</option>
-                                        <option value="g">g</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label for="pele-2">Tipo de pele indicado</label>
-                            <select id="pele-2" name="pele">
-                                <option value="">Não informado</option>
-                                <option>Todos os tipos</option>
-                                <option>Normal</option>
-                                <option>Seca</option>
-                                <option>Mista</option>
-                                <option>Oleosa</option>
-                                <option>Sensível</option>
+                            <select id="produto-2" required disabled>
+                                <option value="">Selecione a categoria primeiro</option>
                             </select>
 
-                            <label class="opcao" for="teste-2">
-                                <input id="teste-2" name="semTeste" type="checkbox">
-                                Não é testado em animais
-                            </label>
                         </div>
 
-                        <div class="produto-card" role="group" aria-labelledby="titulo-produto-3">
-                            <h3 id="titulo-produto-3">Produto 3 <span class="opcional">(opcional)</span></h3>
+                        <!-- Produto 3 -->
+                        <div class="produto-card">
 
-                            <label for="nome-3">Nome</label>
-                            <input id="nome-3" name="nome" type="text" placeholder="ex.: Hidratante facial"
-                                autocomplete="off">
+                            <h3>
+                                Terceiro produto
+                                <span class="opcional">(opcional)</span>
+                            </h3>
 
-                            <label for="preco-3">Preço (R$)</label>
-                            <input id="preco-3" name="preco" type="text" inputmode="decimal" placeholder="ex.: 9,90"
-                                autocomplete="off">
+                            <label for="produto-3">
+                                Escolha o produto
+                            </label>
 
-                            <div class="linha-quantidade">
-                                <div>
-                                    <label for="quantidade-3">Quantidade</label>
-                                    <input id="quantidade-3" name="quantidade" type="text" inputmode="decimal"
-                                        placeholder="ex.: 150" autocomplete="off">
-                                </div>
-                                <div>
-                                    <label for="unidade-3">Unidade</label>
-                                    <select id="unidade-3" name="unidade">
-                                        <option value="ml">ml</option>
-                                        <option value="g">g</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label for="pele-3">Tipo de pele indicado</label>
-                            <select id="pele-3" name="pele">
-                                <option value="">Não informado</option>
-                                <option>Todos os tipos</option>
-                                <option>Normal</option>
-                                <option>Seca</option>
-                                <option>Mista</option>
-                                <option>Oleosa</option>
-                                <option>Sensível</option>
+                            <select id="produto-3" disabled>
+                                <option value="">Nenhum produto selecionado</option>
                             </select>
 
-                            <label class="opcao" for="teste-3">
-                                <input id="teste-3" name="semTeste" type="checkbox">
-                                Não é testado em animais
-                            </label>
                         </div>
 
                     </div>
 
                     <div class="botoes">
-                        <button class="botao" type="submit">Comparar produtos</button>
-                        <button class="botao botao-secundario" type="reset">Limpar</button>
+
+                        <button type="submit" class="botao">
+                            Comparar produtos
+                        </button>
+
+                        <button type="reset" class="botao">
+                            Limpar
+                        </button>
+
                     </div>
+
                 </form>
 
+                <div
+                    id="saida"
+                    class="saida"
+                    aria-live="polite"
+                    hidden>
+                </div>
 
-                <div id="saida" class="saida" aria-live="polite" hidden></div>
             </section>
 
             <section>
