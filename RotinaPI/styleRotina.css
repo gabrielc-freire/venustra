@@ -192,6 +192,7 @@
 .rotina .navbar-brand {
     margin-right: 0;
 }
+
 .rotina .navbar-toggler {
     margin-left: auto;
 }
@@ -204,5 +205,152 @@
 @media (max-width: 991.98px) {
     .rotina .navbar-expand-lg .navbar-toggler {
         display: block;
+    }
+}
+
+/* ---- Introdução da rotina ---- */
+
+.rotina .introducao-rotina {
+    margin-bottom: 24px;
+}
+
+.rotina .introducao-rotina h1 {
+    margin-bottom: 10px;
+}
+
+.rotina .informacao-pele {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: #f1f4e9;
+    border-radius: 12px;
+}
+
+.rotina .informacao-pele p {
+    margin-bottom: 8px;
+}
+
+.rotina .informacao-pele a {
+    color: var(--realce);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ---- Controles para adicionar produtos ---- */
+
+.rotina .controles-rotina {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.rotina .controles-rotina label {
+    font-weight: 600;
+}
+
+.rotina .controles-rotina select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+}
+
+.rotina .controles-rotina button,
+.rotina .remover-produto {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--realce);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.rotina .controles-rotina button:hover,
+.rotina .remover-produto:hover {
+    opacity: 0.85;
+}
+
+/* ---- Lista de produtos ---- */
+.rotina .lista-rotina {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.rotina .produto-rotina {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 0;
+}
+
+.rotina .produto-rotina .etapa {
+    display: inline-block;
+}
+
+.rotina .produto-rotina .numero {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+}
+
+.rotina .produto-rotina .titulo {
+    margin: 5px 0;
+}
+
+.rotina .descricao-produto,
+.rotina .preco-produto,
+.rotina .tamanho-produto {
+    margin: 0;
+}
+
+.rotina .preco-produto {
+    font-weight: 700;
+}
+
+.rotina .avaliacao {
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.rotina .compatibilidade-positiva {
+    color: #287545;
+}
+
+.rotina .compatibilidade-negativa {
+    color: #a33b3b;
+}
+
+.rotina .compatibilidade-desconhecida {
+    color: #777;
+}
+
+.rotina .remover-produto {
+    margin-top: 8px;
+    background: #a94442;
+}
+
+.rotina .mensagem-vazia {
+    padding: 18px;
+    border: 1px dashed #bbb;
+    border-radius: 10px;
+    color: #777;
+    text-align: center;
+}
+
+/* ---- Responsividade ---- */
+@media (max-width: 600px) {
+    .rotina .controles-rotina button {
+        width: 100%;
+    }
+
+    .rotina .produto-rotina {
+        padding: 14px;
     }
 }
