@@ -24,194 +24,135 @@
     </header>
 
     <main>
-        <form id="form-questionario" novalidate>
+        
+<form id="form-questionario" novalidate>
 
-            <h1>Questionário</h1>
+    <!-- PERGUNTA 1 -->
+    <div class="pergunta" id="pergunta-1">
+        <fieldset>
+            <legend>1. Como sua pele fica algumas horas após lavar o rosto?</legend>
 
-            <h2>Descubra seu tipo de pele</h2>
-
-            <!-- Pergunta 1 -->
-            <div class="pergunta" id="pergunta-1" role="radiogroup" aria-labelledby="titulo-pergunta-1"
-                aria-required="true">
-                <h3 id="titulo-pergunta-1">Como sua pele fica algumas horas após lavar o rosto?</h3>
-
-                <input type="radio" id="p1-oleosa" name="pergunta1" value="oleosa">
-                <label for="p1-oleosa">
-                    Muito brilhante e com sensação de oleosidade
-                </label>
-
-                <input type="radio" id="p1-seca" name="pergunta1" value="seca">
+            <div class="alternativas">
                 <label for="p1-seca">
-                    Repuxada, seca ou desconfortável
+                    <input type="radio" id="p1-seca" name="pergunta1" value="seca">
+                    <span>Fica repuxada ou ressecada.</span>
                 </label>
 
-                <input type="radio" id="p1-mista" name="pergunta1" value="mista">
+                <label for="p1-oleosa">
+                    <input type="radio" id="p1-oleosa" name="pergunta1" value="oleosa">
+                    <span>Fica brilhosa e com excesso de oleosidade.</span>
+                </label>
+
                 <label for="p1-mista">
-                    Brilhante apenas na testa, nariz e queixo
+                    <input type="radio" id="p1-mista" name="pergunta1" value="mista">
+                    <span>Algumas regiões ficam oleosas e outras ressecadas.</span>
                 </label>
 
-                <input type="radio" id="p1-normal" name="pergunta1" value="normal">
                 <label for="p1-normal">
-                    Equilibrada, sem excesso de óleo ou ressecamento
+                    <input type="radio" id="p1-normal" name="pergunta1" value="normal">
+                    <span>Fica confortável, sem excesso de oleosidade ou ressecamento.</span>
                 </label>
             </div>
+        </fieldset>
+    </div>
 
-            <!-- Pergunta 2 -->
-            <div class="pergunta" id="pergunta-2" role="radiogroup" aria-labelledby="titulo-pergunta-2"
-                aria-required="true">
-                <h3 id="titulo-pergunta-2">Como você descreveria a aparência dos seus poros?</h3>
+    <!-- PERGUNTA 2 -->
+    <div class="pergunta" id="pergunta-2">
+        <fieldset>
+            <legend>2. Como você descreveria a aparência dos seus poros?</legend>
 
-                <input type="radio" id="p2-oleosa" name="pergunta2" value="oleosa">
-                <label for="p2-oleosa">
-                    Grandes e bastante visíveis
-                </label>
-
-                <input type="radio" id="p2-seca" name="pergunta2" value="seca">
+            <div class="alternativas">
                 <label for="p2-seca">
-                    Pequenos e pouco aparentes
+                    <input type="radio" id="p2-seca" name="pergunta2" value="seca">
+                    <span>Pouco aparentes, com aspecto de pele mais seca.</span>
                 </label>
 
-                <input type="radio" id="p2-mista" name="pergunta2" value="mista">
+                <label for="p2-oleosa">
+                    <input type="radio" id="p2-oleosa" name="pergunta2" value="oleosa">
+                    <span>Bem aparentes, principalmente por causa da oleosidade.</span>
+                </label>
+
                 <label for="p2-mista">
-                    Maiores apenas na região do nariz/testa
+                    <input type="radio" id="p2-mista" name="pergunta2" value="mista">
+                    <span>Mais aparentes na testa, no nariz e no queixo.</span>
                 </label>
 
-                <input type="radio" id="p2-normal" name="pergunta2" value="normal">
                 <label for="p2-normal">
-                    Pouco aparentes e uniformes
+                    <input type="radio" id="p2-normal" name="pergunta2" value="normal">
+                    <span>Pouco aparentes e com aparência uniforme.</span>
                 </label>
             </div>
+        </fieldset>
+    </div>
 
-            <!-- Pergunta 3 -->
-            <div class="pergunta" id="pergunta-3" role="radiogroup" aria-labelledby="titulo-pergunta-3"
-                aria-required="true">
-                <h3 id="titulo-pergunta-3">Sua pele costuma apresentar espinhas ou cravos?</h3>
+    <!-- PERGUNTA 3 -->
+    <div class="pergunta" id="pergunta-3">
+        <fieldset>
+            <legend>3. Como sua pele costuma se comportar durante o dia?</legend>
 
-                <input type="radio" id="p3-oleosa" name="pergunta3" value="oleosa">
-                <label for="p3-oleosa">
-                    Sim, com frequência
-                </label>
-
-                <input type="radio" id="p3-seca" name="pergunta3" value="seca">
+            <div class="alternativas">
                 <label for="p3-seca">
-                    Raramente
+                    <input type="radio" id="p3-seca" name="pergunta3" value="seca">
+                    <span>Costuma ficar ressecada ou apresentar descamação.</span>
                 </label>
 
-                <input type="radio" id="p3-mista" name="pergunta3" value="mista">
+                <label for="p3-oleosa">
+                    <input type="radio" id="p3-oleosa" name="pergunta3" value="oleosa">
+                    <span>Apresenta bastante brilho e oleosidade.</span>
+                </label>
+
                 <label for="p3-mista">
-                    Principalmente na zona T (Nariz, testa e queixo)
+                    <input type="radio" id="p3-mista" name="pergunta3" value="mista">
+                    <span>A zona T fica oleosa, mas as outras regiões ficam normais ou secas.</span>
                 </label>
 
-                <input type="radio" id="p3-normal" name="pergunta3" value="normal">
                 <label for="p3-normal">
-                    Quase nunca
+                    <input type="radio" id="p3-normal" name="pergunta3" value="normal">
+                    <span>Permanece equilibrada durante a maior parte do dia.</span>
                 </label>
             </div>
+        </fieldset>
+    </div>
 
-            <!-- Pergunta 4  -->
-            <div class="pergunta" id="pergunta-4" role="radiogroup" aria-labelledby="titulo-pergunta-4"
-                aria-required="true">
-                <h3 id="titulo-pergunta-4">Como sua pele reage ao frio ou ambientes secos?</h3>
+    <!-- PERGUNTA 4 -->
+    <div class="pergunta" id="pergunta-4">
+        <fieldset>
+            <legend>4. Após usar produtos de limpeza facial, como sua pele fica?</legend>
 
-                <input type="radio" id="p4-oleosa" name="pergunta4" value="oleosa">
-                <label for="p4-oleosa">
-                    Continua oleosa
-                </label>
-
-                <input type="radio" id="p4-seca" name="pergunta4" value="seca">
+            <div class="alternativas">
                 <label for="p4-seca">
-                    Fica áspera ou descamando
+                    <input type="radio" id="p4-seca" name="pergunta4" value="seca">
+                    <span>Fica repuxada ou ressecada.</span>
                 </label>
 
-                <input type="radio" id="p4-mista" name="pergunta4" value="mista">
+                <label for="p4-oleosa">
+                    <input type="radio" id="p4-oleosa" name="pergunta4" value="oleosa">
+                    <span>Continua com aparência oleosa.</span>
+                </label>
+
                 <label for="p4-mista">
-                    Algumas áreas ficam secas
+                    <input type="radio" id="p4-mista" name="pergunta4" value="mista">
+                    <span>Algumas regiões ficam ressecadas e outras oleosas.</span>
                 </label>
 
-                <input type="radio" id="p4-normal" name="pergunta4" value="normal">
                 <label for="p4-normal">
-                    Pouca alteração
+                    <input type="radio" id="p4-normal" name="pergunta4" value="normal">
+                    <span>Fica confortável e equilibrada.</span>
                 </label>
             </div>
+        </fieldset>
+    </div>
 
-            <!-- Pergunta 5 -->
-            <div class="pergunta" id="pergunta-5" role="radiogroup" aria-labelledby="titulo-pergunta-5"
-                aria-required="true">
-                <h3 id="titulo-pergunta-5">Após usar produtos de limpeza facial, sua pele:</h3>
+    <!-- MENSAGEM DE ERRO -->
+    <p id="erro-questionario" class="erro-questionario" role="alert" hidden></p>
 
-                <input type="radio" id="p5-oleosa" name="pergunta5" value="oleosa">
-                <label for="p5-oleosa">
-                    Fica limpa, mas volta a ficar oleosa rapidamente
-                </label>
+    <!-- BOTÃO -->
+    <button type="submit" class="botao botao-enviar">
+        Ver meu resultado
+    </button>
 
-                <input type="radio" id="p5-seca" name="pergunta5" value="seca">
-                <label for="p5-seca">
-                    Fica repuxando
-                </label>
+</form>
 
-                <input type="radio" id="p5-mista" name="pergunta5" value="mista">
-                <label for="p5-mista">
-                    Algumas regiões ficam secas e outras oleosas
-                </label>
-
-                <input type="radio" id="p5-normal" name="pergunta5" value="normal">
-                <label for="p5-normal">
-                    Fica confortável
-                </label>
-            </div>
-
-            <!-- Pergunta 6 -->
-            <div class="pergunta" id="pergunta-6" role="radiogroup" aria-labelledby="titulo-pergunta-6"
-                aria-required="true">
-                <h3 id="titulo-pergunta-6">Sua pele costuma ficar vermelha ou irritada facilmente?</h3>
-
-                <input type="radio" id="p6-nunca" name="pergunta6" value="nunca">
-                <label for="p6-nunca">
-                    Nunca
-                </label>
-
-                <input type="radio" id="p6-as-vezes" name="pergunta6" value="as-vezes">
-                <label for="p6-as-vezes">
-                    Às vezes
-                </label>
-
-                <input type="radio" id="p6-frequente" name="pergunta6" value="frequente">
-                <label for="p6-frequente">
-                    Sim, com frequência
-                </label>
-            </div>
-
-            <!-- Pergunta 7 -->
-            <div class="pergunta" id="pergunta-7" role="radiogroup" aria-labelledby="titulo-pergunta-7"
-                aria-required="true">
-                <h3 id="titulo-pergunta-7">Qual a sensação sua pele apresenta no dia a dia?</h3>
-
-                <input type="radio" id="p7-oleosa" name="pergunta7" value="oleosa">
-                <label for="p7-oleosa">
-                    Brilho excessivo
-                </label>
-
-                <input type="radio" id="p7-seca" name="pergunta7" value="seca">
-                <label for="p7-seca">
-                    Sensação de pele "esticada"
-                </label>
-
-                <input type="radio" id="p7-mista" name="pergunta7" value="mista">
-                <label for="p7-mista">
-                    Mistura de oleosidade e ressecamento
-                </label>
-
-                <input type="radio" id="p7-normal" name="pergunta7" value="normal">
-                <label for="p7-normal">
-                    Sensação confortável e equilibrada
-                </label>
-            </div>
-
-            <p id="erro-questionario" class="erro-questionario" role="alert" hidden></p>
-
-            <button type="submit" class="botao botao-enviar">Ver meu resultado</button>
-
-        </form>
     </main>
 
     <footer class="rodape">

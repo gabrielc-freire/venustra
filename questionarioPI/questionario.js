@@ -1,133 +1,224 @@
+
 /*
  * Questionário de tipo de pele | Venustra
  *
- * Como funciona:
- *  - As perguntas 1, 2, 3, 4, 5 e 7 "votam" em um tipo de pele
- *    (oleosa, seca, mista ou normal), pelo atributo value de cada opção.
- *  - A pergunta 6 mede a sensibilidade: quem responde
- *    "Sim, com frequência" vai direto para o resultado de pele sensível.
- *  - Nos demais casos vence o tipo com mais votos.
- *  - Em caso de empate vale a resposta da pergunta 1 (como a pele fica
- *    após lavar o rosto), se ela estiver entre os empatados; senão, a
- *    ordem de DESEMPATE abaixo.
+ * São 4 perguntas.
+ * Cada resposta contabiliza um voto para um tipo de pele.
+ * O tipo com mais votos será o resultado.
+ *
+ * Em caso de empate:
+ * 1. A resposta da primeira pergunta será priorizada.
+ * 2. Se ela não resolver o empate, será utilizada
+ *    a ordem definida em ORDEM_DESEMPATE.
  */
+
 (function () {
     "use strict";
 
-    var TOTAL_PERGUNTAS = 7;
-    var PERGUNTA_SENSIBILIDADE = 6;
+    var TOTAL_PERGUNTAS = 4;
     var PERGUNTA_DESEMPATE = 1;
+
     var ORDEM_DESEMPATE = ["mista", "oleosa", "seca", "normal"];
 
-    // Caminhos relativos a questionario.html
+    // Caminhos relativos ao questionario.html
     var PAGINAS = {
         oleosa: "tiposPeles/peleOleosa.html",
         seca: "tiposPeles/peleSeca.html",
         mista: "tiposPeles/peleMista.html",
-        normal: "tiposPeles/peleNormal.html",
-        sensivel: "tiposPeles/peleSensivel.html"
+        normal: "tiposPeles/peleNormal.html"
     };
 
-    /**
-     * respostas: objeto { 1: "oleosa", 2: "seca", ..., 6: "nunca", ... }
-     * Retorna: "oleosa" | "seca" | "mista" | "normal" | "sensivel"
+    /*
+     * Calcula qual tipo de pele recebeu mais votos.
      */
     function calcularTipo(respostas) {
-        if (respostas[PERGUNTA_SENSIBILIDADE] === "frequente") {
-            return "sensivel";
-        }
+        var votos = {
+            oleosa: 0,
+            seca: 0,
+            mista: 0,
+            normal: 0
+        };
 
-        var votos = { oleosa: 0, seca: 0, mista: 0, normal: 0 };
         for (var n = 1; n <= TOTAL_PERGUNTAS; n++) {
-            if (n === PERGUNTA_SENSIBILIDADE) continue;
-            if (votos.hasOwnProperty(respostas[n])) {
+            if (Object.prototype.hasOwnProperty.call(votos, respostas[n])) {
                 votos[respostas[n]]++;
             }
         }
 
-        var maior = Math.max(votos.oleosa, votos.seca, votos.mista, votos.normal);
+        var maior = Math.max(
+            votos.oleosa,
+            votos.seca,
+            votos.mista,
+            votos.normal
+        );
+
         var empatados = ORDEM_DESEMPATE.filter(function (tipo) {
             return votos[tipo] === maior;
         });
 
-        if (empatados.length === 1) return empatados[0];
+        // Se não houver empate, retorna o vencedor
+        if (empatados.length === 1) {
+            return empatados[0];
+        }
 
+        // Tenta desempatar usando a primeira resposta
         var respostaChave = respostas[PERGUNTA_DESEMPATE];
-        if (empatados.indexOf(respostaChave) !== -1) return respostaChave;
 
+        if (empatados.indexOf(respostaChave) !== -1) {
+            return respostaChave;
+        }
+
+        // Desempate final pela ordem definida
         return empatados[0];
     }
 
+    /*
+     * Inicializa os eventos do formulário.
+     */
     function iniciar() {
         var form = document.getElementById("form-questionario");
         var erro = document.getElementById("erro-questionario");
-        if (!form) return;
 
+        if (!form || !erro) {
+            return;
+        }
+
+        /*
+         * Lê as respostas selecionadas.
+         */
         function lerRespostas() {
             var respostas = {};
             var faltando = [];
+
             for (var n = 1; n <= TOTAL_PERGUNTAS; n++) {
-                var marcada = form.querySelector('input[name="pergunta' + n + '"]:checked');
+                var marcada = form.querySelector(
+                    'input[name="pergunta' + n + '"]:checked'
+                );
+
                 if (marcada) {
                     respostas[n] = marcada.value;
                 } else {
                     faltando.push(n);
                 }
             }
-            return { respostas: respostas, faltando: faltando };
+
+            return {
+                respostas: respostas,
+                faltando: faltando
+            };
         }
 
+        /*
+         * Remove os avisos de perguntas incompletas.
+         */
         function limparMarcacoes() {
-            var marcadas = form.querySelectorAll(".pergunta.sem-resposta");
+            var marcadas = form.querySelectorAll(
+                ".pergunta.sem-resposta"
+            );
+
             for (var i = 0; i < marcadas.length; i++) {
                 marcadas[i].classList.remove("sem-resposta");
             }
+
             erro.hidden = true;
             erro.textContent = "";
         }
 
-        // Ao responder uma pergunta, tira o destaque de erro dela
+        /*
+         * Remove o destaque de erro quando uma pergunta
+         * é respondida.
+         */
         form.addEventListener("change", function (evento) {
+            if (!evento.target.matches('input[type="radio"]')) {
+                return;
+            }
+
             var pergunta = evento.target.closest(".pergunta");
-            if (pergunta) pergunta.classList.remove("sem-resposta");
+
+            if (pergunta) {
+                pergunta.classList.remove("sem-resposta");
+            }
+
             if (!form.querySelector(".pergunta.sem-resposta")) {
                 erro.hidden = true;
                 erro.textContent = "";
             }
         });
 
+        /*
+         * Evento de envio do formulário.
+         */
         form.addEventListener("submit", function (evento) {
             evento.preventDefault();
+
             limparMarcacoes();
 
             var lido = lerRespostas();
 
+            // Verifica se existem perguntas sem resposta
             if (lido.faltando.length > 0) {
+
                 lido.faltando.forEach(function (n) {
-                    document.getElementById("pergunta-" + n).classList.add("sem-resposta");
+                    var pergunta = document.getElementById(
+                        "pergunta-" + n
+                    );
+
+                    if (pergunta) {
+                        pergunta.classList.add("sem-resposta");
+                    }
                 });
 
+                // Exibe a mensagem de erro
                 erro.textContent = lido.faltando.length === 1
-                    ? "Falta responder a pergunta " + lido.faltando[0] + "."
-                    : "Faltam responder as perguntas: " + lido.faltando.join(", ") + ".";
+                    ? "Falta responder a pergunta " +
+                      lido.faltando[0] + "."
+                    : "Faltam responder as perguntas: " +
+                      lido.faltando.join(", ") + ".";
+
                 erro.hidden = false;
 
-                var primeira = document.getElementById("pergunta-" + lido.faltando[0]);
-                primeira.scrollIntoView({ behavior: "smooth", block: "center" });
-                var radio = primeira.querySelector('input[type="radio"]');
-                if (radio) radio.focus({ preventScroll: true });
+                // Leva o usuário até a primeira pergunta pendente
+                var primeira = document.getElementById(
+                    "pergunta-" + lido.faltando[0]
+                );
+
+                if (primeira) {
+                    primeira.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    var radio = primeira.querySelector(
+                        'input[type="radio"]'
+                    );
+
+                    if (radio) {
+                        radio.focus({ preventScroll: true });
+                    }
+                }
+
                 return;
             }
 
-            window.location.href = PAGINAS[calcularTipo(lido.respostas)];
+            // Calcula o tipo de pele
+            var tipo = calcularTipo(lido.respostas);
+
+            // Salva o resultado no navegador
+            localStorage.setItem("venustra_tipo_pele", tipo);
+
+            // Redireciona para a página correspondente
+            window.location.href = PAGINAS[tipo];
         });
     }
 
-    // Permite testar a lógica isoladamente (não afeta o site)
+    // Permite testar a função de cálculo isoladamente
     if (typeof module !== "undefined" && module.exports) {
-        module.exports = { calcularTipo: calcularTipo };
+        module.exports = {
+            calcularTipo: calcularTipo
+        };
     }
 
+    // Inicializa o formulário
     if (typeof document !== "undefined") {
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", iniciar);
@@ -135,4 +226,5 @@
             iniciar();
         }
     }
+
 })();
