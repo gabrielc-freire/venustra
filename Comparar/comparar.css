@@ -210,3 +210,81 @@
 .comparar {
   overflow-x: clip;
 }
+
+
+/* ---- Seleção de categoria ---- */
+
+.comparar .campo-categoria {
+    max-width: 500px;
+    margin-bottom: 1.5rem;
+}
+
+.comparar .campo-categoria label,
+.comparar .produto-card label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.comparar .campo-categoria select,
+.comparar .produto-card select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd8d3;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: var(--tinta);
+    font: inherit;
+}
+
+.comparar select:disabled {
+    background: #f0f2f1;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.comparar select:focus-visible {
+    outline: 3px solid var(--detalhe);
+    outline-offset: 2px;
+}
+
+/* ---- Mensagens de erro ---- */
+
+.comparar .lista-erros {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.comparar .lista-erros li {
+    margin-bottom: 0.4rem;
+}
+
+/* ---- Resultado da comparação ---- */
+
+.comparar .resultado-titulo {
+    margin-bottom: 1rem;
+}
+
+.comparar .resultado-categoria {
+    margin-bottom: 1rem;
+    color: var(--escuro);
+    font-weight: 600;
+}
+
+.comparar .resultado-vazio {
+    padding: 1rem;
+    background: var(--card);
+    border-radius: 0.6rem;
+}
+
+.comparar .saida .resumo {
+    overflow-wrap: anywhere;
+}
+
+.comparar .melhor {
+    background: #e6f8f1;
+}
+
+.comparar .nota {
+    line-height: 1.5;
+}
