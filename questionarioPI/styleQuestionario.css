@@ -42,12 +42,6 @@
     border-bottom: 1px solid var(--cinza-claro);
 }
 
-/* Esconde o radio padrão (continua acessível pelo teclado) */
-.questionario form input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
 
 /* ---- Alternativas ---- */
 .questionario form label {
@@ -67,26 +61,6 @@
     background-color: #f5fcf9;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(78, 131, 119, 0.08);
-}
-
-/* Bolinha personalizada */
-.questionario form label::before {
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 0.8rem;
-    border: 2px solid #b8c4c0;
-    border-radius: 50%;
-}
-
-/* Alternativa selecionada */
-.questionario form input[type="radio"]:checked + label {
-    border-color: var(--detalhe2);
-    background-color: #eafaf5;
-    color: var(--realce);
-    font-weight: 700;
-    box-shadow: 0 0 0 1px var(--detalhe2);
 }
 
 /* Foco do teclado (o radio original está escondido) */
@@ -238,3 +212,196 @@
     border: 2px solid var(--escuro);
 }
 
+
+/* =========================================
+   QUESTIONÁRIO - VENUSTRA
+   ========================================= */
+
+/* Organização de cada pergunta */
+.pergunta {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    scroll-margin-top: 100px;
+}
+
+/* Retira a borda padrão do fieldset */
+.pergunta fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+/* Título da pergunta */
+.pergunta legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Organização das alternativas */
+.alternativas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Cada alternativa */
+.alternativas label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Botões de seleção */
+.alternativas input {
+    margin-top: 4px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* Destaque da pergunta não respondida */
+.pergunta.sem-resposta {
+    border: 2px solid #c0392b;
+}
+
+/* Título da pergunta com erro */
+.pergunta.sem-resposta legend {
+    color: #c0392b;
+}
+
+/* Mensagem de erro */
+.erro-questionario {
+    color: #c0392b;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+/* Garante que mensagens ocultas não apareçam */
+.erro-questionario[hidden] {
+    display: none;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    .alternativas {
+        grid-template-columns: 1fr;
+    }
+
+    .pergunta {
+        padding: 15px;
+    }
+}
+
+/* =========================================
+   QUESTIONÁRIO - VENUSTRA
+   ========================================= */
+
+/* Organização de cada pergunta */
+.pergunta {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    scroll-margin-top: 100px;
+}
+
+/* Retira a borda padrão do fieldset */
+.pergunta fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+/* Título da pergunta */
+.pergunta legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Organização das alternativas */
+.alternativas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Cada alternativa */
+.alternativas label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* Botões de seleção */
+.alternativas input[type="radio"] {
+    appearance: auto;
+    -webkit-appearance: radio;
+
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+
+    margin: 3px 0 0;
+    flex-shrink: 0;
+
+    accent-color: #03BB85;
+    cursor: pointer;
+}
+
+/* Alternativa selecionada */
+.alternativas label:has(input[type="radio"]:checked) {
+    border-color: #03BB85;
+    background-color: #eaf8f3;
+}
+
+/* Texto da alternativa selecionada */
+.alternativas label:has(input[type="radio"]:checked) span {
+    font-weight: 600;
+}
+
+/* Destaque da pergunta não respondida */
+.pergunta.sem-resposta {
+    border: 2px solid #c0392b;
+}
+
+/* Título da pergunta com erro */
+.pergunta.sem-resposta legend {
+    color: #c0392b;
+}
+
+/* Mensagem de erro */
+.erro-questionario {
+    color: #c0392b;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+/* Garante que mensagens ocultas não apareçam */
+.erro-questionario[hidden] {
+    display: none;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    .alternativas {
+        grid-template-columns: 1fr;
+    }
+
+    .pergunta {
+        padding: 15px;
+    }
+}
