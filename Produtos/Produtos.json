@@ -1,0 +1,83 @@
+
+[
+  {
+    "id": "hidratantes-1",
+    "categoria": "Hidratantes",
+    "nome": "Nome do hidratante",
+    "tamanho": "50g",
+    "descricao": "Descrição do hidratante.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "protetores-solares-1",
+    "categoria": "Protetores solares",
+    "nome": "Nome do protetor solar",
+    "tamanho": "50g",
+    "descricao": "Descrição do protetor solar.",
+    "precoAntigo": "R$ 234,99",
+    "preco": "R$ 182,99",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "esfoliantes-1",
+    "categoria": "Esfoliantes",
+    "nome": "Nome do esfoliante",
+    "tamanho": "100g",
+    "descricao": "Descrição do esfoliante.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "mascaras-faciais-1",
+    "categoria": "Máscaras faciais",
+    "nome": "Nome da máscara facial",
+    "tamanho": "100g",
+    "descricao": "Descrição da máscara facial.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "seruns-1",
+    "categoria": "Séruns",
+    "nome": "Nome do sérum",
+    "tamanho": "30ml",
+    "descricao": "Descrição do sérum.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "limpeza-facial-1",
+    "categoria": "Limpeza facial",
+    "nome": "Nome do produto de limpeza",
+    "tamanho": "200ml",
+    "descricao": "Descrição do produto de limpeza.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "tonicos-1",
+    "categoria": "Tônicos",
+    "nome": "Arroghantti",
+    "tamanho": "100ml",
+    "descricao": "Descrição do tônico.",
+    "precoAntigo": "",
+    "preco": "R$ 00,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  },
+  {
+    "id": "em-promocao-1",
+    "categoria": "Em promoção",
+    "nome": "Nome do produto em promoção",
+    "tamanho": "50g",
+    "descricao": "Descrição do produto em promoção.",
+    "precoAntigo": "R$ 100,00",
+    "preco": "R$ 80,00",
+    "imagem": "../inicioPI/img/placeholder/placeholder-400x300.png"
+  }
+]

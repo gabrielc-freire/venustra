@@ -573,3 +573,20 @@ body.produtos .navbar-nav {
         display: flex !important;
     }
 }
+
+/* ---- Mensagens do catálogo ---- */
+
+.mensagem-vazia {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    color: #777777;
+    font-family: "Caviar Dreams", sans-serif;
+}
+
+/* ---- Imagens dos produtos ---- */
+
+.imagem img {
+    display: block;
+    object-fit: contain;
+}
