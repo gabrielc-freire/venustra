@@ -94,47 +94,78 @@
         </div>
     </footer>
 
-    <script src="produtos.js"></script>
-    <script>
-        const id = new URLSearchParams(location.search).get("id");
-        const p = PRODUTOS.find(function (x) { return x.id === id; });
-        const secao = document.getElementById("detalhe");
+    
+<script src="produtos.js"></script>
 
-        function preencher(campo, valor) {
-            const e = document.getElementById(campo);
-            if (valor) {
-                e.textContent = valor;
-            } else {
-                e.remove();
-            }
+<script>
+    const id = new URLSearchParams(location.search).get("id");
+    const secao = document.getElementById("detalhe");
+
+    function preencher(campo, valor) {
+        const elemento = document.getElementById(campo);
+
+        if (valor) {
+            elemento.textContent = valor;
+        } else {
+            elemento.remove();
         }
+    }
 
-        if (!p) {
-            document.title = "Produto não encontrado | Venustra";
+    carregarProdutos()
+        .then(function (produtos) {
+            const produto = produtos.find(function (p) {
+                return p.id === id;
+            });
+
+            if (!produto) {
+                document.title = "Produto não encontrado | Venustra";
+                secao.replaceChildren();
+
+                const info = el("div", "info");
+
+                info.appendChild(
+                    el("h1", "", "Produto não encontrado")
+                );
+
+                const voltar = el(
+                    "a",
+                    "voltar",
+                    "← Voltar aos produtos"
+                );
+
+                voltar.href = "Produtos.html";
+
+                info.appendChild(voltar);
+                secao.appendChild(info);
+
+                return;
+            }
+
+            document.title = produto.nome + " | Venustra";
+
+            const imagem = document.getElementById("p-imagem");
+
+            imagem.src = produto.imagem;
+            imagem.alt = produto.nome;
+
+            preencher("p-categoria", produto.categoria);
+            preencher("p-nome", produto.nome);
+            preencher("p-tamanho", produto.tamanho);
+            preencher("p-descricao", produto.descricao);
+            preencher("p-preco-antigo", produto.precoAntigo);
+            preencher("p-preco", produto.preco);
+        })
+        .catch(function (erro) {
+            console.error(erro);
+
             secao.replaceChildren();
 
-            const info = el("div", "info");
-            info.appendChild(el("h1", "", "Produto não encontrado"));
-            const voltar = el("a", "voltar", "← Voltar aos produtos");
-            voltar.href = "Produtos.html";
-            info.appendChild(voltar);
-            secao.appendChild(info);
-        } else {
-            document.title = p.nome + " | Venustra";
-
-            const img = document.getElementById("p-imagem");
-            img.src = p.imagem;
-            img.alt = p.nome;
-
-            preencher("p-categoria", p.categoria);
-            preencher("p-nome", p.nome);
-            preencher("p-tamanho", p.tamanho);
-            preencher("p-descricao", p.descricao);
-            preencher("p-preco-antigo", p.precoAntigo);
-            preencher("p-preco", p.preco);
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+            secao.appendChild(
+                el("h1", "", "Não foi possível carregar o produto.")
+            );
+        });
+</script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
