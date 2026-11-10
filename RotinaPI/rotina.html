@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Minha rotina | Venustra</title>
+
     <link rel="icon" type="image/png" href="../inicioPI/img/icon.png">
-    
-    <!--Bootstrap 5 -->
+
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS do Venustra -->
@@ -16,54 +18,83 @@
 </head>
 
 <body class="rotina" id="topo">
-    
-<header>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../inicioPI/pi_inicio.html">
-                <img class="logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
-            </a>
 
-            <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menuVenustra"
-                aria-controls="menuVenustra"
-                aria-expanded="false"
-                aria-label="Abrir menu de navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
 
-            <div class="collapse navbar-collapse" id="menuVenustra">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="../inicioPI/pi_inicio.html">Início</a>
-                    <a class="nav-link" href="../Produtos/Produtos.html">Produtos</a>
-                    <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
-                    <a class="nav-link" href="../RotinaPI/rotina.html" aria-current="page">Minha rotina</a>
-                    <a class="nav-link" href="../Sobre/Sobre.html">Sobre</a>
+                <a class="navbar-brand" href="../inicioPI/pi_inicio.html">
+                    <img class="logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuVenustra"
+                    aria-controls="menuVenustra" aria-expanded="false" aria-label="Abrir menu de navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuVenustra">
+                    <div class="navbar-nav ms-auto">
+
+                        <a class="nav-link" href="../inicioPI/pi_inicio.html">
+                            Início
+                        </a>
+
+                        <a class="nav-link" href="../Produtos/Produtos.html">
+                            Produtos
+                        </a>
+
+                        <a class="nav-link" href="../Comparar/Comparar.html">
+                            Comparar
+                        </a>
+
+                        <a class="nav-link" href="../RotinaPI/rotina.html" aria-current="page">
+                            Minha rotina
+                        </a>
+
+                        <a class="nav-link" href="../Sobre/Sobre.html">
+                            Sobre
+                        </a>
+
+                    </div>
                 </div>
+
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-
+    <!-- Main -->
     <main>
 
-        <h1>Minha Rotina</h1>
+        <!-- Introdução -->
+        <div class="introducao-rotina">
 
-        <p>
-            Estamos mostrando uma rotina de exemplo.
-            Entre com sua conta e descubra seu tipo de pele
-            para personalizar cada etapa.
-        </p>
+            <h1>Minha Rotina</h1>
 
-        <a class="botao" href="../questionarioPI/questionario.html">
-            Descobrir meu tipo de pele
-        </a>
+            <p>
+                Organize seus cuidados com a pele e monte uma rotina
+                personalizada para os períodos da manhã e da noite.
+            </p>
 
+            <!-- Informação sobre o tipo de pele -->
+            <div id="informacao-pele" class="informacao-pele">
+
+                <p id="texto-tipo-pele">
+                    Identificando seu tipo de pele...
+                </p>
+
+                <a href="../questionarioPI/questionario.html">
+                    Descobrir ou atualizar meu tipo de pele
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Rotina -->
         <div class="rotinas">
 
-            <!-- ==================== MANHÃ ==================== -->
+            <!-- Manhã -->
             <section id="manha">
 
                 <div class="cabecalho">
@@ -72,14 +103,16 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                             <circle cx="12" cy="12" r="4"></circle>
 
-                            <path d="M12 2v2
-                                   M12 20v2
-                                   M4.93 4.93l1.41 1.41
-                                   M17.66 17.66l1.41 1.41
-                                   M2 12h2
-                                   M20 12h2
-                                   M4.93 19.07l1.41-1.41
-                                   M17.66 6.34l1.41-1.41"></path>
+                            <path d="
+                                M12 2v2
+                                M12 20v2
+                                M4.93 4.93l1.41 1.41
+                                M17.66 17.66l1.41 1.41
+                                M2 12h2
+                                M20 12h2
+                                M4.93 19.07l1.41-1.41
+                                M17.66 6.34l1.41-1.41
+                            "></path>
                         </svg>
                     </div>
 
@@ -87,110 +120,47 @@
 
                 </div>
 
-                <!-- Limpeza -->
-                <article class="produto-rotina">
+                <!-- Seleção de produtos da manhã -->
+                <div class="selecao-produtos">
 
-                    <div class="etapa">
-                        <div class="numero">1</div>
-                        <div class="titulo">Limpeza</div>
-                    </div>
+                    <label for="produto-manha">
+                        Escolha um produto para sua rotina:
+                    </label>
 
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
+                    <select id="produto-manha">
+                        <option value="">
+                            Carregando produtos...
+                        </option>
+                    </select>
 
-                    <h3>
-                        <span class="produto-link">
-                            Loção de Limpeza Suave
-                        </span>
-                    </h3>
+                    <button type="button" id="adicionar-manha" class="botao">
+                        Adicionar à rotina da manhã
+                    </button>
 
-                    <p>Marca · R$ valor</p>
+                </div>
 
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
+                <!-- Produtos adicionados à rotina -->
+                <div id="lista-rotina-manha" class="lista-rotina" aria-live="polite">
 
-                        <p>4.6/5</p>
-                    </div>
+                    <p class="rotina-vazia">
+                        Você ainda não adicionou produtos à sua rotina da manhã.
+                    </p>
 
-                    <p>Compatibilidade</p>
-
-                </article>
-
-                <!-- Hidratação -->
-                <article class="produto-rotina">
-
-                    <div class="etapa">
-                        <div class="numero">2</div>
-                        <div class="titulo">Hidratação</div>
-                    </div>
-
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
-
-                    <h3>
-                        <span class="produto-link">
-                            Loção Hidratante
-                        </span>
-                    </h3>
-
-                    <p>Marca · R$ valor</p>
-
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
-
-                        <p>4.6/5</p>
-                    </div>
-
-                    <p>Compatibilidade</p>
-
-                </article>
-
-                <!-- Protetor Solar -->
-                <article class="produto-rotina">
-
-                    <div class="etapa">
-                        <div class="numero">3</div>
-                        <div class="titulo">Protetor Solar</div>
-                    </div>
-
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
-
-                    <h3>
-                        <span class="produto-link">
-                            Protetor FPS 60
-                        </span>
-                    </h3>
-
-                    <p>Marca · R$ valor</p>
-
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
-
-                        <p>4.6/5</p>
-                    </div>
-
-                    <p>Compatibilidade</p>
-
-                </article>
+                </div>
 
             </section>
 
-            <!-- ==================== NOITE ==================== -->
+            <!-- Noite -->
             <section id="noite">
 
                 <div class="cabecalho">
 
                     <div class="icone-periodo">
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3a6 6 0 0 0 9 9
-                                   9 9 0 1 1-9-9Z"></path>
+                            <path d="
+                                M12 3a6 6 0 0 0 9 9
+                                9 9 0 1 1-9-9Z
+                            "></path>
                         </svg>
                     </div>
 
@@ -198,98 +168,33 @@
 
                 </div>
 
-                <!-- Limpeza -->
-                <article class="produto-rotina">
+                <!-- Seleção de produtos da noite -->
+                <div class="selecao-produtos">
 
-                    <div class="etapa">
-                        <div class="numero">1</div>
-                        <div class="titulo">Limpeza</div>
-                    </div>
+                    <label for="produto-noite">
+                        Escolha um produto para sua rotina:
+                    </label>
 
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
+                    <select id="produto-noite">
+                        <option value="">
+                            Carregando produtos...
+                        </option>
+                    </select>
 
-                    <h3>
-                        <span class="produto-link">
-                            Loção de Limpeza Suave
-                        </span>
-                    </h3>
+                    <button type="button" id="adicionar-noite" class="botao">
+                        Adicionar à rotina da noite
+                    </button>
 
-                    <p>Marca · R$ valor</p>
+                </div>
 
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
+                <!-- Produtos adicionados à rotina -->
+                <div id="lista-rotina-noite" class="lista-rotina" aria-live="polite">
 
-                        <p>4.6/5</p>
-                    </div>
+                    <p class="rotina-vazia">
+                        Você ainda não adicionou produtos à sua rotina da noite.
+                    </p>
 
-                    <p>Compatibilidade</p>
-
-                </article>
-
-                <!-- Tratamento -->
-                <article class="produto-rotina">
-
-                    <div class="etapa">
-                        <div class="numero">2</div>
-                        <div class="titulo">Tratamento</div>
-                    </div>
-
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
-
-                    <h3>
-                        <span class="produto-link">
-                            Serum
-                        </span>
-                    </h3>
-
-                    <p>Marca · R$ valor</p>
-
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
-
-                        <p>4.6/5</p>
-                    </div>
-
-                    <p>Compatibilidade</p>
-
-                </article>
-
-                <!-- Hidratação -->
-                <article class="produto-rotina">
-
-                    <div class="etapa">
-                        <div class="numero">3</div>
-                        <div class="titulo">Hidratação</div>
-                    </div>
-
-                    <!-- Placeholder para foto -->
-                    <div class="foto-produto"></div>
-
-                    <h3>
-                        <span class="produto-link">
-                            Loção Hidratante Facial
-                        </span>
-                    </h3>
-
-                    <p>Marca · R$ valor</p>
-
-                    <div class="avaliacao">
-                        <svg class="estrela" width="16" height="16" aria-hidden="true">
-                            <use href="#estrela"></use>
-                        </svg>
-
-                        <p>4.6/5</p>
-                    </div>
-
-                    <p>Compatibilidade</p>
-
-                </article>
+                </div>
 
             </section>
 
@@ -297,18 +202,25 @@
 
         <!-- Definições reutilizáveis de ícones -->
         <svg class="definicoes-icones" aria-hidden="true">
+
             <symbol id="estrela" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27
-                       l-5 4.87 1.18 6.88L12 17.77
-                       l-6.18 3.25L7 14.14 2 9.27
-                       l6.91-1.01L12 2z"></path>
+                <path d="
+                    M12 2l3.09 6.26L22 9.27
+                    l-5 4.87 1.18 6.88L12 17.77
+                    l-6.18 3.25L7 14.14 2 9.27
+                    l6.91-1.01L12 2z
+                "></path>
             </symbol>
+
         </svg>
 
     </main>
 
+    <!-- Rodapé -->
     <footer class="rodape">
+
         <div class="rodape-conteudo">
+
             <img class="rodape-logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
 
             <p>
@@ -324,14 +236,22 @@
                 mas também a realidade econômica das usuárias.
             </p>
 
-            <p>&copy; 2026 Venustra. Todos os direitos reservados.</p>
+            <p>
+                &copy; 2026 Venustra. Todos os direitos reservados.
+            </p>
 
             <nav class="rodape-nav" aria-label="Rodapé">
                 <a href="#topo">Voltar ao topo</a>
             </nav>
+
         </div>
+
     </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="rotina.js"></script>
+
 </body>
 
 </html>
