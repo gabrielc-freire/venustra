@@ -493,3 +493,22 @@ p {
     .barra-pesquisa { width: 100%; max-width: 100%; }
     .produto { flex-basis: min(80vw, 280px); min-height: 410px; }
 }
+
+
+/* ---- Contorno verde suave dos cards ---- */
+
+.produto {
+    border: 1px solid rgba(11, 107, 82, 0.28);
+    box-shadow: 0 4px 16px rgba(6, 59, 48, 0.10);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto:hover {
+    border-color: rgba(11, 107, 82, 0.55);
+    box-shadow: 0 5px 18px rgba(6, 59, 48, 0.14);
+}
+
+/* Mantém o contorno de teclado visível */
+.produto:focus-within {
+    border-color: var(--escuro);
+}
