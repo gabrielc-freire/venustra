@@ -145,6 +145,66 @@
             }
         });
 
+        // ---- Uma pergunta por tela (sem JavaScript, todas aparecem juntas) ----
+        var perguntas = form.querySelectorAll(".pergunta");
+        var atual = 0;
+        var botaoVoltar = document.getElementById("botao-voltar");
+        var botaoContinuar = document.getElementById("botao-continuar");
+        var botaoEnviar = document.getElementById("botao-enviar");
+        var progresso = document.getElementById("progresso");
+        var progressoTexto = document.getElementById("progresso-texto");
+        var progressoCheia = document.getElementById("progresso-cheia");
+
+        function respondida(n) {
+            return !!form.querySelector('input[name="pergunta' + (n + 1) + '"]:checked');
+        }
+
+        function mostrar(n, focar) {
+            atual = n;
+            for (var i = 0; i < perguntas.length; i++) {
+                perguntas[i].classList.toggle("ativa", i === n);
+            }
+            var ultima = n === perguntas.length - 1;
+            progressoTexto.textContent = "Pergunta " + (n + 1) + " de " + perguntas.length;
+            progressoCheia.style.width = ((n + 1) / perguntas.length * 100) + "%";
+            botaoVoltar.hidden = n === 0;
+            botaoContinuar.hidden = ultima;
+            botaoEnviar.hidden = !ultima;
+            botaoContinuar.disabled = !respondida(n);
+            botaoEnviar.disabled = !respondida(n);
+            if (focar) {
+                var titulo = perguntas[n].querySelector("legend");
+                titulo.setAttribute("tabindex", "-1");
+                titulo.focus({ preventScroll: true });
+            }
+        }
+
+        function avancar() {
+            if (!respondida(atual) || atual >= perguntas.length - 1) return;
+            mostrar(atual + 1, true);
+        }
+
+        form.classList.add("passo-a-passo");
+        progresso.hidden = false;
+        mostrar(0, false);
+
+        botaoVoltar.addEventListener("click", function () { if (atual > 0) mostrar(atual - 1, true); });
+        botaoContinuar.addEventListener("click", avancar);
+
+        // Responder libera o botão. Com mouse ou toque já passa para a próxima;
+        // com teclado (setas) quem usa decide quando clicar em Continuar.
+        form.addEventListener("change", function () {
+            botaoContinuar.disabled = !respondida(atual);
+            botaoEnviar.disabled = !respondida(atual);
+        });
+        form.addEventListener("click", function (evento) {
+            var alvo = evento.target;
+            var ehOpcao = alvo.matches('input[type="radio"]') || alvo.closest("label");
+            if (ehOpcao && evento.detail > 0 && atual < perguntas.length - 1) {
+                setTimeout(avancar, 220);
+            }
+        });
+
         /*
          * Evento de envio do formulário.
          */
@@ -207,7 +267,14 @@
             localStorage.setItem("venustra_tipo_pele", tipo);
 
             // Redireciona para a página correspondente
-            window.location.href = PAGINAS[tipo];
+            var ir = function () { window.location.href = PAGINAS[tipo]; };
+
+            // Guarda o tipo de pele na conta (ou deixa pendente se ainda não entrou)
+            if (window.Venustra) {
+                window.Venustra.salvarPele(tipo, lido.respostas).then(ir, ir);
+            } else {
+                ir();
+            }
         });
     }
 

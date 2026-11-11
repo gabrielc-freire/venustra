@@ -41,7 +41,7 @@ function normalizarTexto(texto) {
 
 async function carregarProdutos() {
     try {
-        const resposta = await fetch("../Produtos/produtos.json");
+        const resposta = await fetch("../Produtos/Produtos.json");
 
         if (!resposta.ok) {
             throw new Error("Não foi possível acessar o catálogo.");
@@ -60,7 +60,7 @@ async function carregarProdutos() {
 
         mostrarErro([
             "Não foi possível carregar os produtos do catálogo.",
-            "Confira se o arquivo produtos.json existe e se a página está sendo executada por um servidor local."
+            "Confira se o arquivo Produtos.json existe e se a página está sendo executada por um servidor local."
         ]);
     }
 }

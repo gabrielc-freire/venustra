@@ -6,26 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário | Venustra</title>
     <link rel="icon" type="image/png" href="../inicioPI/img/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="styleQuestionario.css">
+    <script src="../js/venustra.js" defer></script>
     <script src="questionario.js" defer></script>
 </head>
 
 <body class="questionario" id="topo">
-    <header>
-        <img class="logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
-        <nav aria-label="Principal">
-            <a class="nav-link" href="../inicioPI/pi_inicio.html">Início</a>
-            <a class="nav-link" href="../Produtos/Produtos.html">Produtos</a>
-            <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
-            <a class="nav-link" href="../RotinaPI/rotina.html">Minha rotina</a>
-            <a class="nav-link" href="../Sobre/Sobre.html">Sobre</a>
+    <header class="topo">
+        <nav class="navbar navbar-expand-lg" aria-label="Principal">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../inicioPI/pi_inicio.html">
+                    <img class="logo" src="../inicioPI/img/logo-venustra.png" alt="Venustra, página inicial">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuVenustra"
+                    aria-controls="menuVenustra" aria-expanded="false" aria-label="Abrir menu de navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuVenustra">
+                    <div class="navbar-nav">
+                    <a class="nav-link" href="../inicioPI/pi_inicio.html">Início</a>
+                    <a class="nav-link" href="../Produtos/Produtos.html">Produtos</a>
+                    <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
+                    <a class="nav-link" href="../RotinaPI/rotina.html">Minha rotina</a>
+                    <a class="nav-link" href="../Sobre/Sobre.html">Sobre</a>
+                    </div>
+                    <div class="menu-conta"></div>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main>
         
 <form id="form-questionario" novalidate>
+
+    <h1>Questionário</h1>
+    <h2>Descubra seu tipo de pele</h2>
+
+    <!-- Progresso (aparece só com JavaScript) -->
+    <div class="progresso" id="progresso" hidden>
+        <p class="progresso-texto" id="progresso-texto" aria-live="polite">Pergunta 1 de 4</p>
+        <div class="progresso-barra" aria-hidden="true"><div class="progresso-cheia" id="progresso-cheia"></div></div>
+    </div>
 
     <!-- PERGUNTA 1 -->
     <div class="pergunta" id="pergunta-1">
@@ -146,10 +170,12 @@
     <!-- MENSAGEM DE ERRO -->
     <p id="erro-questionario" class="erro-questionario" role="alert" hidden></p>
 
-    <!-- BOTÃO -->
-    <button type="submit" class="botao botao-enviar">
-        Ver meu resultado
-    </button>
+    <!-- BOTÕES -->
+    <div class="passos">
+        <button type="button" class="botao botao-secundario" id="botao-voltar" hidden>Voltar</button>
+        <button type="button" class="botao" id="botao-continuar" hidden disabled>Continuar</button>
+        <button type="submit" class="botao botao-enviar" id="botao-enviar">Ver meu resultado</button>
+    </div>
 
 </form>
 
@@ -157,29 +183,18 @@
 
     <footer class="rodape">
         <div class="rodape-conteudo">
-            <img class="rodape-logo" src="../inicioPI/img/venustra_v4.2.png" alt="Logo Venustra">
-
-            <p>
-                O Venustra está sendo desenvolvido como um projeto acadêmico,
-                aplicando conceitos relacionados ao desenvolvimento de sistemas
-                e à criação de soluções digitais voltadas para problemas reais.
-            </p>
-
-            <p>
-                O projeto parte da ideia de que o acesso à informação também é
-                uma parte importante do autocuidado. Dessa forma, busca-se desenvolver
-                uma solução que considere não apenas as necessidades relacionadas à pele,
-                mas também a realidade econômica das usuárias.
-            </p>
-
-            <p>&copy; 2026 Venustra. Todos os direitos reservados.</p>
-
+            <a class="rodape-marca" href="../inicioPI/pi_inicio.html">
+                <img class="rodape-logo" src="../inicioPI/img/logo-rodape.png" alt="Venustra, página inicial">
+            </a>
+            <p>O Venustra está sendo desenvolvido como um projeto acadêmico, aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.</p>
+            <p>O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma, busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele, mas também a realidade econômica das usuárias.</p>
             <nav class="rodape-nav" aria-label="Rodapé">
-                <a href="../Sobre/Sobre.html">Sobre</a>
-                <a href="#topo">Voltar ao topo</a>
+                <a href="../inicioPI/pi_inicio.html">Início</a> <a href="../Produtos/Produtos.html">Produtos</a> <a href="../Comparar/Comparar.html">Comparar</a> <a href="../RotinaPI/rotina.html">Minha rotina</a> <a href="../Sobre/Sobre.html">Sobre</a>
             </nav>
+            <p class="rodape-copy">&copy; 2026 Venustra. Todos os direitos reservados.</p>
         </div>
     </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

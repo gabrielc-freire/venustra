@@ -42,6 +42,12 @@
     border-bottom: 1px solid var(--cinza-claro);
 }
 
+/* Esconde o radio padrão (continua acessível pelo teclado) */
+.questionario form input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
 
 /* ---- Alternativas ---- */
 .questionario form label {
@@ -61,6 +67,26 @@
     background-color: #f5fcf9;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(78, 131, 119, 0.08);
+}
+
+/* Bolinha personalizada */
+.questionario form label::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.8rem;
+    border: 2px solid #b8c4c0;
+    border-radius: 50%;
+}
+
+/* Alternativa selecionada */
+.questionario form input[type="radio"]:checked + label {
+    border-color: var(--detalhe2);
+    background-color: #eafaf5;
+    color: var(--realce);
+    font-weight: 700;
+    box-shadow: 0 0 0 1px var(--detalhe2);
 }
 
 /* Foco do teclado (o radio original está escondido) */
@@ -116,7 +142,6 @@
     border: 1px solid rgba(155, 28, 28, 0.3);
     border-radius: 0.7rem;
 }
-
 
 /* ---- Conteúdo das páginas de resultado ---- */
 .tipo-pele .resultado-intro {
@@ -212,196 +237,147 @@
     border: 2px solid var(--escuro);
 }
 
-
-/* =========================================
-   QUESTIONÁRIO - VENUSTRA
-   ========================================= */
-
-/* Organização de cada pergunta */
-.pergunta {
-    margin-bottom: 25px;
-    padding: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
-    scroll-margin-top: 100px;
+/* Aviso de resultado salvo / convite para criar conta */
+.tipo-pele .aviso-conta {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: .7rem 1rem;
+    line-height: 1.4;
+    background: var(--card);
+    border-left: 4px solid var(--detalhe);
+    border-radius: 0 .6rem .6rem 0;
 }
+.tipo-pele .aviso-conta a { color: var(--escuro); font-weight: 700; }
 
-/* Retira a borda padrão do fieldset */
-.pergunta fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-    min-width: 0;
-}
+/* =====================================================================
+   Design: questionário (uma pergunta por tela) e resultado
+   ===================================================================== */
+.questionario main { max-width: 1000px; margin: 0 auto; padding: var(--e8) var(--e6); box-sizing: border-box; }
 
-/* Título da pergunta */
+/* Sem caixa branca ao redor: as opções são os cartões */
+.questionario form { max-width: none; padding: 0; background: transparent; border: 0; box-shadow: none; }
+.questionario form h1 { margin: 0 0 var(--e2); text-align: left; font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--realce); }
+.questionario form h2 { margin: 0 0 var(--e5); text-align: left; font-size: 1rem; font-weight: 400; color: var(--cinza); }
+
+.progresso { margin: 0 0 var(--e6); }
+.progresso-texto { margin: 0 0 var(--e2); color: var(--tinta); font-size: .95rem; font-weight: 700; }
+.progresso-barra { height: 8px; background: var(--cinza-claro); border-radius: 999px; overflow: hidden; }
+.progresso-cheia { height: 100%; width: 0; background: var(--escuro); border-radius: 999px; transition: width .3s ease; }
+
+/* Uma pergunta por tela (sem JavaScript, todas aparecem juntas) */
+.passo-a-passo .pergunta { display: none; }
+.passo-a-passo .pergunta.ativa { display: block; }
+.pergunta { margin: 0 0 var(--e6); }
+.pergunta fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+/* Pergunta em destaque */
 .pergunta legend {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-/* Organização das alternativas */
-.alternativas {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-/* Cada alternativa */
-.alternativas label {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* Botões de seleção */
-.alternativas input {
-    margin-top: 4px;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
-/* Destaque da pergunta não respondida */
-.pergunta.sem-resposta {
-    border: 2px solid #c0392b;
-}
-
-/* Título da pergunta com erro */
-.pergunta.sem-resposta legend {
-    color: #c0392b;
-}
-
-/* Mensagem de erro */
-.erro-questionario {
-    color: #c0392b;
-    font-weight: 600;
-    margin: 15px 0;
-}
-
-/* Garante que mensagens ocultas não apareçam */
-.erro-questionario[hidden] {
-    display: none;
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 600px) {
-    .alternativas {
-        grid-template-columns: 1fr;
-    }
-
-    .pergunta {
-        padding: 15px;
-    }
-}
-
-/* =========================================
-   QUESTIONÁRIO - VENUSTRA
-   ========================================= */
-
-/* Organização de cada pergunta */
-.pergunta {
-    margin-bottom: 25px;
-    padding: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
-    scroll-margin-top: 100px;
-}
-
-/* Retira a borda padrão do fieldset */
-.pergunta fieldset {
-    border: none;
+    float: left;
+    width: 100%;
+    margin: 0 0 var(--e5);
     padding: 0;
-    margin: 0;
-    min-width: 0;
+    color: var(--preto);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.25;
 }
+.pergunta legend + .alternativas { clear: both; }
+.pergunta legend:focus { outline: none; }
 
-/* Título da pergunta */
-.pergunta legend {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
+/* Opções em cartões, 2 por linha */
+.alternativas { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--e4) var(--e5); }
 
-/* Organização das alternativas */
-.alternativas {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-/* Cada alternativa */
-.alternativas label {
+.questionario .alternativas label {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
+    align-items: center;
+    gap: var(--e3);
+    min-height: 72px;
+    margin: 0;
+    padding: var(--e4) var(--e5);
+    box-sizing: border-box;
+    color: var(--texto);
+    font-size: 1.05rem;
+    line-height: 1.35;
+    background: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: var(--e4);
+    box-shadow: var(--sombra-card);
     cursor: pointer;
 }
+.questionario .alternativas label:hover { border-color: var(--escuro); background: var(--card); }
 
+.questionario .alternativas label::before { content: none; }
 
-/* Botões de seleção */
-.alternativas input[type="radio"] {
-    appearance: auto;
-    -webkit-appearance: radio;
-
-    width: 18px;
-    height: 18px;
-    min-width: 18px;
-
-    margin: 3px 0 0;
-    flex-shrink: 0;
-
-    accent-color: #03BB85;
+/* Bolinha de seleção */
+.questionario .alternativas input[type="radio"] {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    box-sizing: border-box;
+    background: transparent;
+    border: 2px solid var(--escuro);
+    border-radius: 50%;
     cursor: pointer;
 }
+.questionario .alternativas input[type="radio"]:checked { background: radial-gradient(circle, var(--escuro) 0 45%, transparent 50%); }
+.questionario .alternativas input[type="radio"]:focus-visible { outline: 3px solid var(--escuro); outline-offset: 3px; }
+.questionario .alternativas label:has(input[type="radio"]:checked) { border-color: var(--escuro); background: var(--card); box-shadow: 0 0 0 1px var(--escuro); }
 
-/* Alternativa selecionada */
-.alternativas label:has(input[type="radio"]:checked) {
-    border-color: #03BB85;
-    background-color: #eaf8f3;
+/* Pergunta sem resposta (aviso de erro) */
+.pergunta.sem-resposta legend { color: var(--erro); }
+.pergunta.sem-resposta .alternativas label { border-color: var(--erro); }
+
+.passos { display: flex; flex-wrap: wrap; gap: var(--e3); margin-top: var(--e6); }
+.questionario form .botao-enviar { display: inline-block; margin: 0; padding: var(--e3) var(--e5); font-size: 1rem; }
+.passos .botao:disabled { opacity: .5; cursor: default; box-shadow: none; }
+.erro-questionario { margin: var(--e4) 0 0; color: var(--erro); font-weight: 700; }
+.erro-questionario[hidden] { display: none; }
+
+@media (max-width: 700px) {
+    .questionario main { padding: var(--e7) var(--e4); }
+    .alternativas { grid-template-columns: 1fr; }
 }
 
-/* Texto da alternativa selecionada */
-.alternativas label:has(input[type="radio"]:checked) span {
-    font-weight: 600;
-}
+/* ---- Resultado: foto e resumo à esquerda, características e dica à direita ---- */
+.tipo-pele main { max-width: var(--largura); margin: 0 auto; padding: var(--e8) var(--e6) 0; box-sizing: border-box; }
 
-/* Destaque da pergunta não respondida */
-.pergunta.sem-resposta {
-    border: 2px solid #c0392b;
+.resultado {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--e7);
+    align-items: start;
 }
-
-/* Título da pergunta com erro */
-.pergunta.sem-resposta legend {
-    color: #c0392b;
+.resultado-foto {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 var(--e5);
+    object-fit: cover;
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-card);
 }
+.resultado-rotulo { margin: 0 0 var(--e1); color: var(--escuro); font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.tipo-pele main h1 { margin: 0 0 var(--e3); font-size: clamp(2rem, 4vw, 2.8rem); }
+.resultado-intro { max-width: 480px; margin: 0 0 var(--e5); line-height: 1.55; }
+.acoes { display: flex; flex-wrap: wrap; gap: var(--e3); }
 
-/* Mensagem de erro */
-.erro-questionario {
-    color: #c0392b;
-    font-weight: 600;
-    margin: 15px 0;
+.tipo-pele .bloco h2 { margin: 0 0 var(--e4); font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.dica-economizar { margin-top: var(--e6); padding: var(--e5); background: var(--detalhe); color: var(--tinta); border-radius: var(--raio-card); box-shadow: var(--sombra-botao); }
+.dica-economizar h2 { margin: 0 0 var(--e2); color: var(--tinta); font-size: 1.05rem; }
+.dica-economizar p { margin: 0; line-height: 1.5; }
+
+.tipo-pele main > .bloco { margin-top: var(--e8); }
+.tipo-pele .aviso { max-width: 800px; margin: var(--e7) auto 0; color: var(--cinza); font-size: .95rem; text-align: center; }
+.aviso-conta { max-width: 480px; margin: 0 0 var(--e4); }
+
+@media (max-width: 800px) {
+    .resultado { grid-template-columns: 1fr; gap: var(--e6); }
+    .tipo-pele main { padding: var(--e7) var(--e4) 0; }
 }
-
-/* Garante que mensagens ocultas não apareçam */
-.erro-questionario[hidden] {
-    display: none;
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 600px) {
-    .alternativas {
-        grid-template-columns: 1fr;
-    }
-
-    .pergunta {
-        padding: 15px;
-    }
-}
+.resultado .acoes { justify-content: flex-start; }

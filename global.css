@@ -22,51 +22,84 @@
     font-display: swap;
 }
 
-/* -----------Cores-----------*/
+/* =====================================================================
+   Venustra | Design global 
+   Cores, tipografia, espaçamentos, cabeçalho, botões, formulários e rodapé.
+   Cada página só acrescenta o que é específico dela.
+   ===================================================================== */
 
+/* ----------- Cores -----------
+   Contraste (WCAG): texto principal 7:1 ou mais; texto verde sobre o fundo 4.5:1 ou mais;
+   texto creme sobre o rodapé 6.3:1. O verde-menta (--detalhe) é usado em fundos de botão
+   e detalhes, nunca como cor de texto sobre claro. */
 :root {
     --corpo: #f9fcfcf8;
     --fundo: #faf8f2;
     --branco: #fff;
     --preto: #000;
-    --detalhe: #79d6b7;
-    --detalhe2:#0fbbb2f8;
-    --realce: #4e8377;
-    --escuro: #0b6b52;
-    --tinta: #063b30;
+    --texto: #14201d;
+    --detalhe: #79d6b7;        /* botões e detalhes */
+    --detalhe-suave: #cfeee3;  /* divisores e realces leves */
+    --detalhe2: #0fbbb2f8;
+    --escuro: #0b6b52;         /* verde de texto e de hover */
+    --tinta: #063b30;          /* verde quase preto: rótulos, menu e texto de botão */
+    --realce: #35655a;         /* rodapé e títulos verdes (creme sobre ele: 6.3:1) */
     --card: #f4fbf9;
-    --cinza: #6b7280;
+    --cinza: #5b6470;          /* texto secundário (5.6:1 no fundo claro) */
     --cinza-claro: #e7eeeb;
     --borda: #ddd;
     --borda-forte: #ccc;
-    --borda-campo: #9db4ae;
+    --borda-campo: #7a9b93;    /* bordas de campos (3:1 sobre branco) */
     --erro: #9b1c1c;
-} 
 
-/* -----------Base-----------*/
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    /* Espaçamentos (escala de 8 px): perto = relacionado, longe = separado */
+    --e1: 4px;
+    --e2: 8px;
+    --e3: 12px;
+    --e4: 16px;
+    --e5: 24px;
+    --e6: 32px;
+    --e7: 48px;
+    --e8: 64px;
+    --e9: 96px;
+
+    --raio-card: 23px;
+    --raio-img: 20px;
+    --sombra-card: 0 4px 16px rgba(6, 59, 48, .10);
+    --sombra-botao: 0 4px 10px rgba(6, 59, 48, .18);
+    --largura: 1120px;         /* largura máxima do conteúdo */
+    --altura-topo: 80px;
 }
 
-@media (prefers-reduced-motion: reduce) {html {scroll-behavior: auto;}}
+/* ----------- Base ----------- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--altura-topo) + 16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+}
 
 body {
     margin: 0;
     background: var(--fundo);
-    color: var(--preto);
-    font-family: "Caviar Dreams", sans-serif;}
-
-[hidden] {
-    display: none !important;
+    color: var(--texto);
+    font-family: "Caviar Dreams", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-}
+[hidden] { display: none !important; }
+
+button, input, select, textarea { font-family: inherit; }
+
+img { max-width: 100%; }
+
+a { color: var(--escuro); }
+
+h1, h2, h3 { color: var(--preto); line-height: 1.2; }
 
 /* Texto só para leitores de tela */
 .so-leitor {
@@ -81,102 +114,140 @@ textarea {
     border: 0;
 }
 
-/* -------------Cabeçalho----------- */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
+/* Foco visível para quem usa teclado */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--escuro);
+    outline-offset: 3px;
+}
+
+/* ----------- Cabeçalho -----------
+   Logo à esquerda, menu centralizado, botão de conta à direita. */
+header.topo {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: var(--corpo);
-    opacity: 70%;
+    z-index: 20;
+    background: rgba(249, 252, 252, .97);   /* fundo translúcido; o conteúdo continua 100% opaco */
+    border-bottom: 1px solid var(--cinza-claro);
+    box-shadow: 0 2px 12px rgba(6, 59, 48, .06);
 }
 
+header.topo .navbar { padding: 0; }
+
+header.topo .container-fluid {
+    max-width: 1440px;
+    min-height: var(--altura-topo);
+    padding: var(--e2) var(--e6);
+    gap: var(--e5);
+}
+
+header.topo .navbar-brand {
+    margin: 0;
+    padding: 0;
+    display: block;
+    border-radius: var(--e2);
+}
+
+/* Logo em destaque: maior que antes, com respiro ao redor */
 .logo {
-    width: 90px;
-    margin-left: 2%;
+    display: block;
+    height: 64px;
+    width: auto;
+    margin: 0;
+    transition: transform .2s ease;
 }
 
-header::after{
-    content: "";
-    width: 90px;
+.navbar-brand:hover .logo { transform: scale(1.04); }
+
+header.topo .navbar-toggler {
+    margin-left: auto;
+    border-color: var(--tinta);
+    color: var(--tinta);
 }
 
-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 4rem;
-    justify-content: center;
-}
+header.topo .navbar-nav { gap: var(--e1) var(--e5); }
 
 .nav-link {
-    color: var(--preto);
-    text-decoration: none;
+    padding: var(--e2) var(--e3);
+    color: var(--tinta);
+    font-size: .95rem;
     font-weight: 700;
-    padding: 0.35rem 0.7rem;
-    border: 1px solid rgba(250, 248, 243, 0.35);
-    border-radius: 0.4rem;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+    border-radius: var(--e2);
+    transition: color .2s ease, background-color .2s ease;
 }
 
-.nav-link:hover {
-   box-shadow:
-    12px 12px 12px rgb(245, 244, 244) inset,
-    -10px -10px 10px white inset;
-    text-decoration: underline var(--detalhe);
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--escuro);
+    background: var(--card);
+    text-decoration: underline 2px var(--detalhe);
+    text-underline-offset: 6px;
 }
 
-/* Página em que o visitante está */
+/* Página em que a pessoa está */
 .nav-link[aria-current="page"] {
-    text-decoration: underline var(--detalhe);
-    text-underline-offset: 4px;
+    color: var(--tinta);
+    text-decoration: underline 3px var(--detalhe);
+    text-underline-offset: 8px;
 }
 
-/* ---------  Faixa de Imagem ------------ */
-.faixa {
-    position: sticky;
-    top: 0;
-    z-index: 0;
-    height: 80vh;
-    background: url("inicioPI/img/banner.jpg") center / cover no-repeat;
-    display: flex;
-    align-items:center;
-    justify-content: left;
-    text-align: left;
+/* Botão Entrar / Olá, nome */
+.menu-conta .botao-conta {
+    display: inline-block;
+    padding: var(--e2) var(--e5);
+    color: var(--tinta);
+    background: var(--detalhe);
+    font-size: .95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 2.5rem;
+    box-shadow: var(--sombra-botao);
+    transition: background-color .2s ease, color .2s ease;
 }
 
-.faixa-texto {
-    color: rgb(9, 10, 9);
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 1.5rem;
-    margin-left: 2%;
+.menu-conta .botao-conta:hover,
+.menu-conta .botao-conta:focus-visible {
+    background: var(--escuro);
+    color: #fff;
 }
 
-.faixa-texto h2 {
-    font-size: 2.3rem;
-    margin: 0 0 1rem;
-}
-/* Palavra destacada na faixa (verde escuro para ter contraste com a foto) */
-.confianca {
-    display: inline;
-    color: #036447;
-    text-decoration: underline;
+/* Computador: três colunas (vazio | menu centralizado | conta) */
+@media (min-width: 992px) {
+    header.topo .navbar-expand-lg .navbar-collapse {
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+    header.topo .navbar-nav { grid-column: 2; flex-direction: row; }
+    header.topo .menu-conta { grid-column: 3; justify-self: end; }
 }
 
-/* ---------- Botões -------- */
+/* Celular e tablet: menu em lista, dentro do botão ☰ */
+@media (max-width: 991.98px) {
+    header.topo .container-fluid { padding: var(--e2) var(--e4); }
+    .logo { height: 52px; }
+    header.topo .navbar-collapse { padding: var(--e3) 0 var(--e4); }
+    header.topo .navbar-nav { gap: var(--e1); }
+    header.topo .nav-link { padding: var(--e3) var(--e4); }
+    header.topo .menu-conta { margin-top: var(--e3); }
+}
+
+/* ----------- Botões ----------- */
 .botao {
     display: inline-block;
-    padding: 0.6rem 1.4rem;
+    padding: var(--e3) var(--e5);
     background: var(--detalhe);
     color: var(--tinta);
     font-size: 1rem;
     font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
     text-decoration: none;
+    border: 2px solid transparent;
     border-radius: 2.5rem;
+    box-shadow: var(--sombra-botao);
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
 }
 
 .botao:hover,
@@ -186,9 +257,28 @@ header nav {
     color: #fff;
 }
 
-.botao:focus-visible {
-    outline: 3px solid var(--escuro);
-    outline-offset: 3px;
+.botao:active { transform: translateY(1px); }
+
+/* Botão grande dos banners */
+.botao-grande,
+.botao-faixa {
+    display: inline-block;
+    padding: var(--e4) var(--e6);
+    background: var(--detalhe);
+    color: var(--tinta);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 2.5rem;
+    box-shadow: var(--sombra-botao);
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.botao-grande:hover, .botao-grande:focus-visible,
+.botao-faixa:hover, .botao-faixa:focus-visible {
+    background: var(--escuro);
+    color: #fff;
 }
 
 .botao-secundario {
@@ -204,134 +294,157 @@ header nav {
     color: var(--escuro);
 }
 
-/* ------------ Conteúdo (fundo claro que sobrepõe a faixa) --------------- */
+/* ----------- Banner (faixa de imagem das páginas) -----------
+   Altura de 565 px como no design; o texto fica sobre um degradê claro
+   para ter contraste com qualquer parte da foto. */
+.faixa {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(420px, 39vw, 565px);
+    padding: var(--e8) var(--e6);
+    box-sizing: border-box;
+    background: url("inicioPI/img/banner.jpg") center / cover no-repeat;
+}
+
+.faixa::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(250, 248, 242, .9) 0%, rgba(250, 248, 242, .7) 32%, rgba(250, 248, 242, 0) 62%);
+}
+
+.faixa-texto {
+    position: relative;
+    max-width: 440px;
+    margin-left: max(var(--e6), calc((100% - var(--largura)) / 2));
+    color: var(--preto);
+    font-family: "Caviar Dreams", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.faixa-texto h1,
+.faixa-texto h2 {
+    margin: 0 0 var(--e3);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+}
+
+.faixa-texto p { margin: 0 0 var(--e5); font-size: 1.05rem; line-height: 1.5; }
+
+/* Palavra destacada (verde escuro: 6:1 sobre o creme) */
+.confianca {
+    color: var(--escuro);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+
+/* ----------- Conteúdo ----------- */
 .conteudo {
     position: relative;
-    z-index: 1;
-    background: var(--fundo);
-    padding: 4rem 2rem;
-    min-height: 100vh;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: var(--e8) var(--e6);
+    box-sizing: border-box;
+    background: transparent;
 }
 
-/* Coluna central de 800px */
+.conteudo h1 { margin: 0 0 var(--e4); font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.conteudo h2 { margin: 0 0 var(--e4); font-size: clamp(1.5rem, 2.6vw, 2.25rem); }
+.conteudo h3 { margin: 0 0 var(--e2); font-size: 1.25rem; }
+.conteudo p { margin: 0 0 var(--e4); line-height: 1.55; }
+
+/* Blocos de texto corrido ficam em coluna estreita (mais fácil de ler) */
 .conteudo > h1,
 .conteudo > p,
-.conteudo > section {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+.conteudo > section { max-width: 800px; margin-left: auto; margin-right: auto; }
+.conteudo > section { margin-bottom: var(--e8); }
 
-.conteudo > section {
-    margin-bottom: 3.5rem;
-}
-
-.conteudo h1 {
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-}
-
-.conteudo h2 {
-    font-size: 2rem;
-    margin: 0 0 1rem;
-}
-
-.conteudo h3 {
-    font-size: 1.2rem;
-}
-
-.conteudo p {
-    line-height: 1.5;
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-/* Listas em forma de cartões (passos, princípios, dicas) */
-.conteudo ul,
-.conteudo ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+/* Listas em cartões (passos, princípios, dicas) */
+.conteudo ul, .conteudo ol { list-style: none; padding: 0; margin: 0; }
 
 .conteudo li {
-    padding: 0.8rem 1rem;
-    margin-bottom: 0.6rem;
+    padding: var(--e3) var(--e4);
+    margin-bottom: var(--e2);
     background: var(--card);
     border-left: 4px solid var(--detalhe);
-    border-radius: 0 0.6rem 0.6rem 0;
+    border-radius: 0 var(--e3) var(--e3) 0;
     line-height: 1.5;
 }
 
-/* ---------- Campos de formulário ---------- */
-.conteudo label {
+/* ----------- Formulários (campo = rótulo + controle, bem juntos) ----------- */
+.conteudo label,
+.formulario label {
     display: block;
-    margin: 0.9rem 0 0.3rem;
-    font-size: 0.9rem;
+    margin: var(--e4) 0 var(--e2);
+    color: var(--tinta);
+    font-size: .95rem;
     font-weight: 700;
 }
 
 .conteudo input:not([type="radio"]):not([type="checkbox"]),
 .conteudo select,
-.conteudo textarea {
+.conteudo textarea,
+.formulario input:not([type="radio"]):not([type="checkbox"]),
+.formulario select,
+.formulario textarea {
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
-    padding: 0.6rem 0.8rem;
-    font-size: 1rem;
+    min-height: 46px;
+    padding: var(--e3) 13px;
     color: var(--preto);
+    font-size: 1rem;
     background: var(--branco);
     border: 1px solid var(--borda-campo);
-    border-radius: 0.5rem;
+    border-radius: var(--e2);
+    box-shadow: 0 3px 3px rgba(6, 59, 48, .10);
 }
+
+.conteudo textarea, .formulario textarea { min-height: 120px; resize: vertical; }
 
 .conteudo input:focus-visible,
 .conteudo select:focus-visible,
-.conteudo textarea:focus-visible {
-    outline: 3px solid rgba(3, 187, 133, 0.45);
+.conteudo textarea:focus-visible,
+.formulario input:focus-visible,
+.formulario select:focus-visible,
+.formulario textarea:focus-visible {
+    outline: 3px solid rgba(11, 107, 82, .35);
     border-color: var(--escuro);
 }
 
-.conteudo input::placeholder {
-    color: var(--cinza);
-}
+::placeholder { color: var(--cinza); opacity: 1; }
 
-/* ---------- Rodapé ---------- */
+/* ----------- Rodapé -----------
+   Fundo verde escuro com texto creme (6.3:1), logo clara e links lado a lado. */
 .rodape {
-    position: relative;   /* necessário para o z-index valer */
-    z-index: 1;           /* fica acima da faixa */
+    position: relative;
+    margin-top: var(--e8);
+    padding: var(--e7) var(--e6);
     background: var(--realce);
-    color: var(--preto);
-    padding: 3rem 2rem;
+    color: var(--fundo);
 }
 
 .rodape-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e5);
     max-width: 800px;
     margin: 0 auto;
 }
 
-.rodape-logo {
-    display: block;
-    width: 100px;
-    height: auto;
-    margin-bottom: 1.2rem;
-}
+.rodape-marca { display: inline-block; align-self: flex-start; }
 
-.rodape p {
-    margin: 0 0 1rem;
-    line-height: 1.5;
-}
+.rodape-logo { display: block; height: 84px; width: auto; }
 
-.rodape-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 2rem;
-}
+.rodape p { margin: 0; line-height: 1.6; }
+
+.rodape-nav { display: flex; flex-wrap: wrap; gap: var(--e2) var(--e6); }
 
 .rodape a {
-    color: var(--preto);
+    color: var(--fundo);
     font-weight: 700;
     text-decoration: none;
 }
@@ -339,165 +452,38 @@ header nav {
 .rodape a:hover,
 .rodape a:focus-visible,
 .rodape a[aria-current="page"] {
-    text-decoration: underline;
+    text-decoration: underline 2px var(--detalhe);
+    text-underline-offset: 5px;
 }
 
-/* ---------- Celular ---------- */
+.rodape a:focus-visible { outline-color: var(--fundo); }
+
+.rodape .rodape-copy {
+    padding-top: var(--e5);
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    font-size: .95rem;
+}
+
+/* ----------- Celular ----------- */
 @media (max-width: 600px) {
-    .faixa-texto h2 {
-        font-size: 1.8rem;
-    }
-
-    .conteudo {
-        padding: 3rem 1.2rem;
-    }
-
-    .conteudo h2 {
-        font-size: 1.6rem;
-    }
-
-    .rodape {
-        padding: 2.5rem 1.2rem;
-    }
+    .conteudo { padding: var(--e7) var(--e4); }
+    .faixa { padding: var(--e7) var(--e4); min-height: 460px; }
+    .faixa-texto { margin-left: 0; }
+    .rodape { padding: var(--e7) var(--e4); }
+    .rodape-nav { gap: var(--e2) var(--e5); }
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--corpo);
-    opacity: 70%;
+/* Rótulo pequeno acima de um título (ex.: COMPARAR PRODUTOS) */
+.sobretitulo {
+    margin: 0 0 var(--e2);
+    color: var(--escuro);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 }
 
-.logo {
-    width: 90px;
-    margin-left: 2%;
+/* Celular: o texto do banner cai sobre a foto, então o véu claro cobre tudo (contraste) */
+@media (max-width: 700px) {
+    .faixa::before { background: rgba(250, 248, 242, .84) !important; }
 }
-
-header::after {
-    content: "";
-    width: 90px;
-}
-
-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 4rem;
-    justify-content: center;
-}
-
-.nav-link {
-    color: var(--preto);
-    text-decoration: none;
-    font-weight: 900;
-    font-family: "Caviar Dreams", sans-serif;
-    padding: 0.35rem 0.7rem;
-    border: 1px solid rgba(250, 248, 243, 0.35);
-    border-radius: 0.4rem;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.nav-link:hover {
-    box-shadow:
-        12px 12px 12px rgb(245, 244, 244) inset,
-        -10px -10px 10px white inset;
-    text-decoration: underline var(--detalhe);
-}
-
-/* Faixa compartilhada pelas páginas Início, Comparar e Sobre. */
-.faixa {
-    position: sticky;
-    top: 0;
-    z-index: 0;
-    height: 80vh;
-    background: url("inicioPI/img/banner.jpg") center / cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: left;
-}
-
-.faixa-texto {
-    color: rgb(9, 10, 9);
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 1.5rem;
-    margin-left: 2%;
-}
-
-.faixa-texto h2 {
-    font-size: 2.3rem;
-    margin: 0 0 1rem;
-}
-
-.confianca {
-    text-decoration: underline;
-}
-
-.botao-faixa {
-    display: inline-block;
-    padding: 0.6rem 1.4rem;
-    background: var(--detalhe);
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid rgba(250, 248, 243, 0.35);
-    border-radius: 2.5rem;
-}
-
-.botao-faixa:hover {
-    background-color: var(--detalhe);
-    border: 1px solid rgb(7, 131, 44);
-    border-radius: 2.5rem;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.conteudo {
-    position: relative;
-    z-index: 1;
-    background: #faf8f2;
-    padding: 4rem 2rem;
-    min-height: 100vh;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.conteudo h1,
-.conteudo p {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "Caviar Dreams", sans-serif;
-}
-
-/* Corrige o banner da página inicial durante a rolagem */
-.inicio .faixa {
-    position: relative;
-}
-
-/* Ajustes da faixa em telas pequenas */
-@media (max-width: 600px) {
-    .faixa {
-        height: auto;
-        min-height: 70vh;
-        padding: 2rem 1.2rem;
-        box-sizing: border-box;
-        background-position: center;
-    }
-    .faixa-texto {
-        max-width: 100%;
-        margin-left: 0;
-        font-size: 1rem;
-    }
-    .faixa-texto h2 {
-        font-size: clamp(1.5rem, 6vw, 1.8rem);
-        line-height: 1.25;
-        margin-bottom: 0.6rem;
-        overflow-wrap: break-word;
-    }
-    .faixa-texto p{
-        line-height: 1.5;
-    }
-}
-

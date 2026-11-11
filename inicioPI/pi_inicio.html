@@ -17,127 +17,108 @@
 </head>
 
 <body class="inicio">
-    <header class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <!-- Logo do Venustra -->
-            <a class="navbar-brand" href="pi_inicio.html">
-                <img class="logo" src="img/venustra_v4.2.png" alt="Logo Venustra"> 
-            </a>
-            
-            <!-- Botão do menu do celular -->
-             <button class="navbar-toggler" 
-                type="button"
-                data-bs-target="#menuVenustra"
-                data-bs-toggle="collapse"
-                aria-controls="menuVenustra" 
-                aria-expanded="false"
-                aria-label="Abrir menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Links de navegação -->
-             <nav class="collapse navbar-collapse" id="menuVenustra">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="pi_inicio.html" aria-current="page">Início</a>
+    <header class="topo">
+        <nav class="navbar navbar-expand-lg" aria-label="Principal">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../inicioPI/pi_inicio.html">
+                    <img class="logo" src="../inicioPI/img/logo-venustra.png" alt="Venustra, página inicial">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuVenustra"
+                    aria-controls="menuVenustra" aria-expanded="false" aria-label="Abrir menu de navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuVenustra">
+                    <div class="navbar-nav">
+                    <a class="nav-link" href="../inicioPI/pi_inicio.html" aria-current="page">Início</a>
                     <a class="nav-link" href="../Produtos/Produtos.html">Produtos</a>
                     <a class="nav-link" href="../Comparar/Comparar.html">Comparar</a>
                     <a class="nav-link" href="../RotinaPI/rotina.html">Minha rotina</a>
                     <a class="nav-link" href="../Sobre/Sobre.html">Sobre</a>
+                    </div>
+                    <div class="menu-conta"></div>
                 </div>
-             </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <!-- Faixa de imagem: fica fixa no topo enquanto o conteúdo sobe por cima -->
-        <div class="faixa" role="img" aria-label="Banner Venustra">
+        <section class="faixa" aria-labelledby="t-faixa">
             <div class="faixa-texto">
-                <h2>Transformando</h2>
-                <h2>Cuidado</h2>
-                <h2>Em <span class="confianca">Confiança</span>.</h2>
-                <p>Descubra seu tipo de pele e encontre <br>produtos que combinam com suas <br>necessidades e seu orçamento.</p>
-                <a class="botao-faixa" href="../questionarioPI/questionario.html" class="botao-faixa btn btn-success">Descobrir meu tipo de pele</a>
+                <h1 id="t-faixa">Transformando</h1>
+                <h1>Cuidado</h1>
+                <h1>Em <span class="confianca">Confiança.</span></h1>
+                <p>Descubra seu tipo de pele e encontre produtos que combinam com suas necessidades e seu orçamento.</p>
+                <a class="botao-grande" href="../questionarioPI/questionario.html">Descobrir meu tipo de pele</a>
             </div>
-        </div>
+        </section>
 
-        <!-- Conteúdo em fundo branco que sobrepõe a faixa ao rolar -->
-        <section class="conteudo container">
-            <h1>Bem-vinda à Venustra</h1>
-            <p>Nosso objetivo é auxiliar você, mulher, na escolha de produtos cosméticos ao traçar o perfil geral de sua pele, além de traçar uma rotina de skincare contínua!</p>
-            <br> <br>
-            <h1>Tipos de Pele</h1>
+        <section class="secao secao-estreita" aria-labelledby="t-boas-vindas">
+            <h2 id="t-boas-vindas">Bem-vinda à Venustra</h2>
+            <p class="destaque">Nosso objetivo é auxiliar você, mulher, na escolha de produtos cosméticos ao traçar o perfil geral de sua pele, além de traçar uma rotina de skincare contínua!</p>
+        </section>
 
-            <section class="carrossel" aria-label="Galeria de imagens">
-                <button class="seta seta-esq" type="button" aria-label="Imagem anterior">&#10094;</button>
-                <div class="carrossel-janela">
-                    <div class="carrossel-trilho">
+        <section class="secao" aria-labelledby="t-tipos">
+            <h2 id="t-tipos">Tipos de pele</h2>
+            <ul class="cartoes-pele">
+                <li>
+                    <a class="cartao-pele">
+                        <img src="img/peles/pele_normal.jpg" alt="Close de uma pele normal, uniforme e equilibrada">
+                        <h3>Pele normal</h3>
+                        <p>“Normal” é o termo usado para a pele balanceada. O termo científico é eudérmica: nem muito oleosa, nem muito seca.</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="cartao-pele">
+                        <img src="img/peles/pele_seca.jpg" alt="Close de uma pele seca, com textura áspera">
+                        <h3>Pele seca</h3>
+                        <p>Pele incapaz de reter água no volume necessário, geralmente por produzir poucos lipídios.</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="cartao-pele">
+                        <img src="img/peles/pele_oleosa.jpg" alt="Close de uma pele oleosa, com poros visíveis">
+                        <h3>Pele oleosa</h3>
+                        <p>Alta produção de sebo. É mais propensa a cravos e a diversas formas de acne.</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="cartao-pele">
+                        <img src="img/peles/pele_mista.jpeg" alt="Rosto com a zona T (testa, nariz e queixo) destacada">
+                        <h3>Pele mista</h3>
+                        <p>A zona T (testa, nariz e queixo) difere das bochechas.</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
 
-                        <figure class="slide">
-                            <img src="img/peles/pele_normal.jpg" alt="Pele Normal">
-                            <figcaption>
-                                <h3>Pele Normal</h3>
-                                <span>"Normal" é um termo largamente utilizado para se  referir à pele balanceada. O termo científico para pele saudável é eudérmica. A  zona T (testa, queixo e nariz) pode
-                                     ser um pouco oleosa, mas o sebo total e a umidade são equilibrados e a pele nem é muito oleosa nem muito seca.</span>
-                            </figcaption>
-                        </figure>
+        <section class="secao secao-estreita" aria-labelledby="t-contato">
+            <h2 id="t-contato">Entre em contato</h2>
+            <p class="destaque">Possui alguma dúvida ou reclamação? Preencha os campos abaixo para que possamos dar suporte ao seu problema.</p>
+            <form class="formulario" id="form-contato">
+                <label for="contato-nome">Nome</label>
+                <input type="text" id="contato-nome" placeholder="Seu nome" autocomplete="name" required>
 
-                        <figure class="slide">
-                            <img src="img/peles/pele_seca.jpg" alt="Pele Seca">
-                            <figcaption>
-                                <h3>Pele Seca</h3>
-                                <span>O termo “seco” é utilizado para descrever uma pele incapaz de reter água no volume necessário. Isso geralmente está associado à produção reduzida de lipídios na pele.
-                                    Por causa da falta de sebo, a pele seca carece de lipídios necessários para reter umidade e construir um escudo protetor contra influências externas.
-                                </span>
-                            </figcaption>
-                        </figure>
+                <label for="contato-email">E-mail</label>
+                <input type="email" id="contato-email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
 
-                        <figure class="slide">
-                            <img src="img/peles/pele_oleosa.jpg" alt="Pele Oleosa">
-                            <figcaption>
-                                <h3>Pele Oleosa</h3>
-                                <span>Pele oleosa "Oleosa" descreve um tipo de pele com alta produção de sebo. A pele oleosa está propensa a cravos (negros e brancos) e diversas formas de acne.</span>
-                            </figcaption>
-                        </figure>
+                <label for="contato-mensagem">Mensagem</label>
+                <textarea id="contato-mensagem" placeholder="Escreva aqui" required></textarea>
 
-                        <figure class="slide">
-                            <img src="img/peles/pele_mista.jpeg" alt="Pele Mista">
-                            <figcaption>
-                                <h3>Pele Mista</h3>
-                                <span>Na pele mista, os tipos de pele variam na zona T e nas bochechas. A chamada zona T pode diferir consideravelmente – de uma zona muito delgada a uma área estendida.</span>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <button class="seta seta-dir" type="button" aria-label="Próxima imagem">&#10095;</button>
-            </section><br> <br> <br>
-
-            <section>
-                <h1>Entre em contato:</h1>
-                <p>Possui alguma dúvida ou reclamação? Preencha os campos abaixo <br>para que possamos dar suporte ao seu problema.</p>
-                <p>
-                    <label for="nome"></label>
-                    <input type="text" class="form-control" placeholder="Seu Nome">
-                </p>
-                <p>
-                    <label for="email"></label>
-                    <input type="email" class="campo-contato form-control" placeholder="Email">
-                </p>
-                <p>
-                    <label for="telefone"></label>
-                    <input type="tel" id="telefone" placeholder="Número para contato">
-                </p>
-                <p><a class="botao-envio" href="">Enviar</a></p>
-            </section>
+                <button class="botao botao-envio" type="submit">Enviar</button>
+            </form>
         </section>
     </main>
     <footer class="rodape">
-        <div class="conteudo_rodape">
-            <img class="logo2" src="img/venustra_v4.2.png" alt="logotipo">
-            <p class="texto_footer">O Venustra está sendo desenvolvido como um projeto acadêmico,
-            aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.</p>
-            <p class="texto_footer">O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma,
-                busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele,
-                mas também a realidade econômica das usuárias.</p>
+        <div class="rodape-conteudo">
+            <a class="rodape-marca" href="../inicioPI/pi_inicio.html">
+                <img class="rodape-logo" src="../inicioPI/img/logo-rodape.png" alt="Venustra, página inicial">
+            </a>
+            <p>O Venustra está sendo desenvolvido como um projeto acadêmico, aplicando conceitos relacionados ao desenvolvimento de sistemas e à criação de soluções digitais voltadas para problemas reais.</p>
+            <p>O projeto parte da ideia de que o acesso à informação também é uma parte importante do autocuidado. Dessa forma, busca-se desenvolver uma solução que considere não apenas as necessidades relacionadas à pele, mas também a realidade econômica das usuárias.</p>
+            <nav class="rodape-nav" aria-label="Rodapé">
+                <a href="../inicioPI/pi_inicio.html">Início</a> <a href="../Produtos/Produtos.html">Produtos</a> <a href="../Comparar/Comparar.html">Comparar</a> <a href="../RotinaPI/rotina.html">Minha rotina</a> <a href="../Sobre/Sobre.html">Sobre</a>
+            </nav>
+            <p class="rodape-copy">&copy; 2026 Venustra. Todos os direitos reservados.</p>
         </div>
     </footer>
     
@@ -148,9 +129,10 @@
         <button type="button" class="botao-fechar" id="fecharNotificacao">Fechar</button>
     </div>
     </div>
-    <script src="carrossel.js"></script>
+    <script src="contato.js"></script>
     <!-- JavaScript do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/venustra.js"></script>
 </body>
 </html>
 

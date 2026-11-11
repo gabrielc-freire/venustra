@@ -14,7 +14,7 @@ let PRODUTOS = [];
 
 // Carrega os produtos do arquivo JSON
 async function carregarProdutos() {
-  const resposta = await fetch("produtos.json");
+  const resposta = await fetch("Produtos.json");
 
   if (!resposta.ok) {
     throw new Error("Não foi possível carregar os produtos.");
