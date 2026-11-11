@@ -1,7 +1,7 @@
 /*
 Minha Rotina | Venustra
 
-Carrega os produtos do produtos.json.
+Carrega os produtos do Produtos.json.
 Permite montar rotinas para manhã e noite.
 Identifica a compatibilidade usando o tipo de pele
 salvo pelo questionário.
@@ -12,7 +12,7 @@ Salva as escolhas no localStorage.
     "use strict";
 
     // Arquivo que contém os produtos cadastrados.
-    var CAMINHO_PRODUTOS = "../Produtos/produtos.json";
+    var CAMINHO_PRODUTOS = "../Produtos/Produtos.json";
 
     // Chaves utilizadas para salvar as rotinas.
     var CHAVE_MANHA = "venustra_rotina_manha";

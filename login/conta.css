@@ -1,0 +1,95 @@
+
+
+.conta main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+    box-sizing: border-box;
+}
+.conta h1 { font-size: 2rem; margin: 0 0 .5rem; }
+.conta h2 { font-size: 1.35rem; margin: 0 0 1rem; }
+.conta .intro { line-height: 1.5; margin: 0 0 1.5rem; }
+
+.conta .cartao-conta {
+    background: var(--branco);
+    border: 1px solid #e0ddd2;
+    border-radius: 24px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+}
+
+/* Abas Entrar / Criar conta */
+.conta .abas {
+    display: flex;
+    gap: 6px;
+    padding: 5px;
+    margin-bottom: 20px;
+    background: var(--cinza-claro);
+    border-radius: 2.5rem;
+}
+.conta .abas button {
+    flex: 1;
+    padding: .55rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--tinta);
+    background: transparent;
+    border: 0;
+    border-radius: 2.5rem;
+    cursor: pointer;
+}
+.conta .abas button[aria-selected="true"] { background: var(--branco); box-shadow: 0 1px 4px rgba(0, 0, 0, .12); }
+.conta .abas button:focus-visible { outline: 3px solid var(--escuro); outline-offset: 2px; }
+
+/* Campos */
+.conta label { display: block; margin: .9rem 0 .3rem; font-size: .9rem; font-weight: 700; }
+.conta input:not([type="checkbox"]),
+.conta select,
+.conta textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .65rem .8rem;
+    font-size: 1rem;
+    color: var(--preto);
+    background: var(--branco);
+    border: 1px solid var(--borda-campo);
+    border-radius: .5rem;
+}
+.conta textarea { min-height: 90px; resize: vertical; }
+.conta input[readonly] { background: var(--cinza-claro); color: var(--cinza); }
+.conta input:focus-visible,
+.conta select:focus-visible,
+.conta textarea:focus-visible {
+    outline: 3px solid rgba(3, 187, 133, .45);
+    border-color: var(--escuro);
+}
+.conta .dica { font-size: .85rem; color: var(--cinza); margin: .3rem 0 0; }
+.conta .linha { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+@media (max-width: 600px) { .conta .linha { grid-template-columns: 1fr; } .conta main { padding: 24px 16px 48px; } 
+}
+
+.conta .botao { border: 2px solid transparent; font-family: inherit; margin-top: 1.2rem; }
+.conta .botao-perigo { background: var(--branco); color: var(--erro); border-color: var(--erro); }
+.conta .botao-perigo:hover, .conta .botao-perigo:focus-visible { background: var(--erro); color: #fff; border-color: var(--erro); }
+.conta .acoes-linha { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.conta a.botao { text-decoration: none; }
+
+/* Mensagens */
+.conta .msg { margin: 1rem 0 0; padding: .7rem 1rem; border-radius: .5rem; line-height: 1.4; }
+.conta .msg-erro { color: var(--erro); background: #fdf0f0; border: 1px solid #e6b8b8; }
+.conta .msg-ok { color: var(--tinta); background: var(--card); border: 1px solid var(--detalhe); }
+
+/* Resumo da rotina e do tipo de pele */
+.conta .tipo-atual { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: .5rem; }
+.conta .tipo-atual strong { font-size: 1.3rem; color: var(--escuro); }
+.conta .vazio { color: var(--cinza); line-height: 1.5; margin: 0; }
+.conta .resumo-rotina { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .conta .resumo-rotina { grid-template-columns: 1fr; } 
+}
+
+.conta .resumo-rotina h3 { font-size: 1rem; margin: 0 0 .4rem; }
+.conta .resumo-rotina ol { margin: 0; padding-left: 1.2rem; line-height: 1.6; }
+.conta .cabeca-conta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.conta .cabeca-conta .botao { margin-top: 0; }
+.conta .botao-secundario { border-color: var(--escuro); }
