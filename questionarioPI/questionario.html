@@ -43,11 +43,11 @@
 <form id="form-questionario" novalidate>
 
     <h1>Questionário</h1>
-    <h2>Descubra seu tipo de pele</h2>
+    <h2>Descubra seu tipo de pele e monte sua rotina</h2>
 
     <!-- Progresso (aparece só com JavaScript) -->
     <div class="progresso" id="progresso" hidden>
-        <p class="progresso-texto" id="progresso-texto" aria-live="polite">Pergunta 1 de 4</p>
+        <p class="progresso-texto" id="progresso-texto" aria-live="polite">Pergunta 1 de 6</p>
         <div class="progresso-barra" aria-hidden="true"><div class="progresso-cheia" id="progresso-cheia"></div></div>
     </div>
 
@@ -162,6 +162,64 @@
                 <label for="p4-normal">
                     <input type="radio" id="p4-normal" name="pergunta4" value="normal">
                     <span>Fica confortável e equilibrada.</span>
+                </label>
+            </div>
+        </fieldset>
+    </div>
+
+    <!-- PERGUNTA 5 (não define o tipo de pele: serve para ajustar a rotina) -->
+    <div class="pergunta" id="pergunta-5">
+        <fieldset>
+            <legend>5. Com que frequência aparecem espinhas ou cravos na sua pele?</legend>
+
+            <div class="alternativas">
+                <label for="p5-nenhum">
+                    <input type="radio" id="p5-nenhum" name="pergunta5" value="nenhum">
+                    <span>Raramente ou nunca tenho espinhas ou cravos.</span>
+                </label>
+
+                <label for="p5-cravos">
+                    <input type="radio" id="p5-cravos" name="pergunta5" value="cravos">
+                    <span>Tenho cravos (pontos pretos ou brancos), principalmente no nariz, na testa e no queixo.</span>
+                </label>
+
+                <label for="p5-acne">
+                    <input type="radio" id="p5-acne" name="pergunta5" value="acne">
+                    <span>Tenho espinhas vermelhas, doloridas ou com pus.</span>
+                </label>
+
+                <label for="p5-ambos">
+                    <input type="radio" id="p5-ambos" name="pergunta5" value="ambos">
+                    <span>Tenho cravos e espinhas com frequência.</span>
+                </label>
+            </div>
+        </fieldset>
+    </div>
+
+    <!-- PERGUNTA 6 (não define o tipo de pele: serve para ajustar a rotina) -->
+    <div class="pergunta" id="pergunta-6">
+        <fieldset>
+            <legend>6. Você tem manchas ou marcas escuras no rosto?</legend>
+
+            <div class="alternativas">
+                <label for="p6-nenhuma">
+                    <input type="radio" id="p6-nenhuma" name="pergunta6" value="nenhuma">
+                    <span>Não, o tom da minha pele é uniforme.</span>
+                </label>
+
+                <label for="p6-pos_acne">
+                    <input type="radio" id="p6-pos_acne" name="pergunta6" value="pos_acne">
+                    <span>Sim, marcas escuras que ficaram depois de espinhas.</span>
+                </label>
+
+                <label for="p6-sol">
+                    <input type="radio" id="p6-sol" name="pergunta6" value="sol">
+                    <span>Sim, manchas que apareceram ou escureceram com o sol.</span>
+                </label>
+
+                <label for="p6-ambas">
+                    <input type="radio" id="p6-ambas" name="pergunta6" value="ambas">
+                    <span>Sim, dos dois tipos.</span>
                 </label>
             </div>
         </fieldset>
