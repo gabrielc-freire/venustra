@@ -43,62 +43,63 @@
             linha.appendChild(quando);
         }
         box.appendChild(linha);
+        if (u.preocupacoes && u.preocupacoes.length) {
+            var foco = document.createElement("p");
+            foco.className = "vazio";
+            foco.textContent = "Queixas informadas: " + Venustra.listaEmTexto(u.preocupacoes) + ".";
+            box.appendChild(foco);
+        }
         $("refazer").hidden = false;
         $("ver-tipo").textContent = "Ver detalhes do meu tipo";
         $("ver-tipo").href = Venustra.paginaDoTipo(u.tipo_pele);
     }
 
-    // A rotina é montada na página "Minha rotina" e guardada no navegador (ids dos produtos).
-    function lerLista(chave) {
-        try {
-            var v = JSON.parse(localStorage.getItem(chave));
-            return Array.isArray(v) ? v : [];
-        } catch (e) { return []; }
-    }
-
-    function desenharRotina() {
+    // A rotina fica guardada na conta: itens com o id do produto (ou só a recomendação, se não houver produto)
+    function desenharRotina(rotina) {
         var box = $("resumo-rotina");
         box.textContent = "";
-        var rotina = { manha: lerLista("venustra_rotina_manha"), noite: lerLista("venustra_rotina_noite") };
-        if (!rotina.manha.length && !rotina.noite.length) {
+        rotina = Array.isArray(rotina) ? rotina : [];
+        if (!rotina.length) {
             var p = document.createElement("p");
             p.className = "vazio";
-            p.textContent = "Você ainda não montou sua rotina. Escolha os produtos que usa de manhã e à noite.";
+            p.textContent = Venustra.TIPOS[(box.dataset.tipo || "")]
+                ? "Sua rotina está vazia. Abra \"Minha rotina\" para refazer a recomendada ou escolher produtos."
+                : "Você ainda não tem rotina. Responda ao questionário para receber uma rotina recomendada.";
             box.appendChild(p);
             return;
         }
-        // Busca os nomes no catálogo; se não conseguir, mostra os códigos
-        fetch(Venustra.RAIZ + "Produtos/Produtos.json")
-            .then(function (r) { return r.json(); })
-            .catch(function () { return []; })
-            .then(function (catalogo) {
-                var grade = document.createElement("div");
-                grade.className = "resumo-rotina";
-                [["manha", "Manhã"], ["noite", "Noite"]].forEach(function (par) {
-                    var col = document.createElement("div");
-                    var h = document.createElement("h3");
-                    h.textContent = par[1];
-                    col.appendChild(h);
-                    if (!rotina[par[0]].length) {
-                        var v = document.createElement("p");
-                        v.className = "vazio";
-                        v.textContent = "Sem produtos.";
-                        col.appendChild(v);
-                    } else {
-                        var ol = document.createElement("ol");
-                        rotina[par[0]].forEach(function (id) {
-                            var achado = catalogo.filter(function (x) { return String(x.id) === String(id); })[0];
-                            var li = document.createElement("li");
-                            li.textContent = achado ? achado.nome + (achado.categoria ? " (" + achado.categoria + ")" : "") : String(id);
-                            ol.appendChild(li);
-                        });
-                        col.appendChild(ol);
-                    }
-                    grade.appendChild(col);
-                });
-                box.appendChild(grade);
-                box.style.marginBottom = "1rem";
+        // Busca os nomes no catálogo; se não conseguir, mostra a recomendação em texto
+        Venustra.catalogo().then(function (catalogo) {
+            var grade = document.createElement("div");
+            grade.className = "resumo-rotina";
+            [["manha", "Manhã"], ["noite", "Noite"]].forEach(function (par) {
+                var col = document.createElement("div");
+                var h = document.createElement("h3");
+                h.textContent = par[1];
+                col.appendChild(h);
+                var doPeriodo = rotina.filter(function (i) { return i.periodo === par[0]; });
+                if (!doPeriodo.length) {
+                    var v = document.createElement("p");
+                    v.className = "vazio";
+                    v.textContent = "Sem produtos.";
+                    col.appendChild(v);
+                } else {
+                    var ol = document.createElement("ol");
+                    doPeriodo.forEach(function (item) {
+                        var achado = catalogo.filter(function (x) { return String(x.id) === String(item.produtoId); })[0];
+                        var li = document.createElement("li");
+                        li.textContent = achado
+                            ? achado.nome + " (" + item.etapa + ")"
+                            : item.etapa + (item.recomendado ? ": " + item.recomendado : "");
+                        ol.appendChild(li);
+                    });
+                    col.appendChild(ol);
+                }
+                grade.appendChild(col);
             });
+            box.appendChild(grade);
+            box.style.marginBottom = "1rem";
+        });
     }
 
     function preencher(u) {
@@ -114,7 +115,8 @@
     Venustra.eu(true).then(function (d) {
         if (!d) return Venustra.irParaLogin();
         preencher(d.usuario);
-        desenharRotina();
+        $("resumo-rotina").dataset.tipo = d.usuario.tipo_pele || "";
+        desenharRotina(d.rotina);
 
         $("form-info").addEventListener("submit", function (e) {
             e.preventDefault();

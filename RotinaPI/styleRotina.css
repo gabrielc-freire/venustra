@@ -341,3 +341,84 @@
     display: block;
     margin: 0 0 28px;
 }
+
+/* ---- Sem conta: painel no lugar da rotina ---- */
+.rotina .acesso-restrito {
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 32px 28px;
+    text-align: center;
+
+    background: var(--branco);
+    border: 1px solid #e0ddd2;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.rotina .acoes-acesso {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px 0 18px;
+}
+
+.rotina .acesso-dica {
+    font-size: 0.92rem;
+    color: #666;
+}
+
+.rotina .acesso-dica a {
+    color: var(--realce);
+    font-weight: 600;
+}
+
+/* ---- Rotina recomendada ---- */
+.rotina .botao-restaurar {
+    display: block;
+    margin-top: 12px;
+}
+
+.rotina .aviso-saude {
+    font-size: 0.9rem;
+    color: #5b4a1f;
+    background: #fbf3dc;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.rotina .msg-rotina {
+    margin: 10px 0 0;
+    font-weight: 600;
+    color: #287545;
+}
+
+.rotina .msg-rotina.erro {
+    color: #a33b3b;
+}
+
+.rotina .dica-etapa {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4d5a3a;
+}
+
+.rotina .selo-opcional {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #e8eddc;
+    color: #4d5a3a;
+}
+
+.rotina .produto-rotina.sugestao {
+    border-style: dashed;
+    background: #fafaf5;
+}
+
+.rotina .produto-rotina .produto-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+}

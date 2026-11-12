@@ -47,8 +47,30 @@
     <!-- Main -->
     <main>
 
-        <!-- Introdução -->
-        <div class="introducao-rotina">
+        <!-- Sem conta: a rotina não é exibida. Este painel é mostrado pelo rotina.js -->
+        <section id="acesso-restrito" class="acesso-restrito" aria-labelledby="titulo-acesso" hidden>
+            <h1 id="titulo-acesso">Minha Rotina</h1>
+            <p>
+                Sua rotina de cuidados é pessoal e fica guardada na sua conta.
+                Entre ou crie uma conta para ver a rotina montada com base nas suas respostas
+                do questionário e para alterá-la quando quiser.
+            </p>
+            <div class="acoes-acesso">
+                <a class="botao" id="acesso-entrar" href="../login/login.html">Entrar</a>
+                <a class="botao botao-secundario" id="acesso-criar" href="../login/login.html#criar">Criar conta</a>
+            </div>
+            <p class="acesso-dica">
+                Ainda não fez o questionário? <a href="../questionarioPI/questionario.html">Descubra seu tipo de pele</a>.
+                Se você responder sem estar logada, o resultado fica guardado e a rotina aparece assim que você entrar.
+            </p>
+        </section>
+
+        <noscript>
+            <p class="acesso-restrito">Ative o JavaScript e entre na sua conta para ver a sua rotina.</p>
+        </noscript>
+
+        <!-- Introdução (só aparece com a conta aberta) -->
+        <div class="introducao-rotina" id="introducao-rotina" hidden>
 
             <h1>Minha Rotina</h1>
 
@@ -64,16 +86,25 @@
                     Identificando seu tipo de pele...
                 </p>
 
+                <p id="texto-foco" hidden></p>
+                <p id="aviso-saude" class="aviso-saude" hidden></p>
+
                 <a href="../questionarioPI/questionario.html">
                     Descobrir ou atualizar meu tipo de pele
                 </a>
+
+                <button type="button" id="restaurar-rotina" class="botao botao-secundario botao-restaurar" hidden>
+                    Refazer a rotina recomendada
+                </button>
+
+                <p id="msg-rotina" class="msg-rotina" role="status" aria-live="polite" hidden></p>
 
             </div>
 
         </div>
 
-        <!-- Rotina -->
-        <div class="rotinas">
+        <!-- Rotina (só aparece com a conta aberta) -->
+        <div class="rotinas" id="rotinas" hidden>
 
             <!-- Manhã -->
             <section id="manha">

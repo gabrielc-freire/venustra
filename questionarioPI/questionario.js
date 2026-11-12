@@ -2,9 +2,14 @@
 /*
  * Questionário de tipo de pele | Venustra
  *
- * São 4 perguntas.
- * Cada resposta contabiliza um voto para um tipo de pele.
+ * São 6 perguntas.
+ *
+ * Perguntas 1 a 4: cada resposta contabiliza um voto para um tipo de pele.
  * O tipo com mais votos será o resultado.
+ *
+ * Perguntas 5 e 6 (espinhas/cravos e manchas): NÃO entram na votação.
+ * Elas só são guardadas junto com as respostas e usadas em js/venustra.js
+ * para ajustar a rotina recomendada (veja preocupacoes()).
  *
  * Em caso de empate:
  * 1. A resposta da primeira pergunta será priorizada.
@@ -15,7 +20,8 @@
 (function () {
     "use strict";
 
-    var TOTAL_PERGUNTAS = 4;
+    var TOTAL_PERGUNTAS = 6;   // todas as perguntas do formulário
+    var PERGUNTAS_TIPO = 4;    // só as 4 primeiras definem o tipo de pele
     var PERGUNTA_DESEMPATE = 1;
 
     var ORDEM_DESEMPATE = ["mista", "oleosa", "seca", "normal"];
@@ -39,7 +45,7 @@
             normal: 0
         };
 
-        for (var n = 1; n <= TOTAL_PERGUNTAS; n++) {
+        for (var n = 1; n <= PERGUNTAS_TIPO; n++) {
             if (Object.prototype.hasOwnProperty.call(votos, respostas[n])) {
                 votos[respostas[n]]++;
             }

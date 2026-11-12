@@ -14,6 +14,7 @@
     "tiposPele": [
       "oleosa"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Gel+de+Limpeza+Facial+comprar"
   },
@@ -33,6 +34,10 @@
       "mista",
       "oleosa"
     ],
+    "foco": [
+      "acne",
+      "cravos"
+    ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Limpador+Antioleosidade+comprar"
   },
@@ -51,6 +56,7 @@
     "tiposPele": [
       "seca"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Simple+Organic+Gel+de+Limpeza+Suave+comprar"
   },
@@ -68,6 +74,10 @@
     "imagem": "../RotinaPI/img/LimpezaGL-01.webp",
     "tiposPele": [
       "oleosa"
+    ],
+    "foco": [
+      "acne",
+      "cravos"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Simple+Organic+Gel+de+Limpeza+GL-01+comprar"
@@ -88,6 +98,7 @@
       "normal",
       "mista"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Mantecorp+Glycare+Sabonete+L%C3%ADquido+Facial+Mantecorp+Glycare+comprar"
   },
@@ -106,6 +117,9 @@
     "tiposPele": [
       "oleosa",
       "mista"
+    ],
+    "foco": [
+      "cravos"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Hidratante+Antioleosidade+comprar"
@@ -126,6 +140,7 @@
       "seca",
       "normal"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Principia+Creme+Hidratante+CH-01+comprar"
   },
@@ -144,6 +159,7 @@
     "tiposPele": [
       "seca"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Hidratante+Reparador+comprar"
   },
@@ -162,6 +178,7 @@
     "tiposPele": [
       "seca"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Simple+Organic+Hidratante+Facial+Calmante+Multirreparador+comprar"
   },
@@ -181,6 +198,7 @@
       "mista",
       "oleosa"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Eudora+Niina+Secrets+comprar"
   },
@@ -199,6 +217,14 @@
     "tiposPele": [
       "seca",
       "oleosa"
+    ],
+    "foco": [
+      "acne",
+      "manchas"
+    ],
+    "periodo": [
+      "manha",
+      "noite"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Simple+Organic+Ultra+S%C3%A9rum+Niacinamida+10%25+comprar"
@@ -221,6 +247,14 @@
       "seca",
       "normal"
     ],
+    "foco": [
+      "acne",
+      "cravos",
+      "manchas"
+    ],
+    "periodo": [
+      "noite"
+    ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Principia+%C3%81cido+Glic%C3%B3lico+comprar"
   },
@@ -241,6 +275,12 @@
       "oleosa",
       "seca",
       "normal"
+    ],
+    "foco": [
+      "manchas"
+    ],
+    "periodo": [
+      "manha"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Vitamina+C+Antioxidante+Hidratante+comprar"
@@ -263,6 +303,12 @@
       "seca",
       "normal"
     ],
+    "foco": [
+      "manchas"
+    ],
+    "periodo": [
+      "manha"
+    ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Creamy+S%C3%A9rum+Antioxidante+-+Vitamina+C+comprar"
   },
@@ -280,6 +326,13 @@
     "imagem": "../RotinaPI/img/SerumNivea.jpg",
     "tiposPele": [
       "oleosa"
+    ],
+    "foco": [
+      "manchas"
+    ],
+    "periodo": [
+      "manha",
+      "noite"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Nivea+S%C3%A9rum+Facial+Skin+Glow+Luminous+630+comprar"
@@ -302,6 +355,10 @@
       "seca",
       "normal"
     ],
+    "foco": [
+      "acne",
+      "cravos"
+    ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Sallve+Protetor+Solar+Toque+Seco+FPS+50+comprar"
   },
@@ -323,6 +380,12 @@
       "seca",
       "normal"
     ],
+    "foco": [
+      "acne",
+      "cravos",
+      "manchas"
+    ],
+    "comCor": true,
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Principia+Protetor+Solar+com+Cor+Toque+Seco+FPS+60+comprar"
   },
@@ -341,6 +404,10 @@
     "tiposPele": [
       "mista",
       "oleosa"
+    ],
+    "foco": [
+      "acne",
+      "cravos"
     ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Natura+Protetor+Solar+Facial+Mista+a+Oleosa+FPS+50+Natura+Solar+comprar"
@@ -363,6 +430,10 @@
       "seca",
       "normal"
     ],
+    "foco": [
+      "acne",
+      "cravos"
+    ],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=Ollie+Protetor+Solar+Mineral+Fluido+FPS+50+FPUVA+16+comprar"
   },
@@ -384,6 +455,7 @@
       "seca",
       "normal"
     ],
+    "foco": [],
     "semTeste": null,
     "linkCompra": "https://www.google.com/search?q=L%27Or%C3%A9al+Paris+Protetor+Solar+Facial+L%27Or%C3%A9al+Paris+Expertise+Flu%C3%ADdo+Sem+Cor+comprar"
   }

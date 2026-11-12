@@ -58,7 +58,13 @@ Analisa a pele da usuária por meio de perguntas sobre:
 - Reação ao clima;
 - Sensação da pele durante o dia.
 
-A partir das respostas, a plataforma poderá auxiliar na identificação de características associadas a peles oleosas, secas, mistas, normais e sensíveis.
+São 6 perguntas:
+
+- **Perguntas 1 a 4** definem o tipo de pele (oleosa, seca, mista ou normal);
+- **Pergunta 5** identifica espinhas e cravos;
+- **Pergunta 6** identifica manchas e marcas escuras.
+
+As perguntas 5 e 6 **não mudam o tipo de pele**: elas só ajustam a rotina recomendada.
 
 ### Produtos
 
@@ -77,7 +83,24 @@ Permite comparar produtos considerando:
 
 ### Minha rotina
 
-Área para organizar a rotina de skincare, facilitando a visualização dos produtos e das etapas dos cuidados diários.
+Ao terminar o questionário, a rotina de manhã e de noite é **montada automaticamente** com produtos de `Produtos/Produtos.json`, de acordo com o tipo de pele e com as queixas de espinhas, cravos e manchas. A pessoa pode adicionar produtos, remover e refazer a rotina recomendada.
+
+**A rotina só aparece (e só pode ser alterada) para quem está com a conta aberta.** Sem login, a página mostra apenas um convite para entrar ou criar conta. Se a pessoa fizer o questionário sem conta, o resultado fica guardado e a rotina é criada assim que ela entrar.
+
+> As contas e rotinas ficam no `localStorage` do navegador (não há servidor). Por isso o bloqueio é uma regra da interface, e não uma proteção de segurança: para isso seria preciso um back-end.
+
+#### Como a rotina escolhe os produtos
+
+Cada produto de `Produtos.json` tem estes campos (além dos que já existiam):
+
+| Campo | Para que serve |
+|-------|----------------|
+| `tiposPele` | Só entram na rotina produtos indicados para o tipo de pele |
+| `foco` | Queixas que o produto ajuda: `"acne"`, `"cravos"`, `"manchas"` (pode ser lista vazia) |
+| `periodo` | (só séruns) `"manha"` e/ou `"noite"`. Ex.: vitamina C de manhã, ácido à noite |
+| `comCor` | (só protetor colorido) só é indicado automaticamente para quem tem manchas |
+
+Entre os produtos compatíveis, vence quem atende mais queixas; empatando, o mais barato. Cada período tem no máximo um sérum, e o mesmo sérum não se repete de manhã e à noite. Para mudar a recomendação de um produto, basta editar `foco`/`periodo` no JSON; a lógica fica em `js/venustra.js` (`gerarRotina`).
 
 ---
 

@@ -9,6 +9,10 @@
  *   venustra_contas        lista de contas (cada uma com seu tipo de pele e sua rotina)
  *   venustra_sessao        id da conta que está logada
  *   venustra_pele_pendente resultado do questionário feito antes de entrar na conta
+ *
+ * A rotina recomendada é montada com os produtos de Produtos/Produtos.json, de acordo com
+ * o tipo de pele (perguntas 1 a 4) e as queixas de espinhas, cravos e manchas (perguntas 5 e 6).
+ * A rotina só pode ser vista e alterada por quem está com a conta aberta.
  */
 (function () {
     "use strict";
@@ -94,16 +98,156 @@
         }
     };
 
-    function gerarRotina(tipo) {
-        var itens = [];
+    // ------------------------------------------------------------------
+    // Perguntas 5 e 6 do questionário -> queixas da pele
+    // ------------------------------------------------------------------
+    var NOMES_FOCO = { acne: "espinhas", cravos: "cravos", manchas: "manchas" };
+
+    // Devolve uma lista com "acne", "cravos" e/ou "manchas" (vazia se não tiver nenhuma)
+    function preocupacoes(respostas) {
+        var r = respostas || {}, lista = [];
+        if (r[5] === "acne" || r[5] === "ambos") lista.push("acne");
+        if (r[5] === "cravos" || r[5] === "ambos") lista.push("cravos");
+        if (r[6] === "pos_acne" || r[6] === "sol" || r[6] === "ambas") lista.push("manchas");
+        return lista;
+    }
+
+    // "espinhas, cravos e manchas"
+    function listaEmTexto(foco) {
+        var nomes = foco.map(function (f) { return NOMES_FOCO[f] || f; });
+        if (nomes.length <= 1) return nomes.join("");
+        return nomes.slice(0, -1).join(", ") + " e " + nomes[nomes.length - 1];
+    }
+
+    // ------------------------------------------------------------------
+    // Escolha dos produtos no Produtos.json
+    // ------------------------------------------------------------------
+    var CATEGORIA_DA_ETAPA = {
+        "Limpeza": "Limpeza facial",
+        "Tratamento": "Séruns",
+        "Hidratação": "Hidratantes",
+        "Protetor Solar": "Protetores solares"
+    };
+
+    function semAcento(t) {
+        return String(t == null ? "" : t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    }
+
+    function etapaDaCategoria(categoria) {
+        for (var etapa in CATEGORIA_DA_ETAPA) {
+            if (semAcento(CATEGORIA_DA_ETAPA[etapa]) === semAcento(categoria)) return etapa;
+        }
+        return "Outro";
+    }
+
+    // Etapas de tratamento que entram por causa das queixas: [etapa, produto recomendado, dica]
+    var TRAT_MANHA_MANCHAS = ["Tratamento", "Antioxidante para manchas (vitamina C)",
+        "Aplique antes do hidratante. Sem protetor solar as manchas voltam a escurecer, então não pule essa etapa."];
+    var TRAT_NOITE_ACNE = ["Tratamento", "Tratamento para espinhas e cravos",
+        "Comece 2 vezes por semana e aumente aos poucos. Se a pele arder ou descamar, espace o uso. Use só um tratamento por vez."];
+    var TRAT_NOITE_MANCHAS = ["Tratamento", "Tratamento para manchas",
+        "Use à noite e, de manhã, não esqueça do protetor solar."];
+
+    // Troca o tratamento do período por outro, logo depois da limpeza
+    function comTratamento(passos, novo) {
+        var sem = passos.filter(function (p) { return p[0] !== "Tratamento"; });
+        var pos = 0;
+        for (var k = 0; k < sem.length; k++) {
+            if (sem[k][0] === "Limpeza") { pos = k + 1; break; }
+        }
+        sem.splice(pos, 0, novo);
+        return sem;
+    }
+
+    /*
+     * Escolhe um produto do catálogo para a etapa. Regras:
+     *   1. Tem que ser da categoria da etapa e indicado para o tipo de pele.
+     *   2. Séruns com "periodo" só entram no período certo (ex.: vitamina C de manhã).
+     *   3. Protetor "comCor" só entra para quem tem manchas (a cor nem sempre combina com o tom da pele).
+     *   4. Desempate: mais queixas atendidas (campo "foco"); de manhã, o sérum feito
+     *      só para a manhã (vitamina C) vem antes; por fim, o mais barato.
+     *   5. Um sérum já escolhido não se repete na mesma rotina.
+     */
+    function escolherProduto(catalogo, etapa, tipo, periodo, foco, jaUsados) {
+        var categoria = CATEGORIA_DA_ETAPA[etapa];
+        if (!categoria) return null;
+        var candidatos = catalogo.filter(function (p) {
+            if (semAcento(p.categoria) !== semAcento(categoria)) return false;
+            if (!Array.isArray(p.tiposPele) || p.tiposPele.map(semAcento).indexOf(tipo) === -1) return false;
+            if (Array.isArray(p.periodo) && p.periodo.indexOf(periodo) === -1) return false;
+            if (etapa === "Tratamento" && jaUsados.indexOf(p.id) !== -1) return false;
+            return true;
+        });
+        function pontos(p) {
+            var f = Array.isArray(p.foco) ? p.foco : [];
+            return foco.filter(function (x) { return f.indexOf(x) !== -1; }).length;
+        }
+        function exclusivo(p) {
+            return periodo === "manha" && Array.isArray(p.periodo) && p.periodo.length === 1 ? 1 : 0;
+        }
+        function comCorSemNecessidade(p) { return p.comCor && foco.indexOf("manchas") === -1 ? 1 : 0; }
+        function preco(p) { return Number(p.preco) > 0 ? Number(p.preco) : 1e9; }
+        candidatos.sort(function (a, b) {
+            return (comCorSemNecessidade(a) - comCorSemNecessidade(b)) ||
+                (pontos(b) - pontos(a)) || (exclusivo(b) - exclusivo(a)) || (preco(a) - preco(b));
+        });
+        return candidatos[0] || null;
+    }
+
+    /*
+     * Monta a rotina (manhã e noite) a partir do tipo de pele, das respostas do
+     * questionário e do catálogo de produtos. Cada item:
+     *   { periodo, etapa, recomendado, dica, produtoId, opcional }
+     * Etapas opcionais (sem queixa que as peça) ficam só como sugestão, sem produto.
+     */
+    function gerarRotina(tipo, respostas, catalogo) {
         var modelo = ROTINAS[tipo];
-        if (!modelo) return itens;
-        ["manha", "noite"].forEach(function (periodo) {
-            modelo[periodo].forEach(function (e) {
-                itens.push({ periodo: periodo, etapa: e[0], recomendado: e[1], dica: e[2], produto: "", marca: "", preco: "" });
+        if (!modelo) return [];
+        catalogo = Array.isArray(catalogo) ? catalogo : [];
+
+        var foco = preocupacoes(respostas);
+        var temManchas = foco.indexOf("manchas") !== -1;
+        var temAcne = foco.indexOf("acne") !== -1 || foco.indexOf("cravos") !== -1;
+
+        var passos = { manha: modelo.manha.slice(), noite: modelo.noite.slice() };
+        if (temManchas) passos.manha = comTratamento(passos.manha, TRAT_MANHA_MANCHAS);
+        if (temAcne) passos.noite = comTratamento(passos.noite, TRAT_NOITE_ACNE);
+        else if (temManchas) passos.noite = comTratamento(passos.noite, TRAT_NOITE_MANCHAS);
+
+        var usados = [], porPeriodo = {};
+        // A noite é escolhida primeiro para o sérum dela não se repetir de manhã
+        ["noite", "manha"].forEach(function (periodo) {
+            porPeriodo[periodo] = passos[periodo].map(function (e) {
+                var opcional = /^(Opcional|Se precisar)/.test(e[1]);
+                var produto = null;
+                if (!opcional) {
+                    // De manhã o tratamento é o antioxidante das manchas
+                    var focoDaEtapa = (e[0] === "Tratamento" && periodo === "manha") ? ["manchas"] : foco;
+                    produto = escolherProduto(catalogo, e[0], tipo, periodo, focoDaEtapa, usados);
+                    if (produto && e[0] === "Tratamento") usados.push(produto.id);
+                }
+                return {
+                    periodo: periodo, etapa: e[0], recomendado: e[1], dica: e[2],
+                    produtoId: produto ? String(produto.id) : "", opcional: opcional
+                };
             });
         });
-        return itens;
+        return porPeriodo.manha.concat(porPeriodo.noite);
+    }
+
+    // Catálogo (Produtos.json), carregado uma vez só. Se falhar, a rotina sai só com as recomendações em texto.
+    var catalogoPromessa = null;
+    function carregarCatalogo() {
+        if (!catalogoPromessa) {
+            catalogoPromessa = fetch(RAIZ + "Produtos/Produtos.json")
+                .then(function (r) {
+                    if (!r.ok) throw new Error("catálogo indisponível");
+                    return r.json();
+                })
+                .then(function (d) { return Array.isArray(d) ? d : []; })
+                .catch(function () { catalogoPromessa = null; return []; });
+        }
+        return catalogoPromessa;
     }
 
     // ---------------- localStorage ----------------
@@ -172,7 +316,8 @@
         return {
             id: c.id, nome: c.nome, email: c.email, telefone: c.telefone, nascimento: c.nascimento,
             observacoes: c.observacoes, tipo_pele: c.tipo_pele, respostas: c.respostas,
-            pele_em: c.pele_em, criado_em: c.criado_em
+            pele_em: c.pele_em, criado_em: c.criado_em,
+            preocupacoes: preocupacoes(c.respostas)
         };
     }
 
@@ -213,7 +358,7 @@
 
     // ---------------- "API" local (mesmo formato usado pelas páginas) ----------------
     function api(metodo, rota, corpo) {
-        return new Promise(function (ok) {
+        return new Promise(function (ok, falha) {
             var b = corpo || {}, r = metodo + " " + rota;
 
             if (r === "PUT /api/perfil") {
@@ -234,7 +379,7 @@
                     return {
                         periodo: i.periodo, etapa: ETAPAS.indexOf(i.etapa) !== -1 ? i.etapa : "Outro",
                         recomendado: cortar(i.recomendado, 150), dica: cortar(i.dica, 250),
-                        produto: cortar(i.produto, 80), marca: cortar(i.marca, 60), preco: cortar(i.preco, 20)
+                        produtoId: cortar(i.produtoId, 40), opcional: !!i.opcional
                     };
                 });
                 alterar(function (c) { c.rotina = itens; });
@@ -242,12 +387,15 @@
             }
 
             if (r === "POST /api/rotina/recomendada") {
-                var rot;
-                alterar(function (c) {
-                    if (!TIPOS[c.tipo_pele]) throw erro("Faça o questionário para gerar sua rotina.");
-                    rot = c.rotina = gerarRotina(c.tipo_pele);
-                });
-                return ok({ rotina: rot });
+                // Refaz a rotina recomendada com o catálogo atual (descarta as edições)
+                return carregarCatalogo().then(function (catalogo) {
+                    var rot;
+                    alterar(function (c) {
+                        if (!TIPOS[c.tipo_pele]) throw erro("Faça o questionário para gerar sua rotina.");
+                        rot = c.rotina = gerarRotina(c.tipo_pele, c.respostas, catalogo);
+                    });
+                    ok({ rotina: rot });
+                }).catch(falha);
             }
 
             if (r === "DELETE /api/conta") {
@@ -267,7 +415,7 @@
         return Promise.resolve(c ? { usuario: publico(c), rotina: c.rotina || [] } : null);
     }
 
-    // Guarda o tipo de pele e gera a rotina recomendada.
+    // Guarda o tipo de pele e gera a rotina recomendada com os produtos do catálogo.
     // Sem login, deixa pendente e conclui depois que a pessoa entrar.
     function salvarPele(tipo, respostas) {
         if (!TIPOS[tipo]) return Promise.resolve(false);
@@ -275,17 +423,19 @@
             gravar(K_PENDENTE, { tipo: tipo, respostas: respostas });
             return Promise.resolve(false);
         }
-        try {
+        return carregarCatalogo().then(function (catalogo) {
             alterar(function (c) {
-                var mudou = c.tipo_pele !== tipo;
+                // Mudou o tipo de pele ou as queixas: a rotina precisa ser refeita
+                var mudou = c.tipo_pele !== tipo ||
+                    preocupacoes(c.respostas).join() !== preocupacoes(respostas).join();
                 c.tipo_pele = tipo;
                 c.respostas = respostas || null;
                 c.pele_em = agora();
-                // Mesmo tipo de pele: mantém a rotina que ela já editou
-                if (mudou || !c.rotina || !c.rotina.length) c.rotina = gerarRotina(tipo);
+                // Nada mudou: mantém a rotina que ela já editou
+                if (mudou || !c.rotina || !c.rotina.length) c.rotina = gerarRotina(tipo, respostas, catalogo);
             });
-            return Promise.resolve(true);
-        } catch (e) { return Promise.resolve(false); }
+            return true;
+        }).catch(function () { return false; });
     }
 
     function aplicarPendente() {
@@ -326,6 +476,13 @@
         });
     }
 
+    // Queixas (espinhas, cravos, manchas) da pessoa logada ou do questionário ainda pendente
+    function focoDaPessoa() {
+        var c = contaAtual();
+        var resp = c ? c.respostas : (ler(K_PENDENTE, null) || {}).respostas;
+        return preocupacoes(resp);
+    }
+
     // ----- Páginas de resultado do questionário: avisa o que foi salvo -----
     function avisoResultado() {
         var acoes = document.querySelector("body.tipo-pele .acoes");
@@ -334,13 +491,15 @@
         p.className = "aviso-conta";
         acoes.parentNode.insertBefore(p, acoes);
         var voltar = encodeURIComponent(location.href);
+        var foco = focoDaPessoa();
+        var extra = foco.length ? " Também levamos em conta suas queixas de " + listaEmTexto(foco) + "." : "";
         eu().then(function (d) {
             if (d) {
-                p.innerHTML = "Resultado salvo na sua conta. Agora você pode " +
-                    "<a href=\"" + RAIZ + "RotinaPI/rotina.html\">montar sua rotina</a>.";
+                p.innerHTML = "Resultado salvo na sua conta." + extra + " Sua rotina personalizada já está pronta: " +
+                    "<a href=\"" + RAIZ + "RotinaPI/rotina.html\">ver minha rotina</a>.";
             } else {
-                p.innerHTML = "Quer guardar este resultado na sua conta? " +
-                    "<a href=\"" + RAIZ + "login/login.html?voltar=" + voltar + "#criar\">Crie sua conta</a> ou " +
+                p.innerHTML = "Montamos uma rotina para você." + extra + " Para ver e editar, " +
+                    "<a href=\"" + RAIZ + "login/login.html?voltar=" + voltar + "#criar\">crie sua conta</a> ou " +
                     "<a href=\"" + RAIZ + "login/login.html?voltar=" + voltar + "\">entre</a>.";
             }
         });
@@ -349,7 +508,9 @@
     document.addEventListener("DOMContentLoaded", function () { menu(); avisoResultado(); });
 
     window.Venustra = {
-        RAIZ: RAIZ, TIPOS: TIPOS, api: api, eu: eu, sair: sair, salvarPele: salvarPele,
+        RAIZ: RAIZ, TIPOS: TIPOS, ETAPAS: ETAPAS, api: api, eu: eu, sair: sair, salvarPele: salvarPele,
+        catalogo: carregarCatalogo, preocupacoes: preocupacoes, listaEmTexto: listaEmTexto,
+        etapaDaCategoria: etapaDaCategoria, gerarRotina: gerarRotina,
         entrar: function (email, senha) { return entrarEAplicar(entrar(email, senha)); },
         criarConta: function (nome, email, senha) { return entrarEAplicar(criarConta(nome, email, senha)); },
         paginaDoTipo: paginaDoTipo, irParaLogin: irParaLogin
