@@ -15,7 +15,9 @@ let produtos = [];
 /* Formatação de valores */
 
 function formatarMoeda(valor) {
-    return valor.toLocaleString("pt-BR", {
+    const numero = Number(valor);
+    if (!Number.isFinite(numero) || numero <= 0) return "Não informado";
+    return numero.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
@@ -222,7 +224,12 @@ function limparResultado() {
 /* Calcula o preço proporcional a 100 g ou 100 ml */
 
 function calcularPrecoPor100(produto) {
-    return (Number(produto.preco) / Number(produto.quantidade)) * 100;
+    const preco = Number(produto.preco);
+    const quantidade = Number(produto.quantidade);
+    if (!Number.isFinite(preco) || preco <= 0 ||
+        !Number.isFinite(quantidade) || quantidade <= 0 ||
+        !["g", "ml"].includes(produto.unidade)) return null;
+    return (preco / quantidade) * 100;
 }
 
 /* Identifica os produtos com menor preço dentro de cada unidade */
@@ -231,10 +238,9 @@ function encontrarMelhores(produtosSelecionados) {
     const grupos = {};
 
     produtosSelecionados.forEach(produto => {
-        if (!grupos[produto.unidade]) {
-            grupos[produto.unidade] = [];
-        }
-
+        const valor = calcularPrecoPor100(produto);
+        if (valor === null) return;
+        if (!grupos[produto.unidade]) grupos[produto.unidade] = [];
         grupos[produto.unidade].push(produto);
     });
 
@@ -325,23 +331,25 @@ function montarTabela(produtosSelecionados, melhores) {
     adicionarLinha(
         "Preço",
         produtosSelecionados.map(produto =>
-            formatarMoeda(Number(produto.preco))
+            formatarMoeda(produto.preco)
         )
     );
 
     adicionarLinha(
         "Quantidade",
         produtosSelecionados.map(produto =>
-            `${formatarNumero(Number(produto.quantidade))} ${produto.unidade}`
+            Number(produto.quantidade) > 0 && ["g", "ml"].includes(produto.unidade)
+                ? `${formatarNumero(Number(produto.quantidade))} ${produto.unidade}`
+                : "Não informada"
         )
     );
 
     adicionarLinha(
         "Preço por 100",
         produtosSelecionados.map(produto => {
-            const unidade = produto.unidade === "g" ? "g" : "ml";
-
-            return `${formatarMoeda(calcularPrecoPor100(produto))} / 100 ${unidade}`;
+            const valor = calcularPrecoPor100(produto);
+            if (valor === null) return "Não disponível";
+            return `${formatarMoeda(valor)} / 100 ${produto.unidade}`;
         }),
         true
     );
@@ -403,10 +411,8 @@ function montarResumo(produtosSelecionados, melhores) {
     const grupos = {};
 
     produtosSelecionados.forEach(produto => {
-        if (!grupos[produto.unidade]) {
-            grupos[produto.unidade] = [];
-        }
-
+        if (calcularPrecoPor100(produto) === null) return;
+        if (!grupos[produto.unidade]) grupos[produto.unidade] = [];
         grupos[produto.unidade].push(produto);
     });
 
@@ -555,4 +561,24 @@ form.addEventListener("reset", function() {
 
 /* Inicialização */
 
-carregarProdutos();
+async function iniciarComparador() {
+    await carregarProdutos();
+    const idsPendentes = JSON.parse(sessionStorage.getItem("venustra_comparar") || "[]");
+    if (!Array.isArray(idsPendentes) || idsPendentes.length === 0) return;
+
+    sessionStorage.removeItem("venustra_comparar");
+    const selecionados = idsPendentes
+        .map(id => produtos.find(produto => String(produto.id) === String(id)))
+        .filter(Boolean);
+
+    if (!selecionados.length) return;
+
+    campoCategoria.value = selecionados[0].categoria;
+    atualizarSeletores();
+
+    selecionados.slice(0, 3).forEach((produto, indice) => {
+        if (seletores[indice]) seletores[indice].value = String(produto.id);
+    });
+    atualizarProdutosDuplicados();
+}
+iniciarComparador();

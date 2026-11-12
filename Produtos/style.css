@@ -493,3 +493,68 @@ p {
     .barra-pesquisa { width: 100%; max-width: 100%; }
     .produto { flex-basis: min(80vw, 280px); min-height: 410px; }
 }
+
+
+/* ---- Contorno verde suave dos cards ---- */
+
+.produto {
+    border: 1px solid rgba(11, 107, 82, 0.28);
+    box-shadow: 0 4px 16px rgba(6, 59, 48, 0.10);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto:hover {
+    border-color: rgba(11, 107, 82, 0.55);
+    box-shadow: 0 5px 18px rgba(6, 59, 48, 0.14);
+}
+
+/* Mantém o contorno de teclado visível */
+.produto:focus-within {
+    border-color: var(--escuro);
+}
+
+
+/* ---- Ajustes finais dos cards e ações ---- */
+.produto h3 a::after { pointer-events: none; }
+.produto .acoes-produto {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    margin-top: auto;
+    padding-top: 16px;
+}
+.produto .adicionar {
+    position: static;
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    padding: 9px 16px;
+    border-radius: 24px;
+    color: var(--tinta);
+    font-size: .95rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.produto .adicionar:hover { background: var(--escuro); color: #fff; }
+.produto .link-compra {
+    display: inline-block;
+    color: var(--escuro);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.produto .link-compra:hover { color: var(--tinta); }
+.produto .marca-produto,
+.produto .quantidade-produto { color: var(--cinza); font-size: .92rem; }
+.produto .area-precos { margin-top: 10px; display: flex; flex-direction: column; gap: 3px; }
+.produto .preco-antigo,
+.produto .preco { padding-right: 0; margin: 0; }
+.produto .preco-antigo { color: var(--cinza); font-size: .9rem; text-decoration: line-through; }
+.produto .preco { color: var(--tinta); font-weight: 700; }
+.detalhe-compra { display: inline-block; margin-top: 14px; }
+@media (max-width: 600px) {
+    .produto { flex-basis: min(300px, 86vw); }
+}
