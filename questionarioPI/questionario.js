@@ -264,7 +264,7 @@
             var tipo = calcularTipo(lido.respostas);
 
             // Salva o resultado no navegador
-            localStorage.setItem("venustra_tipo_pele", tipo);
+            sessionStorage.setItem("venustra_tipo_pele", tipo);
 
             // Redireciona para a página correspondente
             var ir = function () { window.location.href = PAGINAS[tipo]; };

@@ -1,0 +1,383 @@
+.questionario main {
+    width: 100%;
+    padding: 4rem 1.5rem;
+    box-sizing: border-box;
+}
+
+/* ---- Formulário ---- */
+.questionario form {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 3rem;
+    box-sizing: border-box;
+    background-color: var(--branco);
+    border: 1px solid rgba(78, 131, 119, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 10px 35px rgba(46, 87, 76, 0.08);
+}
+
+/* ---- Títulos ---- */
+.questionario form h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--realce);
+}
+
+.questionario form h2 {
+    margin: 0.5rem 0 3rem;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: normal;
+    color: var(--cinza);
+}
+
+/* ---- Perguntas ---- */
+.questionario form h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+/* Esconde o radio padrão (continua acessível pelo teclado) */
+.questionario form input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ---- Alternativas ---- */
+.questionario form label {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.7rem;
+    padding: 1rem 1.2rem;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 0.7rem;
+    cursor: pointer;
+}
+
+.questionario form label:hover {
+    border-color: var(--detalhe);
+    background-color: #f5fcf9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 131, 119, 0.08);
+}
+
+/* Bolinha personalizada */
+.questionario form label::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.8rem;
+    border: 2px solid #b8c4c0;
+    border-radius: 50%;
+}
+
+/* Alternativa selecionada */
+.questionario form input[type="radio"]:checked + label {
+    border-color: var(--detalhe2);
+    background-color: #eafaf5;
+    color: var(--realce);
+    font-weight: 700;
+    box-shadow: 0 0 0 1px var(--detalhe2);
+}
+
+/* Foco do teclado (o radio original está escondido) */
+.questionario form input[type="radio"]:focus-visible + label {
+    outline: 3px solid var(--escuro);
+    outline-offset: 2px;
+}
+
+/* ---- Páginas de resultado (tipos de pele) ---- */
+.tipo-pele main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.tipo-pele main h1 {
+    margin-top: 0;
+}
+
+/* ---- Botão de enviar ---- */
+.questionario form .botao-enviar {
+    display: block;
+    margin: 3rem auto 0;
+    padding: 0.9rem 2.6rem;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+/* ---- Validação: perguntas sem resposta ---- */
+.questionario form .pergunta.sem-resposta h3 {
+    color: var(--erro);
+    border-bottom-color: var(--erro);
+}
+
+.questionario form .pergunta.sem-resposta h3::after {
+    content: " (escolha uma opção)";
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+.questionario form .pergunta.sem-resposta label {
+    border-color: rgba(155, 28, 28, 0.35);
+}
+
+.questionario form .erro-questionario {
+    margin: 2rem 0 0;
+    padding: 0.9rem 1.2rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--erro);
+    background-color: #fdf2f2;
+    border: 1px solid rgba(155, 28, 28, 0.3);
+    border-radius: 0.7rem;
+}
+
+/* ---- Conteúdo das páginas de resultado ---- */
+.tipo-pele .resultado-intro {
+    margin: 0.8rem 0 0;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--tinta);
+}
+
+.tipo-pele .bloco {
+    margin-top: 2.5rem;
+}
+
+.tipo-pele .bloco h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--realce);
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+.tipo-pele .bloco p {
+    line-height: 1.6;
+}
+
+.tipo-pele .lista-simples,
+.tipo-pele .cartao ul,
+.tipo-pele .cartao ol {
+    margin: 0;
+    padding-left: 1.3rem;
+    line-height: 1.6;
+}
+
+.tipo-pele .lista-simples li,
+.tipo-pele .cartao li {
+    margin-bottom: 0.5rem;
+}
+
+.tipo-pele .grade-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.tipo-pele .cartao {
+    padding: 1.2rem 1.4rem;
+    background-color: var(--card);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 0.8rem;
+}
+
+.tipo-pele .cartao h3 {
+    margin: 0 0 0.8rem;
+    font-size: 1.1rem;
+    color: var(--escuro);
+}
+
+.tipo-pele .cartao-evite {
+    background-color: #fdf6f6;
+    border-color: rgba(155, 28, 28, 0.2);
+}
+
+.tipo-pele .cartao-evite h3 {
+    color: var(--erro);
+}
+
+.tipo-pele .aviso {
+    margin: 2.5rem 0 0;
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--cinza);
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 0.7rem;
+}
+
+.tipo-pele .aviso-destaque {
+    color: var(--tinta);
+    background-color: #fdf6f6;
+    border-color: rgba(155, 28, 28, 0.25);
+}
+
+.tipo-pele .acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.tipo-pele .acoes .botao-secundario {
+    border: 2px solid var(--escuro);
+}
+
+/* Aviso de resultado salvo / convite para criar conta */
+.tipo-pele .aviso-conta {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: .7rem 1rem;
+    line-height: 1.4;
+    background: var(--card);
+    border-left: 4px solid var(--detalhe);
+    border-radius: 0 .6rem .6rem 0;
+}
+.tipo-pele .aviso-conta a { color: var(--escuro); font-weight: 700; }
+
+/* =====================================================================
+   Design: questionário (uma pergunta por tela) e resultado
+   ===================================================================== */
+.questionario main { max-width: 1000px; margin: 0 auto; padding: var(--e8) var(--e6); box-sizing: border-box; }
+
+/* Sem caixa branca ao redor: as opções são os cartões */
+.questionario form { max-width: none; padding: 0; background: transparent; border: 0; box-shadow: none; }
+.questionario form h1 { margin: 0 0 var(--e2); text-align: left; font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--realce); }
+.questionario form h2 { margin: 0 0 var(--e5); text-align: left; font-size: 1rem; font-weight: 400; color: var(--cinza); }
+
+.progresso { margin: 0 0 var(--e6); }
+.progresso-texto { margin: 0 0 var(--e2); color: var(--tinta); font-size: .95rem; font-weight: 700; }
+.progresso-barra { height: 8px; background: var(--cinza-claro); border-radius: 999px; overflow: hidden; }
+.progresso-cheia { height: 100%; width: 0; background: var(--escuro); border-radius: 999px; transition: width .3s ease; }
+
+/* Uma pergunta por tela (sem JavaScript, todas aparecem juntas) */
+.passo-a-passo .pergunta { display: none; }
+.passo-a-passo .pergunta.ativa { display: block; }
+.pergunta { margin: 0 0 var(--e6); }
+.pergunta fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+/* Pergunta em destaque */
+.pergunta legend {
+    float: left;
+    width: 100%;
+    margin: 0 0 var(--e5);
+    padding: 0;
+    color: var(--preto);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.25;
+}
+.pergunta legend + .alternativas { clear: both; }
+.pergunta legend:focus { outline: none; }
+
+/* Opções em cartões, 2 por linha */
+.alternativas { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--e4) var(--e5); }
+
+.questionario .alternativas label {
+    display: flex;
+    align-items: center;
+    gap: var(--e3);
+    min-height: 72px;
+    margin: 0;
+    padding: var(--e4) var(--e5);
+    box-sizing: border-box;
+    color: var(--texto);
+    font-size: 1.05rem;
+    line-height: 1.35;
+    background: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: var(--e4);
+    box-shadow: var(--sombra-card);
+    cursor: pointer;
+}
+.questionario .alternativas label:hover { border-color: var(--escuro); background: var(--card); }
+
+.questionario .alternativas label::before { content: none; }
+
+/* Bolinha de seleção */
+.questionario .alternativas input[type="radio"] {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    box-sizing: border-box;
+    background: transparent;
+    border: 2px solid var(--escuro);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.questionario .alternativas input[type="radio"]:checked { background: radial-gradient(circle, var(--escuro) 0 45%, transparent 50%); }
+.questionario .alternativas input[type="radio"]:focus-visible { outline: 3px solid var(--escuro); outline-offset: 3px; }
+.questionario .alternativas label:has(input[type="radio"]:checked) { border-color: var(--escuro); background: var(--card); box-shadow: 0 0 0 1px var(--escuro); }
+
+/* Pergunta sem resposta (aviso de erro) */
+.pergunta.sem-resposta legend { color: var(--erro); }
+.pergunta.sem-resposta .alternativas label { border-color: var(--erro); }
+
+.passos { display: flex; flex-wrap: wrap; gap: var(--e3); margin-top: var(--e6); }
+.questionario form .botao-enviar { display: inline-block; margin: 0; padding: var(--e3) var(--e5); font-size: 1rem; }
+.passos .botao:disabled { opacity: .5; cursor: default; box-shadow: none; }
+.erro-questionario { margin: var(--e4) 0 0; color: var(--erro); font-weight: 700; }
+.erro-questionario[hidden] { display: none; }
+
+@media (max-width: 700px) {
+    .questionario main { padding: var(--e7) var(--e4); }
+    .alternativas { grid-template-columns: 1fr; }
+}
+
+/* ---- Resultado: foto e resumo à esquerda, características e dica à direita ---- */
+.tipo-pele main { max-width: var(--largura); margin: 0 auto; padding: var(--e8) var(--e6) 0; box-sizing: border-box; }
+
+.resultado {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--e7);
+    align-items: start;
+}
+.resultado-foto {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 var(--e5);
+    object-fit: cover;
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-card);
+}
+.resultado-rotulo { margin: 0 0 var(--e1); color: var(--escuro); font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.tipo-pele main h1 { margin: 0 0 var(--e3); font-size: clamp(2rem, 4vw, 2.8rem); }
+.resultado-intro { max-width: 480px; margin: 0 0 var(--e5); line-height: 1.55; }
+.acoes { display: flex; flex-wrap: wrap; gap: var(--e3); }
+
+.tipo-pele .bloco h2 { margin: 0 0 var(--e4); font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.dica-economizar { margin-top: var(--e6); padding: var(--e5); background: var(--detalhe); color: var(--tinta); border-radius: var(--raio-card); box-shadow: var(--sombra-botao); }
+.dica-economizar h2 { margin: 0 0 var(--e2); color: var(--tinta); font-size: 1.05rem; }
+.dica-economizar p { margin: 0; line-height: 1.5; }
+
+.tipo-pele main > .bloco { margin-top: var(--e8); }
+.tipo-pele .aviso { max-width: 800px; margin: var(--e7) auto 0; color: var(--cinza); font-size: .95rem; text-align: center; }
+.aviso-conta { max-width: 480px; margin: 0 0 var(--e4); }
+
+@media (max-width: 800px) {
+    .resultado { grid-template-columns: 1fr; gap: var(--e6); }
+    .tipo-pele main { padding: var(--e7) var(--e4) 0; }
+}
+.resultado .acoes { justify-content: flex-start; }

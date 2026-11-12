@@ -54,6 +54,7 @@
                 <p id="p-descricao"></p>
                 <p class="preco-antigo" id="p-preco-antigo"></p>
                 <p class="preco" id="p-preco"></p>
+                <a class="link-compra detalhe-compra" id="p-link-compra" target="_blank" rel="noopener noreferrer">Encontrar para comprar</a>
 
                 <a class="voltar" href="Produtos.html">&larr; Voltar aos produtos</a>
             </div>
@@ -128,13 +129,22 @@
 
             imagem.src = produto.imagem;
             imagem.alt = produto.nome;
+            imagem.addEventListener("error", function () {
+                imagem.src = "../inicioPI/img/placeholder/placeholder-400x300.png";
+            }, { once: true });
 
             preencher("p-categoria", produto.categoria);
             preencher("p-nome", produto.nome);
             preencher("p-tamanho", produto.tamanho);
             preencher("p-descricao", produto.descricao);
-            preencher("p-preco-antigo", produto.precoAntigo);
-            preencher("p-preco", produto.preco);
+            preencher("p-preco-antigo", Number(produto.precoAntigo) > 0
+                ? "De: " + Number(produto.precoAntigo).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+                : "");
+            preencher("p-preco", Number(produto.preco) > 0
+                ? "Preço atual: " + Number(produto.preco).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+                : "Preço não informado");
+            const linkCompra = document.getElementById("p-link-compra");
+            linkCompra.href = produto.linkCompra || "https://www.google.com/search?q=" + encodeURIComponent(produto.marca + " " + produto.nome + " comprar");
         })
         .catch(function (erro) {
             console.error(erro);
